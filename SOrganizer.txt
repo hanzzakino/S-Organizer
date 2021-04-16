@@ -1,0 +1,30 @@
+﻿
+SOrganizer
+A Student organizer application
+
+By: Hanz Aquino
+
+Written in vb.NET Framework 4.0
+
+
+04-07-2021		: Started the project
+				: Created the Main UI
+				: Added Control bar
+				: Added the ability to move the window by dragging the Control Bar Panel
+04-08-2021		: Created the panels for the Subjects Dashboard
+04-09-2021		: Created the close,min,max button icons in Photoshop
+04-10-2021		: Created the UI for adding subjects
+04-11-2021		: Create a method that converts Time Format to decimas (7:30 to 7.5)
+				: Database methods for adding new schedule
+				: Add Subject Panel finished
+				: Added the Loading Screen
+04-12-21		: Added Remove subject capability and UI
+				: Multiple subject delete using For each loop and removeSubject(SUBJECT_ID) metohd
+				: removeSubject() method affects the three databases subjects,subject_tasks,subject_schedules
+04-13-21		: Improved loading screen
+				: Added boolean parameter to initSubjectList to indicate wheter to show loading screen porgress bar or not
+				: Added task list UI
+04-15-21		: Add task capability is added
+				: DATABASE is ported to MySQL .NET Connector rather than ODBC since it was faster
+				: Replaced listbox by listview for task list in task panel
+				: Added the option to Archive or Delete the task instead of just deleting it
