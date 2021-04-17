@@ -249,13 +249,16 @@ Partial Class frm_MAIN
         Me.btn_NOTES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_NOTES.Font = New System.Drawing.Font("Verdana", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_NOTES.ForeColor = System.Drawing.Color.Azure
-        Me.btn_NOTES.Location = New System.Drawing.Point(40, 255)
+        Me.btn_NOTES.Image = CType(resources.GetObject("btn_NOTES.Image"), System.Drawing.Image)
+        Me.btn_NOTES.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btn_NOTES.Location = New System.Drawing.Point(40, 280)
         Me.btn_NOTES.Name = "btn_NOTES"
         Me.btn_NOTES.Size = New System.Drawing.Size(160, 40)
         Me.btn_NOTES.TabIndex = 3
         Me.btn_NOTES.TabStop = False
         Me.btn_NOTES.Text = "&Notes"
         Me.btn_NOTES.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_NOTES.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_NOTES.UseVisualStyleBackColor = True
         '
         'btn_SCHEDULES
@@ -265,13 +268,16 @@ Partial Class frm_MAIN
         Me.btn_SCHEDULES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_SCHEDULES.Font = New System.Drawing.Font("Verdana", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_SCHEDULES.ForeColor = System.Drawing.Color.Azure
-        Me.btn_SCHEDULES.Location = New System.Drawing.Point(40, 205)
+        Me.btn_SCHEDULES.Image = CType(resources.GetObject("btn_SCHEDULES.Image"), System.Drawing.Image)
+        Me.btn_SCHEDULES.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btn_SCHEDULES.Location = New System.Drawing.Point(40, 220)
         Me.btn_SCHEDULES.Name = "btn_SCHEDULES"
         Me.btn_SCHEDULES.Size = New System.Drawing.Size(160, 40)
         Me.btn_SCHEDULES.TabIndex = 2
         Me.btn_SCHEDULES.TabStop = False
         Me.btn_SCHEDULES.Text = "S&chedules"
         Me.btn_SCHEDULES.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_SCHEDULES.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_SCHEDULES.UseVisualStyleBackColor = True
         '
         'btn_TASK
@@ -281,13 +287,16 @@ Partial Class frm_MAIN
         Me.btn_TASK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_TASK.Font = New System.Drawing.Font("Verdana", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_TASK.ForeColor = System.Drawing.Color.Azure
-        Me.btn_TASK.Location = New System.Drawing.Point(40, 155)
+        Me.btn_TASK.Image = CType(resources.GetObject("btn_TASK.Image"), System.Drawing.Image)
+        Me.btn_TASK.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btn_TASK.Location = New System.Drawing.Point(40, 160)
         Me.btn_TASK.Name = "btn_TASK"
         Me.btn_TASK.Size = New System.Drawing.Size(160, 40)
         Me.btn_TASK.TabIndex = 1
         Me.btn_TASK.TabStop = False
         Me.btn_TASK.Text = "&Tasks"
         Me.btn_TASK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_TASK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_TASK.UseVisualStyleBackColor = True
         '
         'btn_SUBJECTS
@@ -297,13 +306,16 @@ Partial Class frm_MAIN
         Me.btn_SUBJECTS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_SUBJECTS.Font = New System.Drawing.Font("Verdana", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_SUBJECTS.ForeColor = System.Drawing.Color.Azure
-        Me.btn_SUBJECTS.Location = New System.Drawing.Point(40, 105)
+        Me.btn_SUBJECTS.Image = CType(resources.GetObject("btn_SUBJECTS.Image"), System.Drawing.Image)
+        Me.btn_SUBJECTS.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btn_SUBJECTS.Location = New System.Drawing.Point(40, 100)
         Me.btn_SUBJECTS.Name = "btn_SUBJECTS"
         Me.btn_SUBJECTS.Size = New System.Drawing.Size(160, 40)
         Me.btn_SUBJECTS.TabIndex = 0
         Me.btn_SUBJECTS.TabStop = False
         Me.btn_SUBJECTS.Text = "&Subjects"
         Me.btn_SUBJECTS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_SUBJECTS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_SUBJECTS.UseVisualStyleBackColor = True
         '
         'panel_MAIN_NOTES
