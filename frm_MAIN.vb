@@ -5,6 +5,9 @@
 
     'Form initialaztion and loading screen
     Private Sub frm_MAIN_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        'gdExa1EnSC
+        'sql3404642
+        '"sql3.freesqldatabase.com", "sql3404642", "gdExa1EnSC", "sql3404642"
 
         frm_LoadingScreen.Show()
         frm_LoadingScreen.ProgressBar_main.Value = 0
@@ -20,11 +23,18 @@
         'Progress bar value is incremented inside the init_SUBJECTLIST()
         'frm_LoadingScreen.ProgressBar_main.Value = 70
 
+        frm_LoadingScreen.lbl_LOADING.Text = "Initializing Notes..."
+        Application.DoEvents()
+        initNOTELIST()
+        frm_LoadingScreen.ProgressBar_main.Value = 80
+
         frm_LoadingScreen.lbl_LOADING.Text = "Initializing Menu and Panels..."
         Application.DoEvents()
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
         frm_LoadingScreen.ProgressBar_main.Value = 100
+
+
         date_DEADLINEDATE.Value = Now
 
         frm_LoadingScreen.Close()
@@ -32,6 +42,7 @@
         Me.WindowState = FormWindowState.Maximized
 
         '''' TEST '''''
+
         '''''''''''''''
 
     End Sub
@@ -39,6 +50,7 @@
 
     'init SUBJECT PANEL and TASK PANEL
     Public Sub init_SUBJECTLIST(ByVal ShowProgress As Boolean)
+        'RESET
         SUBJECT_LIST = getSubjectList()
         flwpanel_SUBJECTS_DRAWER.Controls.Clear()
         listbx_REMOVESUBJECTS.Items.Clear()
@@ -46,13 +58,9 @@
         listbx_TASKLIST2.Items.Clear()
         cmbx_SUBJECTNAME.Items.Clear()
 
-
         'RESET TABLE
         tblpanel_SCHED.Controls.Clear()
         resetSCHEDULETABLE()
-
-
-
 
         'For loading screen
         If ShowProgress Then
@@ -62,6 +70,16 @@
         'SUBJECT ITEM PANELS
         Dim SUBJECT_ITEMS As New List(Of Panel)
 
+        If SUBJECT_LIST.Count = 0 Then
+            Dim empty_sub As New Label
+            empty_sub.Text = "Please Add Subjects"
+            empty_sub.Width = 400
+            empty_sub.Height = 400
+            empty_sub.TextAlign = ContentAlignment.MiddleCenter
+            empty_sub.ForeColor = Color.DarkSlateGray
+            empty_sub.Font = New Font("Arial", 14)
+            flwpanel_SUBJECTS_DRAWER.Controls.Add(empty_sub)
+        End If
 
         For Each subject In SUBJECT_LIST
             'For loading screen
@@ -77,11 +95,20 @@
             subj_panel.Width = 450
             subj_panel.BackColor = Color.Azure
 
+            Dim brder_panel As New Panel
+            brder_panel.Parent = subj_panel
+            brder_panel.Height = 5
+            brder_panel.Width = 450
+            brder_panel.Top = 0
+            brder_panel.Left = 0
+            brder_panel.BackColor = Color.SlateGray
+
+
             Dim subj_label As New Label()
             subj_label.Parent = subj_panel
             subj_label.AutoSize = True
             subj_label.Font = New Font("Verdana", 11, FontStyle.Bold)
-            subj_label.Top = 5
+            subj_label.Top = 13
             subj_label.Left = 5
             subj_label.Anchor = AnchorStyles.Top + AnchorStyles.Left
             subj_label.ForeColor = Color.MidnightBlue
@@ -96,6 +123,8 @@
             subj_tasks_list.BorderStyle = BorderStyle.None
             subj_tasks_list.SelectionMode = SelectionMode.None
             subj_tasks_list.ForeColor = Color.MidnightBlue
+            subj_tasks_list.SelectionMode = SelectionMode.None
+            subj_tasks_list.TabStop = False
 
             Dim subj_sched_list As New ListBox
             subj_sched_list.Parent = subj_panel
@@ -108,6 +137,8 @@
             subj_sched_list.ForeColor = Color.MidnightBlue
             subj_sched_list.BackColor = Color.Azure
             subj_sched_list.Font = New Font("Verdana", 10, FontStyle.Bold)
+            subj_sched_list.SelectionMode = SelectionMode.None
+            subj_sched_list.TabStop = False
 
             For Each sched In getScheduleString(subject(0))
                 subj_sched_list.Items.Add(sched(0))
@@ -121,25 +152,31 @@
             lvg.Header = subject(0) + " - " + subject(1)
             listbx_TASKLIST2.Groups.Add(lvg)
 
+            If getSUBJECTTASKS(subject(0)).Count = 0 Then
+                subj_tasks_list.Items.Add("No Task")
+            End If
+
+
+
             For Each task In getSUBJECTTASKS(subject(0))
                 subj_tasks_list.Items.Add(task(0) + " - " + task(1))
                 Try
                     If Long.Parse(task(3)) < Now.Ticks Then
                         Dim lvi As New ListViewItem
-                        lvi.Text = Date.Parse(task(2)).ToString("MMMM dd, yyyy") + " - " + task(5) + " - " + task(0) + " - " + task(1)
+                        lvi.Text = Date.Parse(task(2)).ToString("MMMM dd, yyyy") + " - " + task(5) + " - " + task(0) + " - " + task(1) + " - " + task(4)
                         lvi.BackColor = Color.FromArgb(255, 205, 205)
                         lvi.ForeColor = Color.FromArgb(55, 5, 5)
                         lvi.Group = lvg
                         listbx_TASKLIST2.Items.Add(lvi)
                     Else
                         Dim lvi As New ListViewItem
-                        lvi.Text = Date.Parse(task(2)).ToString("MMMM dd, yyyy") + " - " + task(5) + " - " + task(0) + " - " + task(1)
+                        lvi.Text = Date.Parse(task(2)).ToString("MMMM dd, yyyy") + " - " + task(5) + " - " + task(0) + " - " + task(1) + " - " + task(4)
                         lvi.Group = lvg
                         listbx_TASKLIST2.Items.Add(lvi)
                     End If
                 Catch ex As Exception
                     Dim lvi As New ListViewItem
-                    lvi.Text = task(5) + " - " + task(0) + " - " + task(1)
+                    lvi.Text = task(5) + " - " + task(0) + " - " + task(1) + " - " + task(4)
                     lvi.Group = lvg
                     listbx_TASKLIST2.Items.Add(lvi)
                 End Try
@@ -210,11 +247,17 @@
             flwpanel_SUBJECTS_DRAWER.Controls.Add(pane)
         Next
 
+        Dim exc_panel As New Panel()
+        exc_panel.Height = 200
+        exc_panel.Width = 450
+        flwpanel_SUBJECTS_DRAWER.Controls.Add(exc_panel)
+
         lbl_NTASKS.Text = listbx_TASKLIST2.Items.Count.ToString + " tasks..."
 
     End Sub
 
 
+    'Reset SCHEDULE TABLE items
     Public Sub resetSCHEDULETABLE()
         Me.tblpanel_SCHED.AutoScroll = True
         Me.tblpanel_SCHED.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
@@ -243,6 +286,17 @@
         Me.tblpanel_SCHED.Size = New System.Drawing.Size(496, 380)
         Me.tblpanel_SCHED.TabIndex = 0
     End Sub
+
+
+    'init NOTES LIST
+    Public Sub initNOTELIST()
+
+        For Each ntitle In getNOTESLIST()
+            listbx_NOTES.Items.Add(ntitle)
+        Next
+
+    End Sub
+
 
 
     ''''CONTROL BAR''''
@@ -299,8 +353,11 @@
         openPanel(panel_MAIN_TASKS)
     End Sub
     Private Sub btn_SCHEDULES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_SCHEDULES.Click
+        lbl_LOADING.Visible = True
+        Application.DoEvents()
         selButton(btn_SCHEDULES)
         openPanel(panel_MAIN_SCHEDS)
+        lbl_LOADING.Visible = False
     End Sub
     Private Sub btn_NOTES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_NOTES.Click
         selButton(btn_NOTES)
@@ -338,7 +395,8 @@
         btn_OPENREMOVESUBJECT.Visible = False
         btn_ADDSUBJECTBACK.Visible = True
 
-
+        panel_REMOVESUBJECT.Visible = False
+        panel_flwpanelContainer.Visible = False
         panel_ADDSUBJECT.Visible = True
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects - Add"
     End Sub
@@ -347,7 +405,7 @@
         btn_ADDSUBJECTBACK.Visible = False
         btn_OPENREMOVESUBJECT.Visible = True
 
-
+        panel_flwpanelContainer.Visible = True
         panel_ADDSUBJECT.Visible = False
         panel_REMOVESUBJECT.Visible = False
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects"
@@ -360,6 +418,8 @@
         btn_OPENADDSUBJECT.Visible = False
         btn_ADDSUBJECTBACK.Visible = True
 
+        panel_ADDSUBJECT.Visible = False
+        panel_flwpanelContainer.Visible = False
         panel_REMOVESUBJECT.Visible = True
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects - Remove"
     End Sub
@@ -368,7 +428,6 @@
     Private Sub btn_ADDSUBJECT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ADDSUBJECT.Click
         lbl_LOADING.Visible = True
         Application.DoEvents()
-
         If String.IsNullOrWhiteSpace(txt_SUBJECTID.Text) Then
             MessageBox.Show("Empty Field", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf txt_SUBJECTID.Text.Contains(" ") Then
@@ -381,14 +440,28 @@
             MessageBox.Show("Invalid Time PeriodB", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             Dim o_str As String = addSUBJECT(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text)
-            addSubjSched(txt_SUBJECTID.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
-            init_SUBJECTLIST(False)
-            MessageBox.Show(o_str, "Invalid Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            txt_SUBJECTID.Clear()
-            txt_SUBJECTNAME.Clear()
 
+            If o_str.Equals("Subject Code already Exist") Then
+
+                If MessageBox.Show("Subject Code already Exist, Add the new schedule to the existing subject instead?", "Subject Exist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    addSubjSched(txt_SUBJECTID.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
+                    init_SUBJECTLIST(False)
+                    txt_SUBJECTID.Clear()
+                    txt_SUBJECTNAME.Clear()
+                    MessageBox.Show("Schedule Added", "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+
+            Else
+                addSubjSched(txt_SUBJECTID.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
+                init_SUBJECTLIST(False)
+                txt_SUBJECTID.Clear()
+                txt_SUBJECTNAME.Clear()
+                MessageBox.Show(o_str, "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            End If
+
+            
         End If
-
         lbl_LOADING.Visible = False
     End Sub
 
@@ -530,10 +603,99 @@
     End Sub
 
     ''''TASK PANEL''''
-    
 
 
-    
+    ''''NOTES PANEL''''
+    Private Sub btn_OPENADDNOTE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_OPENADDNOTE.Click
+        btn_OPENADDNOTE.Visible = False
+        btn_NOTESBACK.Visible = True
 
-    
+        If String.IsNullOrWhiteSpace(txt_NOTETITLE.Text) Then
+            txt_NOTETITLE.Text = "<Note Title>"
+        End If
+
+        panel_NOTESLIST.Visible = False
+        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Notes - Add"
+    End Sub
+
+    Private Sub btn_NOTESBACK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_NOTESBACK.Click
+        btn_OPENADDNOTE.Visible = True
+        btn_NOTESBACK.Visible = False
+
+        panel_NOTESLIST.Visible = True
+        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Notes"
+
+        txt_NOTETITLE.Clear()
+        rtxt_NOTECONTENT.Clear()
+
+
+        listbx_NOTES.Items.Clear()
+        initNOTELIST()
+
+    End Sub
+
+    'Open Note
+    Private Sub listbx_NOTES_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listbx_NOTES.SelectedIndexChanged
+
+        If Not listbx_NOTES.SelectedItem = Nothing Then
+            txt_NOTETITLE.Text = listbx_NOTES.SelectedItem.ToString
+            rtxt_NOTECONTENT.Text = getNoteContent(listbx_NOTES.SelectedItem.ToString)
+
+            btn_OPENADDNOTE.PerformClick()
+        End If
+
+    End Sub
+
+    'Save Note
+    Private Sub btn_SAVENOTE_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_SAVENOTE.Click
+        lbl_LOADING.Visible = True
+        Application.DoEvents()
+
+        If String.IsNullOrWhiteSpace(txt_NOTETITLE.Text) Or txt_NOTETITLE.Text = "<Note Title>" Then
+            MessageBox.Show("Add a Title", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            If noteExist(txt_NOTETITLE.Text) Then
+                If MessageBox.Show("Overwrite " + txt_NOTETITLE.Text + "?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    updateNote(txt_NOTETITLE.Text, rtxt_NOTECONTENT.Text)
+                    initNOTELIST()
+                    MessageBox.Show("Note updated", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Else
+                addNote(txt_NOTETITLE.Text, rtxt_NOTECONTENT.Text)
+                initNOTELIST()
+                MessageBox.Show("Note Added", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
+        End If
+
+        lbl_LOADING.Visible = False
+    End Sub
+
+    'Delete Note
+    Private Sub btn_DELETENOTE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_DELETENOTE.Click
+        lbl_LOADING.Visible = True
+        Application.DoEvents()
+
+        If noteExist(txt_NOTETITLE.Text) Then
+            If MessageBox.Show("Delete " + txt_NOTETITLE.Text + "?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                removeNote(txt_NOTETITLE.Text)
+                txt_NOTETITLE.Clear()
+                rtxt_NOTECONTENT.Clear()
+                initNOTELIST()
+                MessageBox.Show("Note deleted", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Else
+            txt_NOTETITLE.Clear()
+            rtxt_NOTECONTENT.Clear()
+
+        End If
+
+        lbl_LOADING.Visible = False
+    End Sub
+
+    ''''NOTES PANEL''''
+
+
+
+
 End Class

@@ -28,3 +28,12 @@ Written in vb.NET Framework 4.0
 				: DATABASE is ported to MySQL .NET Connector rather than ODBC since it was faster
 				: Replaced listbox by listview for task list in task panel
 				: Added the option to Archive or Delete the task instead of just deleting it
+04-16-21		: Added the UI for Schedule Table
+				: Fixed several issues for the schedule table:
+						- fixed issue of clearing the schedule table with every initializtion
+						- fixed the sizing of the cells in response to the table size
+				: Added the database for notes
+				: Currently there are 15 methods for communicating with the database
+				: NOTE tool added
+				: added an initdb method that has server,uid,pwd,db parameter
+				: Tested the system for online database

@@ -1,41 +1,19 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Data.Odbc
+Imports MySql.Data.MySqlClient
 
 
-Module mod_MYSQLDBCONTROLLER
+Module mod_DBCONTROLLER
 
-    Dim str_CON As String = "server=localhost; user id = root; password = hanz; database = s_organizer"
-    Dim con As MySqlConnection = Nothing
-    Dim reader As MySqlDataReader
-    Dim str_version As String = ""
+    Public con As New OdbcConnection
+    Public constring As String
+    Public reader As OdbcDataReader
 
     Public Sub init_DBCONNECTION()
-        Try
-            con = New MySqlConnection(str_CON)
-            con.Open()
-            str_version = con.ServerVersion
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-        Finally
-            con.Close()
-        End Try
+        If con.State = System.Data.ConnectionState.Open Then con.Close()
+        constring = "driver=MySQL ODBC 5.1 Driver;localhost;port=3306;uid='root';pwd=hanz;database=s_organizer"
+        con.ConnectionString = constring
 
-        'CREATE REQUIRED TABLES IF DOESNT EXIST
-        create_DBTABLES()
-    End Sub
-
-    Public Sub init_DBCONNECTION(ByVal server As String, ByVal userid As String, ByVal password As String, ByVal database As String)
-        Dim cust_con_string As String = "server=" + server + "; user id = " + userid + "; password = " + password + "; database = " + database + ""
-        Try
-            con = New MySqlConnection(cust_con_string)
-            con.Open()
-            str_version = con.ServerVersion
-        Catch ex As Exception
-            MessageBox.Show("Check Internet Connection", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Console.WriteLine(ex.Message)
-        Finally
-            con.Close()
-        End Try
-        'CREATE REQUIRED TABLES IF DOESNT EXIST
+        'this creates the required tables in the database if it doesn't exist
         create_DBTABLES()
     End Sub
 
@@ -43,10 +21,9 @@ Module mod_MYSQLDBCONTROLLER
     Public Sub create_DBTABLES()
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
-            Dim cmd2 As New MySqlCommand()
-            Dim cmd3 As New MySqlCommand()
-            Dim cmd4 As New MySqlCommand()
+            Dim cmd As New OdbcCommand()
+            Dim cmd2 As New OdbcCommand()
+            Dim cmd3 As New OdbcCommand()
 
             With cmd
                 .Connection = con
@@ -69,12 +46,7 @@ Module mod_MYSQLDBCONTROLLER
                 .ExecuteNonQuery()
             End With
 
-            With cmd4
-                .Connection = con
-                .CommandText = "CREATE TABLE IF NOT EXISTS subject_notes (`NOTE_ID` INT NOT NULL AUTO_INCREMENT ,`NOTE_TITLE` VARCHAR(300) NOT NULL DEFAULT 'Untitled Document' ,`NOTE_CONTENT` LONGTEXT NOT NULL ,PRIMARY KEY (`NOTE_ID`) );"
-                .Prepare()
-                .ExecuteNonQuery()
-            End With
+
 
             con.Close()
         Catch ex As Exception
@@ -91,7 +63,7 @@ Module mod_MYSQLDBCONTROLLER
 
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand()
             With cmd
                 .Connection = con
                 .CommandText = "SELECT * FROM subjects"
@@ -120,7 +92,7 @@ Module mod_MYSQLDBCONTROLLER
         Dim output As New List(Of List(Of String))
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand()
 
             With cmd
                 .Connection = con
@@ -157,7 +129,7 @@ Module mod_MYSQLDBCONTROLLER
 
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand
 
             With cmd
                 .Connection = con
@@ -187,7 +159,7 @@ Module mod_MYSQLDBCONTROLLER
 
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand
 
             With cmd
                 .Connection = con
@@ -214,124 +186,12 @@ Module mod_MYSQLDBCONTROLLER
         Return output
     End Function
 
-    Public Function getSUBJECTTASKSARCHIVE(ByVal SUBJECT_ID As String) As List(Of List(Of String))
-        Dim output As New List(Of List(Of String))
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-
-            With cmd
-                .Connection = con
-                .CommandText = "SELECT TASK_NAME,TASK_DESCRIPTION,TASK_DEADLINE_DATE,TASK_DEADLINE_TICKS,TASK_TERM,SUBJECT_ID,TASK_ID FROM subject_tasks WHERE SUBJECT_ID = '" + SUBJECT_ID + "' AND STATUS = 1;"
-                .Prepare()
-                reader = .ExecuteReader
-            End With
-
-            While reader.Read
-                Dim temp As New List(Of String)
-                temp.Add(reader(0).ToString) 'NAME
-                temp.Add(reader(1).ToString) 'DESC
-                temp.Add(reader(2).ToString) 'DEADLINE DATE
-                temp.Add(reader(3).ToString) 'DEADLINE TICKS
-                temp.Add(reader(4).ToString) 'TERM
-                temp.Add(reader(5).ToString) 'SUBJECT
-                temp.Add(reader(6).ToString) 'ID
-                output.Add(temp)
-            End While
-
-            reader.Close()
-            con.Close()
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-            con.Close()
-        End Try
-        Return output
-
-    End Function
-
-    Public Function getNOTESLIST() As List(Of String)
-        Dim output As New List(Of String)
-
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-            With cmd
-                .Connection = con
-                .CommandText = "SELECT NOTE_TITLE FROM subject_notes"
-                .Prepare()
-                reader = .ExecuteReader
-            End With
-
-            While reader.Read
-                output.Add(reader(0).ToString)
-            End While
-
-            reader.Close()
-            con.Close()
-        Catch ex As Exception
-            reader.Close()
-            con.Close()
-            Console.WriteLine(ex.Message)
-        End Try
-
-        Return output
-    End Function
-
-    Public Function getNoteContent(ByVal NOTE_TITLE As String) As String
-        Dim output As String = ""
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-            With cmd
-                .Connection = con
-                .CommandText = "SELECT NOTE_CONTENT FROM subject_notes WHERE NOTE_TITLE='" + NOTE_TITLE + "';"
-                .Prepare()
-                reader = .ExecuteReader
-            End With
-            While reader.Read
-                output = reader(0).ToString
-            End While
-            reader.Close()
-            con.Close()
-        Catch ex As Exception
-            reader.Close()
-            con.Close()
-            Console.WriteLine(ex.Message)
-        End Try
-        Return output
-    End Function
-
-    Public Function noteExist(ByVal NOTE_TITLE As String) As Boolean
-        Dim output As Boolean = False
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-            With cmd
-                .Connection = con
-                .CommandText = "SELECT * FROM subject_notes WHERE NOTE_TITLE='" + NOTE_TITLE + "';"
-                .Prepare()
-                reader = .ExecuteReader
-            End With
-            While reader.Read
-                output = True
-            End While
-            reader.Close()
-            con.Close()
-        Catch ex As Exception
-            reader.Close()
-            con.Close()
-            Console.WriteLine(ex.Message)
-        End Try
-        Return output
-    End Function
-
-
     'DB INSERT
 
     Public Function addSUBJECT(ByVal SUBJECT_ID As String, ByVal SUBJECT_NAME As String) As String
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand()
             With cmd
                 .Connection = con
                 .CommandText = "INSERT INTO subjects (`SUBJECT_ID`, `SUBJECT_NAME`) VALUES ('" + SUBJECT_ID + "', '" + SUBJECT_NAME + "');"
@@ -359,7 +219,7 @@ Module mod_MYSQLDBCONTROLLER
 
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand()
             With cmd
                 .Connection = con
                 .CommandText = cmdtxt
@@ -376,7 +236,7 @@ Module mod_MYSQLDBCONTROLLER
     Public Sub addSubjSched(ByVal SUBJECT_ID As String, ByVal DAY As String, ByVal TFROM As Double, ByVal TTO As Double)
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand()
             With cmd
                 .Connection = con
                 .CommandText = "INSERT INTO subject_schedules (SUBJECT_ID,DAY,TFROM,TTO) VALUES('" + SUBJECT_ID + "', '" + DAY + "', '" + TFROM.ToString + "', '" + TTO.ToString + "')"
@@ -390,42 +250,6 @@ Module mod_MYSQLDBCONTROLLER
         End Try
     End Sub
 
-    Public Sub addNote(ByVal NOTE_TITLE As String, ByVal NOTE_CONTENT As String)
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-
-            With cmd
-                .Connection = con
-                .CommandText = "INSERT INTO subject_notes (NOTE_TITLE, NOTE_CONTENT) VALUES('" + NOTE_TITLE + "', '" + NOTE_CONTENT + "')"
-                .Prepare()
-                .ExecuteNonQuery()
-            End With
-
-            con.Close()
-        Catch ex As Exception
-            con.Close()
-            Console.WriteLine(ex.Message)
-        End Try
-    End Sub
-
-    Public Sub updateNote(ByVal NOTE_TITLE As String, ByVal NOTE_CONTENT As String)
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-
-            With cmd
-                .Connection = con
-                .CommandText = "UPDATE subject_notes SET NOTE_CONTENT='" + NOTE_CONTENT + "' WHERE NOTE_TITLE='" + NOTE_TITLE + "';"
-                .Prepare()
-                .ExecuteNonQuery()
-            End With
-            con.Close()
-        Catch ex As Exception
-            con.Close()
-            Console.WriteLine(ex.Message)
-        End Try
-    End Sub
 
     'DB DELETE
 
@@ -434,9 +258,9 @@ Module mod_MYSQLDBCONTROLLER
         Try
             con.Open()
 
-            Dim cmd As New MySqlCommand()
-            Dim cmd2 As New MySqlCommand()
-            Dim cmd3 As New MySqlCommand()
+            Dim cmd As New OdbcCommand
+            Dim cmd2 As New OdbcCommand
+            Dim cmd3 As New OdbcCommand
 
             With cmd
                 .Connection = con
@@ -470,28 +294,11 @@ Module mod_MYSQLDBCONTROLLER
     Public Sub removeTASK(ByVal TASK_ID As Integer)
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand
 
             With cmd
                 .Connection = con
                 .CommandText = "DELETE FROM subject_tasks WHERE TASK_ID = '" + TASK_ID.ToString + "';"
-                .Prepare()
-                .ExecuteNonQuery()
-            End With
-            con.Close()
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-            con.Close()
-        End Try
-    End Sub
-
-    Public Sub removeNote(ByVal NOTE_TITLE As String)
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-            With cmd
-                .Connection = con
-                .CommandText = "DELETE FROM subject_notes WHERE NOTE_TITLE = '" + NOTE_TITLE + "';"
                 .Prepare()
                 .ExecuteNonQuery()
             End With
@@ -510,7 +317,7 @@ Module mod_MYSQLDBCONTROLLER
 
         Try
             con.Open()
-            Dim cmd As New MySqlCommand()
+            Dim cmd As New OdbcCommand
             With cmd
                 .Connection = con
                 .CommandText = "SELECT * FROM subjects WHERE SUBJECT_NAME = '" + SUBJECT_NAME + "';"
@@ -532,27 +339,6 @@ Module mod_MYSQLDBCONTROLLER
         Return output
     End Function
 
-
-    'DB UPDATE
-
-    Public Sub archiveTASK(ByVal TASK_ID As Integer)
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-
-            With cmd
-                .Connection = con
-                .CommandText = "UPDATE subject_tasks SET STATUS=1 WHERE TASK_ID=" + TASK_ID.ToString + ";"
-                ' STATUS 1 IS ARCHIVED
-                .Prepare()
-                .ExecuteNonQuery()
-            End With
-            con.Close()
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-            con.Close()
-        End Try
-    End Sub
 
 
     'CONVERTIONS
@@ -583,10 +369,4 @@ Module mod_MYSQLDBCONTROLLER
     End Function
 
 
-
-
-
-
-
 End Module
-

@@ -34,6 +34,19 @@ Partial Class frm_MAIN
         Me.btn_SCHEDULES = New System.Windows.Forms.Button()
         Me.btn_TASK = New System.Windows.Forms.Button()
         Me.btn_SUBJECTS = New System.Windows.Forms.Button()
+        Me.panel_MAIN_NOTES = New System.Windows.Forms.Panel()
+        Me.btn_OPENADDNOTE = New System.Windows.Forms.Button()
+        Me.btn_NOTESBACK = New System.Windows.Forms.Button()
+        Me.panel_NOTESLIST = New System.Windows.Forms.Panel()
+        Me.listbx_NOTES = New System.Windows.Forms.ListBox()
+        Me.panel_NOTEEDITOR = New System.Windows.Forms.Panel()
+        Me.panel_NOTECONTENT = New System.Windows.Forms.Panel()
+        Me.rtxt_NOTECONTENT = New System.Windows.Forms.RichTextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.txt_NOTETITLE = New System.Windows.Forms.TextBox()
+        Me.btn_SAVENOTE = New System.Windows.Forms.Button()
+        Me.btn_DELETENOTE = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.panel_MAIN_SCHEDS = New System.Windows.Forms.Panel()
         Me.panel_SCHEDULEPANE = New System.Windows.Forms.Panel()
         Me.tblpanel_SCHED = New System.Windows.Forms.TableLayoutPanel()
@@ -45,9 +58,30 @@ Partial Class frm_MAIN
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.panel_MAIN_NOTES = New System.Windows.Forms.Panel()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.panel_MAIN_SUBJECTS = New System.Windows.Forms.Panel()
+        Me.lbl_MAIN_SUBJECTS = New System.Windows.Forms.Label()
+        Me.btn_ADDSUBJECTBACK = New System.Windows.Forms.Button()
+        Me.btn_OPENREMOVESUBJECT = New System.Windows.Forms.Button()
+        Me.btn_OPENADDSUBJECT = New System.Windows.Forms.Button()
+        Me.panel_flwpanelContainer = New System.Windows.Forms.Panel()
+        Me.flwpanel_SUBJECTS_DRAWER = New System.Windows.Forms.FlowLayoutPanel()
+        Me.panel_ADDSUBJECT = New System.Windows.Forms.Panel()
+        Me.btn_ADDSUBJECT = New System.Windows.Forms.Button()
+        Me.time_SCHEDTO = New System.Windows.Forms.DateTimePicker()
+        Me.time_SCHEDFROM = New System.Windows.Forms.DateTimePicker()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cmbx_DAY = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txt_SUBJECTNAME = New System.Windows.Forms.TextBox()
+        Me.txt_SUBJECTID = New System.Windows.Forms.TextBox()
+        Me.panel_REMOVESUBJECT = New System.Windows.Forms.Panel()
+        Me.btn_REMOVESUBJECTS = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.listbx_REMOVESUBJECTS = New System.Windows.Forms.ListBox()
         Me.panel_MAIN_TASKS = New System.Windows.Forms.Panel()
         Me.btn_OPENADDTASK = New System.Windows.Forms.Button()
         Me.btn_BACKTASK = New System.Windows.Forms.Button()
@@ -73,30 +107,6 @@ Partial Class frm_MAIN
         Me.Label17 = New System.Windows.Forms.Label()
         Me.listbx_TASKLIST2 = New System.Windows.Forms.ListView()
         Me.btn_ARCHIVETASK = New System.Windows.Forms.Button()
-        Me.panel_MAIN_SUBJECTS = New System.Windows.Forms.Panel()
-        Me.lbl_MAIN_SUBJECTS = New System.Windows.Forms.Label()
-        Me.btn_ADDSUBJECTBACK = New System.Windows.Forms.Button()
-        Me.btn_OPENREMOVESUBJECT = New System.Windows.Forms.Button()
-        Me.btn_OPENADDSUBJECT = New System.Windows.Forms.Button()
-        Me.panel_ADDSUBJECT = New System.Windows.Forms.Panel()
-        Me.btn_ADDSUBJECT = New System.Windows.Forms.Button()
-        Me.time_SCHEDTO = New System.Windows.Forms.DateTimePicker()
-        Me.time_SCHEDFROM = New System.Windows.Forms.DateTimePicker()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.cmbx_DAY = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txt_SUBJECTNAME = New System.Windows.Forms.TextBox()
-        Me.txt_SUBJECTID = New System.Windows.Forms.TextBox()
-        Me.panel_REMOVESUBJECT = New System.Windows.Forms.Panel()
-        Me.btn_REMOVESUBJECTS = New System.Windows.Forms.Button()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.listbx_REMOVESUBJECTS = New System.Windows.Forms.ListBox()
-        Me.panel_flwpanelContainer = New System.Windows.Forms.Panel()
-        Me.flwpanel_SUBJECTS_DRAWER = New System.Windows.Forms.FlowLayoutPanel()
         Me.panel_CONTROLBAR = New System.Windows.Forms.Panel()
         Me.btn_MAXMIN = New System.Windows.Forms.Button()
         Me.btn_MINIMIZE = New System.Windows.Forms.Button()
@@ -109,18 +119,21 @@ Partial Class frm_MAIN
         Me.splitCon_MAIN.SuspendLayout()
         Me.panel_MENU.SuspendLayout()
         Me.panel_ACCOUNTINFO.SuspendLayout()
+        Me.panel_MAIN_NOTES.SuspendLayout()
+        Me.panel_NOTESLIST.SuspendLayout()
+        Me.panel_NOTEEDITOR.SuspendLayout()
+        Me.panel_NOTECONTENT.SuspendLayout()
         Me.panel_MAIN_SCHEDS.SuspendLayout()
         Me.panel_SCHEDULEPANE.SuspendLayout()
         Me.tblpanel_SCHED.SuspendLayout()
-        Me.panel_MAIN_NOTES.SuspendLayout()
+        Me.panel_MAIN_SUBJECTS.SuspendLayout()
+        Me.panel_flwpanelContainer.SuspendLayout()
+        Me.panel_ADDSUBJECT.SuspendLayout()
+        Me.panel_REMOVESUBJECT.SuspendLayout()
         Me.panel_MAIN_TASKS.SuspendLayout()
         Me.panel_ADDTASK.SuspendLayout()
         Me.panel_TASKLISTPANEL.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.panel_MAIN_SUBJECTS.SuspendLayout()
-        Me.panel_ADDSUBJECT.SuspendLayout()
-        Me.panel_REMOVESUBJECT.SuspendLayout()
-        Me.panel_flwpanelContainer.SuspendLayout()
         Me.panel_CONTROLBAR.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -139,10 +152,10 @@ Partial Class frm_MAIN
         '
         'splitCon_MAIN.Panel2
         '
-        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SCHEDS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_NOTES)
-        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_TASKS)
+        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SCHEDS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SUBJECTS)
+        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_TASKS)
         Me.splitCon_MAIN.Size = New System.Drawing.Size(700, 530)
         Me.splitCon_MAIN.SplitterDistance = 200
         Me.splitCon_MAIN.TabIndex = 0
@@ -293,6 +306,201 @@ Partial Class frm_MAIN
         Me.btn_SUBJECTS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_SUBJECTS.UseVisualStyleBackColor = True
         '
+        'panel_MAIN_NOTES
+        '
+        Me.panel_MAIN_NOTES.BackColor = System.Drawing.Color.LightBlue
+        Me.panel_MAIN_NOTES.Controls.Add(Me.btn_OPENADDNOTE)
+        Me.panel_MAIN_NOTES.Controls.Add(Me.btn_NOTESBACK)
+        Me.panel_MAIN_NOTES.Controls.Add(Me.panel_NOTESLIST)
+        Me.panel_MAIN_NOTES.Controls.Add(Me.panel_NOTEEDITOR)
+        Me.panel_MAIN_NOTES.Controls.Add(Me.btn_SAVENOTE)
+        Me.panel_MAIN_NOTES.Controls.Add(Me.btn_DELETENOTE)
+        Me.panel_MAIN_NOTES.Controls.Add(Me.Label5)
+        Me.panel_MAIN_NOTES.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panel_MAIN_NOTES.Location = New System.Drawing.Point(0, 0)
+        Me.panel_MAIN_NOTES.Name = "panel_MAIN_NOTES"
+        Me.panel_MAIN_NOTES.Size = New System.Drawing.Size(496, 530)
+        Me.panel_MAIN_NOTES.TabIndex = 102
+        Me.panel_MAIN_NOTES.Visible = False
+        '
+        'btn_OPENADDNOTE
+        '
+        Me.btn_OPENADDNOTE.BackColor = System.Drawing.Color.Transparent
+        Me.btn_OPENADDNOTE.BackgroundImage = CType(resources.GetObject("btn_OPENADDNOTE.BackgroundImage"), System.Drawing.Image)
+        Me.btn_OPENADDNOTE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_OPENADDNOTE.FlatAppearance.BorderSize = 0
+        Me.btn_OPENADDNOTE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
+        Me.btn_OPENADDNOTE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.btn_OPENADDNOTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_OPENADDNOTE.Location = New System.Drawing.Point(15, 50)
+        Me.btn_OPENADDNOTE.Name = "btn_OPENADDNOTE"
+        Me.btn_OPENADDNOTE.Padding = New System.Windows.Forms.Padding(10)
+        Me.btn_OPENADDNOTE.Size = New System.Drawing.Size(30, 30)
+        Me.btn_OPENADDNOTE.TabIndex = 107
+        Me.btn_OPENADDNOTE.TabStop = False
+        Me.btn_OPENADDNOTE.UseVisualStyleBackColor = False
+        '
+        'btn_NOTESBACK
+        '
+        Me.btn_NOTESBACK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_NOTESBACK.FlatAppearance.BorderSize = 0
+        Me.btn_NOTESBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
+        Me.btn_NOTESBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.btn_NOTESBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_NOTESBACK.Font = New System.Drawing.Font("Century Gothic", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_NOTESBACK.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btn_NOTESBACK.Image = CType(resources.GetObject("btn_NOTESBACK.Image"), System.Drawing.Image)
+        Me.btn_NOTESBACK.Location = New System.Drawing.Point(15, 50)
+        Me.btn_NOTESBACK.Name = "btn_NOTESBACK"
+        Me.btn_NOTESBACK.Size = New System.Drawing.Size(30, 30)
+        Me.btn_NOTESBACK.TabIndex = 106
+        Me.btn_NOTESBACK.TabStop = False
+        Me.btn_NOTESBACK.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btn_NOTESBACK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_NOTESBACK.UseVisualStyleBackColor = True
+        Me.btn_NOTESBACK.Visible = False
+        '
+        'panel_NOTESLIST
+        '
+        Me.panel_NOTESLIST.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_NOTESLIST.Controls.Add(Me.listbx_NOTES)
+        Me.panel_NOTESLIST.Location = New System.Drawing.Point(0, 100)
+        Me.panel_NOTESLIST.Name = "panel_NOTESLIST"
+        Me.panel_NOTESLIST.Size = New System.Drawing.Size(496, 430)
+        Me.panel_NOTESLIST.TabIndex = 105
+        '
+        'listbx_NOTES
+        '
+        Me.listbx_NOTES.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.listbx_NOTES.BackColor = System.Drawing.Color.Azure
+        Me.listbx_NOTES.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.listbx_NOTES.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.listbx_NOTES.FormattingEnabled = True
+        Me.listbx_NOTES.ItemHeight = 24
+        Me.listbx_NOTES.Location = New System.Drawing.Point(20, 20)
+        Me.listbx_NOTES.Name = "listbx_NOTES"
+        Me.listbx_NOTES.Size = New System.Drawing.Size(450, 360)
+        Me.listbx_NOTES.TabIndex = 0
+        '
+        'panel_NOTEEDITOR
+        '
+        Me.panel_NOTEEDITOR.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_NOTEEDITOR.BackColor = System.Drawing.Color.Transparent
+        Me.panel_NOTEEDITOR.Controls.Add(Me.panel_NOTECONTENT)
+        Me.panel_NOTEEDITOR.Controls.Add(Me.Label25)
+        Me.panel_NOTEEDITOR.Controls.Add(Me.txt_NOTETITLE)
+        Me.panel_NOTEEDITOR.Location = New System.Drawing.Point(0, 100)
+        Me.panel_NOTEEDITOR.Name = "panel_NOTEEDITOR"
+        Me.panel_NOTEEDITOR.Size = New System.Drawing.Size(496, 370)
+        Me.panel_NOTEEDITOR.TabIndex = 104
+        '
+        'panel_NOTECONTENT
+        '
+        Me.panel_NOTECONTENT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_NOTECONTENT.BackColor = System.Drawing.Color.White
+        Me.panel_NOTECONTENT.Controls.Add(Me.rtxt_NOTECONTENT)
+        Me.panel_NOTECONTENT.Location = New System.Drawing.Point(0, 50)
+        Me.panel_NOTECONTENT.Name = "panel_NOTECONTENT"
+        Me.panel_NOTECONTENT.Size = New System.Drawing.Size(492, 312)
+        Me.panel_NOTECONTENT.TabIndex = 104
+        '
+        'rtxt_NOTECONTENT
+        '
+        Me.rtxt_NOTECONTENT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.rtxt_NOTECONTENT.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtxt_NOTECONTENT.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtxt_NOTECONTENT.Location = New System.Drawing.Point(20, 10)
+        Me.rtxt_NOTECONTENT.Margin = New System.Windows.Forms.Padding(10)
+        Me.rtxt_NOTECONTENT.Name = "rtxt_NOTECONTENT"
+        Me.rtxt_NOTECONTENT.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtxt_NOTECONTENT.Size = New System.Drawing.Size(466, 300)
+        Me.rtxt_NOTECONTENT.TabIndex = 100
+        Me.rtxt_NOTECONTENT.Text = ""
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label25.Location = New System.Drawing.Point(3, 16)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(64, 26)
+        Me.Label25.TabIndex = 103
+        Me.Label25.Text = "Title:"
+        '
+        'txt_NOTETITLE
+        '
+        Me.txt_NOTETITLE.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_NOTETITLE.BackColor = System.Drawing.Color.LightBlue
+        Me.txt_NOTETITLE.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_NOTETITLE.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_NOTETITLE.Location = New System.Drawing.Point(73, 17)
+        Me.txt_NOTETITLE.Name = "txt_NOTETITLE"
+        Me.txt_NOTETITLE.Size = New System.Drawing.Size(413, 25)
+        Me.txt_NOTETITLE.TabIndex = 102
+        Me.txt_NOTETITLE.Text = "<Note Title>"
+        '
+        'btn_SAVENOTE
+        '
+        Me.btn_SAVENOTE.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_SAVENOTE.BackColor = System.Drawing.Color.LimeGreen
+        Me.btn_SAVENOTE.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.btn_SAVENOTE.FlatAppearance.BorderSize = 0
+        Me.btn_SAVENOTE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_SAVENOTE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
+        Me.btn_SAVENOTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_SAVENOTE.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_SAVENOTE.ForeColor = System.Drawing.Color.Azure
+        Me.btn_SAVENOTE.Location = New System.Drawing.Point(370, 480)
+        Me.btn_SAVENOTE.Name = "btn_SAVENOTE"
+        Me.btn_SAVENOTE.Size = New System.Drawing.Size(110, 30)
+        Me.btn_SAVENOTE.TabIndex = 101
+        Me.btn_SAVENOTE.Text = "Save"
+        Me.btn_SAVENOTE.UseVisualStyleBackColor = False
+        '
+        'btn_DELETENOTE
+        '
+        Me.btn_DELETENOTE.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_DELETENOTE.BackColor = System.Drawing.Color.LightCoral
+        Me.btn_DELETENOTE.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.btn_DELETENOTE.FlatAppearance.BorderSize = 0
+        Me.btn_DELETENOTE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_DELETENOTE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.btn_DELETENOTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_DELETENOTE.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_DELETENOTE.ForeColor = System.Drawing.Color.Azure
+        Me.btn_DELETENOTE.Location = New System.Drawing.Point(240, 480)
+        Me.btn_DELETENOTE.Name = "btn_DELETENOTE"
+        Me.btn_DELETENOTE.Size = New System.Drawing.Size(110, 30)
+        Me.btn_DELETENOTE.TabIndex = 108
+        Me.btn_DELETENOTE.Text = "Delete"
+        Me.btn_DELETENOTE.UseVisualStyleBackColor = False
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label5.Location = New System.Drawing.Point(371, 45)
+        Me.Label5.Name = "Label5"
+        Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label5.Size = New System.Drawing.Size(113, 39)
+        Me.Label5.TabIndex = 99
+        Me.Label5.Text = "Notes"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'panel_MAIN_SCHEDS
         '
         Me.panel_MAIN_SCHEDS.BackColor = System.Drawing.Color.LightBlue
@@ -314,7 +522,7 @@ Partial Class frm_MAIN
         Me.panel_SCHEDULEPANE.Controls.Add(Me.tblpanel_SCHED)
         Me.panel_SCHEDULEPANE.Location = New System.Drawing.Point(0, 100)
         Me.panel_SCHEDULEPANE.Name = "panel_SCHEDULEPANE"
-        Me.panel_SCHEDULEPANE.Size = New System.Drawing.Size(496, 380)
+        Me.panel_SCHEDULEPANE.Size = New System.Drawing.Size(492, 380)
         Me.panel_SCHEDULEPANE.TabIndex = 100
         '
         'tblpanel_SCHED
@@ -343,7 +551,7 @@ Partial Class frm_MAIN
         Me.tblpanel_SCHED.RowCount = 2
         Me.tblpanel_SCHED.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
         Me.tblpanel_SCHED.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tblpanel_SCHED.Size = New System.Drawing.Size(496, 380)
+        Me.tblpanel_SCHED.Size = New System.Drawing.Size(492, 380)
         Me.tblpanel_SCHED.TabIndex = 0
         '
         'Label18
@@ -352,7 +560,7 @@ Partial Class frm_MAIN
         Me.Label18.BackColor = System.Drawing.Color.LightCyan
         Me.Label18.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(95, 1)
+        Me.Label18.Location = New System.Drawing.Point(94, 1)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(50, 25)
         Me.Label18.TabIndex = 0
@@ -364,7 +572,7 @@ Partial Class frm_MAIN
         Me.Label19.AutoSize = True
         Me.Label19.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(152, 1)
+        Me.Label19.Location = New System.Drawing.Point(151, 1)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(50, 25)
         Me.Label19.TabIndex = 1
@@ -376,7 +584,7 @@ Partial Class frm_MAIN
         Me.Label20.AutoSize = True
         Me.Label20.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(209, 1)
+        Me.Label20.Location = New System.Drawing.Point(208, 1)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(50, 25)
         Me.Label20.TabIndex = 2
@@ -388,7 +596,7 @@ Partial Class frm_MAIN
         Me.Label21.AutoSize = True
         Me.Label21.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(266, 1)
+        Me.Label21.Location = New System.Drawing.Point(265, 1)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(50, 25)
         Me.Label21.TabIndex = 3
@@ -400,7 +608,7 @@ Partial Class frm_MAIN
         Me.Label22.AutoSize = True
         Me.Label22.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(323, 1)
+        Me.Label22.Location = New System.Drawing.Point(322, 1)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(50, 25)
         Me.Label22.TabIndex = 4
@@ -412,7 +620,7 @@ Partial Class frm_MAIN
         Me.Label23.AutoSize = True
         Me.Label23.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.Location = New System.Drawing.Point(380, 1)
+        Me.Label23.Location = New System.Drawing.Point(379, 1)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(50, 25)
         Me.Label23.TabIndex = 5
@@ -424,9 +632,9 @@ Partial Class frm_MAIN
         Me.Label24.AutoSize = True
         Me.Label24.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(437, 1)
+        Me.Label24.Location = New System.Drawing.Point(436, 1)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(55, 25)
+        Me.Label24.Size = New System.Drawing.Size(52, 25)
         Me.Label24.TabIndex = 6
         Me.Label24.Text = "SUN"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -445,46 +653,340 @@ Partial Class frm_MAIN
         Me.Label4.Text = "Schedules"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'panel_MAIN_NOTES
+        'panel_MAIN_SUBJECTS
         '
-        Me.panel_MAIN_NOTES.BackColor = System.Drawing.Color.LightBlue
-        Me.panel_MAIN_NOTES.Controls.Add(Me.RichTextBox1)
-        Me.panel_MAIN_NOTES.Controls.Add(Me.Label5)
-        Me.panel_MAIN_NOTES.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panel_MAIN_NOTES.Location = New System.Drawing.Point(0, 0)
-        Me.panel_MAIN_NOTES.Name = "panel_MAIN_NOTES"
-        Me.panel_MAIN_NOTES.Size = New System.Drawing.Size(496, 530)
-        Me.panel_MAIN_NOTES.TabIndex = 102
-        Me.panel_MAIN_NOTES.Visible = False
+        Me.panel_MAIN_SUBJECTS.BackColor = System.Drawing.Color.LightBlue
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.lbl_MAIN_SUBJECTS)
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.btn_ADDSUBJECTBACK)
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.btn_OPENREMOVESUBJECT)
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.btn_OPENADDSUBJECT)
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.panel_flwpanelContainer)
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.panel_ADDSUBJECT)
+        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.panel_REMOVESUBJECT)
+        Me.panel_MAIN_SUBJECTS.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panel_MAIN_SUBJECTS.Location = New System.Drawing.Point(0, 0)
+        Me.panel_MAIN_SUBJECTS.Name = "panel_MAIN_SUBJECTS"
+        Me.panel_MAIN_SUBJECTS.Size = New System.Drawing.Size(496, 530)
+        Me.panel_MAIN_SUBJECTS.TabIndex = 99
+        Me.panel_MAIN_SUBJECTS.Visible = False
         '
-        'RichTextBox1
+        'lbl_MAIN_SUBJECTS
         '
-        Me.RichTextBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.lbl_MAIN_SUBJECTS.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_MAIN_SUBJECTS.AutoSize = True
+        Me.lbl_MAIN_SUBJECTS.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_MAIN_SUBJECTS.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.lbl_MAIN_SUBJECTS.Location = New System.Drawing.Point(325, 45)
+        Me.lbl_MAIN_SUBJECTS.Name = "lbl_MAIN_SUBJECTS"
+        Me.lbl_MAIN_SUBJECTS.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lbl_MAIN_SUBJECTS.Size = New System.Drawing.Size(159, 39)
+        Me.lbl_MAIN_SUBJECTS.TabIndex = 99
+        Me.lbl_MAIN_SUBJECTS.Text = "Subjects"
+        Me.lbl_MAIN_SUBJECTS.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'btn_ADDSUBJECTBACK
+        '
+        Me.btn_ADDSUBJECTBACK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_ADDSUBJECTBACK.FlatAppearance.BorderSize = 0
+        Me.btn_ADDSUBJECTBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
+        Me.btn_ADDSUBJECTBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.btn_ADDSUBJECTBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_ADDSUBJECTBACK.Font = New System.Drawing.Font("Century Gothic", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ADDSUBJECTBACK.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btn_ADDSUBJECTBACK.Image = CType(resources.GetObject("btn_ADDSUBJECTBACK.Image"), System.Drawing.Image)
+        Me.btn_ADDSUBJECTBACK.Location = New System.Drawing.Point(15, 50)
+        Me.btn_ADDSUBJECTBACK.Name = "btn_ADDSUBJECTBACK"
+        Me.btn_ADDSUBJECTBACK.Size = New System.Drawing.Size(30, 30)
+        Me.btn_ADDSUBJECTBACK.TabIndex = 102
+        Me.btn_ADDSUBJECTBACK.TabStop = False
+        Me.btn_ADDSUBJECTBACK.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btn_ADDSUBJECTBACK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_ADDSUBJECTBACK.UseVisualStyleBackColor = True
+        Me.btn_ADDSUBJECTBACK.Visible = False
+        '
+        'btn_OPENREMOVESUBJECT
+        '
+        Me.btn_OPENREMOVESUBJECT.BackgroundImage = CType(resources.GetObject("btn_OPENREMOVESUBJECT.BackgroundImage"), System.Drawing.Image)
+        Me.btn_OPENREMOVESUBJECT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_OPENREMOVESUBJECT.FlatAppearance.BorderSize = 0
+        Me.btn_OPENREMOVESUBJECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
+        Me.btn_OPENREMOVESUBJECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.btn_OPENREMOVESUBJECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_OPENREMOVESUBJECT.Font = New System.Drawing.Font("Lucida Sans Typewriter", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_OPENREMOVESUBJECT.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btn_OPENREMOVESUBJECT.Location = New System.Drawing.Point(55, 50)
+        Me.btn_OPENREMOVESUBJECT.Name = "btn_OPENREMOVESUBJECT"
+        Me.btn_OPENREMOVESUBJECT.Size = New System.Drawing.Size(30, 30)
+        Me.btn_OPENREMOVESUBJECT.TabIndex = 105
+        Me.btn_OPENREMOVESUBJECT.TabStop = False
+        Me.btn_OPENREMOVESUBJECT.UseVisualStyleBackColor = True
+        '
+        'btn_OPENADDSUBJECT
+        '
+        Me.btn_OPENADDSUBJECT.BackColor = System.Drawing.Color.Transparent
+        Me.btn_OPENADDSUBJECT.BackgroundImage = CType(resources.GetObject("btn_OPENADDSUBJECT.BackgroundImage"), System.Drawing.Image)
+        Me.btn_OPENADDSUBJECT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_OPENADDSUBJECT.FlatAppearance.BorderSize = 0
+        Me.btn_OPENADDSUBJECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
+        Me.btn_OPENADDSUBJECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
+        Me.btn_OPENADDSUBJECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_OPENADDSUBJECT.Location = New System.Drawing.Point(15, 50)
+        Me.btn_OPENADDSUBJECT.Name = "btn_OPENADDSUBJECT"
+        Me.btn_OPENADDSUBJECT.Padding = New System.Windows.Forms.Padding(10)
+        Me.btn_OPENADDSUBJECT.Size = New System.Drawing.Size(30, 30)
+        Me.btn_OPENADDSUBJECT.TabIndex = 100
+        Me.btn_OPENADDSUBJECT.TabStop = False
+        Me.btn_OPENADDSUBJECT.UseVisualStyleBackColor = False
+        '
+        'panel_flwpanelContainer
+        '
+        Me.panel_flwpanelContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(6, 110)
-        Me.RichTextBox1.Margin = New System.Windows.Forms.Padding(10)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.RichTextBox1.Size = New System.Drawing.Size(480, 360)
-        Me.RichTextBox1.TabIndex = 100
-        Me.RichTextBox1.Text = ""
+        Me.panel_flwpanelContainer.Controls.Add(Me.flwpanel_SUBJECTS_DRAWER)
+        Me.panel_flwpanelContainer.Location = New System.Drawing.Point(0, 100)
+        Me.panel_flwpanelContainer.Name = "panel_flwpanelContainer"
+        Me.panel_flwpanelContainer.Size = New System.Drawing.Size(496, 430)
+        Me.panel_flwpanelContainer.TabIndex = 1
         '
-        'Label5
+        'flwpanel_SUBJECTS_DRAWER
         '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label5.Location = New System.Drawing.Point(371, 45)
-        Me.Label5.Name = "Label5"
-        Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label5.Size = New System.Drawing.Size(113, 39)
-        Me.Label5.TabIndex = 99
-        Me.Label5.Text = "Notes"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.flwpanel_SUBJECTS_DRAWER.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.flwpanel_SUBJECTS_DRAWER.AutoScroll = True
+        Me.flwpanel_SUBJECTS_DRAWER.AutoScrollMinSize = New System.Drawing.Size(0, 390)
+        Me.flwpanel_SUBJECTS_DRAWER.BackColor = System.Drawing.Color.LightBlue
+        Me.flwpanel_SUBJECTS_DRAWER.Location = New System.Drawing.Point(0, 0)
+        Me.flwpanel_SUBJECTS_DRAWER.Margin = New System.Windows.Forms.Padding(10)
+        Me.flwpanel_SUBJECTS_DRAWER.Name = "flwpanel_SUBJECTS_DRAWER"
+        Me.flwpanel_SUBJECTS_DRAWER.Padding = New System.Windows.Forms.Padding(10, 10, 10, 100)
+        Me.flwpanel_SUBJECTS_DRAWER.Size = New System.Drawing.Size(496, 420)
+        Me.flwpanel_SUBJECTS_DRAWER.TabIndex = 0
+        '
+        'panel_ADDSUBJECT
+        '
+        Me.panel_ADDSUBJECT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.btn_ADDSUBJECT)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.time_SCHEDTO)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.time_SCHEDFROM)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.Label10)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.Label9)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.Label8)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.cmbx_DAY)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.Label7)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.Label6)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.Label1)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.txt_SUBJECTNAME)
+        Me.panel_ADDSUBJECT.Controls.Add(Me.txt_SUBJECTID)
+        Me.panel_ADDSUBJECT.Location = New System.Drawing.Point(0, 100)
+        Me.panel_ADDSUBJECT.Name = "panel_ADDSUBJECT"
+        Me.panel_ADDSUBJECT.Size = New System.Drawing.Size(496, 430)
+        Me.panel_ADDSUBJECT.TabIndex = 101
+        Me.panel_ADDSUBJECT.Visible = False
+        '
+        'btn_ADDSUBJECT
+        '
+        Me.btn_ADDSUBJECT.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_ADDSUBJECT.BackColor = System.Drawing.Color.LimeGreen
+        Me.btn_ADDSUBJECT.FlatAppearance.BorderSize = 0
+        Me.btn_ADDSUBJECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_ADDSUBJECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
+        Me.btn_ADDSUBJECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_ADDSUBJECT.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ADDSUBJECT.ForeColor = System.Drawing.Color.AliceBlue
+        Me.btn_ADDSUBJECT.Location = New System.Drawing.Point(370, 375)
+        Me.btn_ADDSUBJECT.Name = "btn_ADDSUBJECT"
+        Me.btn_ADDSUBJECT.Size = New System.Drawing.Size(110, 30)
+        Me.btn_ADDSUBJECT.TabIndex = 105
+        Me.btn_ADDSUBJECT.Text = "Add"
+        Me.btn_ADDSUBJECT.UseVisualStyleBackColor = False
+        '
+        'time_SCHEDTO
+        '
+        Me.time_SCHEDTO.CustomFormat = "hh:mm tt"
+        Me.time_SCHEDTO.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.time_SCHEDTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.time_SCHEDTO.Location = New System.Drawing.Point(310, 295)
+        Me.time_SCHEDTO.Name = "time_SCHEDTO"
+        Me.time_SCHEDTO.ShowUpDown = True
+        Me.time_SCHEDTO.Size = New System.Drawing.Size(170, 29)
+        Me.time_SCHEDTO.TabIndex = 104
+        Me.time_SCHEDTO.Value = New Date(2021, 4, 11, 12, 0, 0, 0)
+        '
+        'time_SCHEDFROM
+        '
+        Me.time_SCHEDFROM.CustomFormat = "hh:mm tt"
+        Me.time_SCHEDFROM.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.time_SCHEDFROM.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.time_SCHEDFROM.Location = New System.Drawing.Point(80, 295)
+        Me.time_SCHEDFROM.Name = "time_SCHEDFROM"
+        Me.time_SCHEDFROM.ShowUpDown = True
+        Me.time_SCHEDFROM.Size = New System.Drawing.Size(170, 29)
+        Me.time_SCHEDFROM.TabIndex = 103
+        Me.time_SCHEDFROM.Value = New Date(2021, 4, 11, 7, 0, 0, 0)
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label10.Location = New System.Drawing.Point(265, 295)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(32, 26)
+        Me.Label10.TabIndex = 102
+        Me.Label10.Text = "to"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label9.Location = New System.Drawing.Point(5, 295)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(71, 26)
+        Me.Label9.TabIndex = 101
+        Me.Label9.Text = "Time:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label8.Location = New System.Drawing.Point(15, 240)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(61, 26)
+        Me.Label8.TabIndex = 100
+        Me.Label8.Text = "Day:"
+        '
+        'cmbx_DAY
+        '
+        Me.cmbx_DAY.BackColor = System.Drawing.Color.White
+        Me.cmbx_DAY.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.cmbx_DAY.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbx_DAY.FormattingEnabled = True
+        Me.cmbx_DAY.ItemHeight = 24
+        Me.cmbx_DAY.Items.AddRange(New Object() {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"})
+        Me.cmbx_DAY.Location = New System.Drawing.Point(80, 240)
+        Me.cmbx_DAY.Name = "cmbx_DAY"
+        Me.cmbx_DAY.Size = New System.Drawing.Size(170, 32)
+        Me.cmbx_DAY.TabIndex = 2
+        Me.cmbx_DAY.Text = "MONDAY"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label7.Location = New System.Drawing.Point(12, 195)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(118, 26)
+        Me.Label7.TabIndex = 99
+        Me.Label7.Text = "Schedule:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label6.Location = New System.Drawing.Point(12, 100)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(169, 26)
+        Me.Label6.TabIndex = 99
+        Me.Label6.Text = "Subject Name:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label1.Location = New System.Drawing.Point(12, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(162, 26)
+        Me.Label1.TabIndex = 99
+        Me.Label1.Text = "Subject Code:"
+        '
+        'txt_SUBJECTNAME
+        '
+        Me.txt_SUBJECTNAME.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_SUBJECTNAME.BackColor = System.Drawing.Color.White
+        Me.txt_SUBJECTNAME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_SUBJECTNAME.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_SUBJECTNAME.Location = New System.Drawing.Point(20, 140)
+        Me.txt_SUBJECTNAME.Name = "txt_SUBJECTNAME"
+        Me.txt_SUBJECTNAME.Size = New System.Drawing.Size(360, 32)
+        Me.txt_SUBJECTNAME.TabIndex = 1
+        '
+        'txt_SUBJECTID
+        '
+        Me.txt_SUBJECTID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_SUBJECTID.BackColor = System.Drawing.Color.White
+        Me.txt_SUBJECTID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_SUBJECTID.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_SUBJECTID.Location = New System.Drawing.Point(20, 60)
+        Me.txt_SUBJECTID.Name = "txt_SUBJECTID"
+        Me.txt_SUBJECTID.Size = New System.Drawing.Size(230, 32)
+        Me.txt_SUBJECTID.TabIndex = 0
+        '
+        'panel_REMOVESUBJECT
+        '
+        Me.panel_REMOVESUBJECT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_REMOVESUBJECT.Controls.Add(Me.btn_REMOVESUBJECTS)
+        Me.panel_REMOVESUBJECT.Controls.Add(Me.Label11)
+        Me.panel_REMOVESUBJECT.Controls.Add(Me.listbx_REMOVESUBJECTS)
+        Me.panel_REMOVESUBJECT.Location = New System.Drawing.Point(0, 100)
+        Me.panel_REMOVESUBJECT.Name = "panel_REMOVESUBJECT"
+        Me.panel_REMOVESUBJECT.Size = New System.Drawing.Size(496, 430)
+        Me.panel_REMOVESUBJECT.TabIndex = 103
+        Me.panel_REMOVESUBJECT.Visible = False
+        '
+        'btn_REMOVESUBJECTS
+        '
+        Me.btn_REMOVESUBJECTS.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_REMOVESUBJECTS.BackColor = System.Drawing.Color.Firebrick
+        Me.btn_REMOVESUBJECTS.FlatAppearance.BorderSize = 0
+        Me.btn_REMOVESUBJECTS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_REMOVESUBJECTS.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_REMOVESUBJECTS.ForeColor = System.Drawing.Color.AliceBlue
+        Me.btn_REMOVESUBJECTS.Location = New System.Drawing.Point(370, 375)
+        Me.btn_REMOVESUBJECTS.Name = "btn_REMOVESUBJECTS"
+        Me.btn_REMOVESUBJECTS.Size = New System.Drawing.Size(110, 30)
+        Me.btn_REMOVESUBJECTS.TabIndex = 2
+        Me.btn_REMOVESUBJECTS.Text = "Remove"
+        Me.btn_REMOVESUBJECTS.UseVisualStyleBackColor = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label11.Location = New System.Drawing.Point(10, 20)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(199, 26)
+        Me.Label11.TabIndex = 1
+        Me.Label11.Text = "Remove Subjects"
+        '
+        'listbx_REMOVESUBJECTS
+        '
+        Me.listbx_REMOVESUBJECTS.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.listbx_REMOVESUBJECTS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.listbx_REMOVESUBJECTS.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.listbx_REMOVESUBJECTS.FormattingEnabled = True
+        Me.listbx_REMOVESUBJECTS.ItemHeight = 20
+        Me.listbx_REMOVESUBJECTS.Location = New System.Drawing.Point(15, 70)
+        Me.listbx_REMOVESUBJECTS.Name = "listbx_REMOVESUBJECTS"
+        Me.listbx_REMOVESUBJECTS.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+        Me.listbx_REMOVESUBJECTS.Size = New System.Drawing.Size(465, 282)
+        Me.listbx_REMOVESUBJECTS.TabIndex = 0
         '
         'panel_MAIN_TASKS
         '
@@ -832,341 +1334,6 @@ Partial Class frm_MAIN
         Me.btn_ARCHIVETASK.Text = "Archive"
         Me.btn_ARCHIVETASK.UseVisualStyleBackColor = False
         '
-        'panel_MAIN_SUBJECTS
-        '
-        Me.panel_MAIN_SUBJECTS.BackColor = System.Drawing.Color.LightBlue
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.lbl_MAIN_SUBJECTS)
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.btn_ADDSUBJECTBACK)
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.btn_OPENREMOVESUBJECT)
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.btn_OPENADDSUBJECT)
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.panel_ADDSUBJECT)
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.panel_REMOVESUBJECT)
-        Me.panel_MAIN_SUBJECTS.Controls.Add(Me.panel_flwpanelContainer)
-        Me.panel_MAIN_SUBJECTS.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panel_MAIN_SUBJECTS.Location = New System.Drawing.Point(0, 0)
-        Me.panel_MAIN_SUBJECTS.Name = "panel_MAIN_SUBJECTS"
-        Me.panel_MAIN_SUBJECTS.Size = New System.Drawing.Size(496, 530)
-        Me.panel_MAIN_SUBJECTS.TabIndex = 99
-        Me.panel_MAIN_SUBJECTS.Visible = False
-        '
-        'lbl_MAIN_SUBJECTS
-        '
-        Me.lbl_MAIN_SUBJECTS.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_MAIN_SUBJECTS.AutoSize = True
-        Me.lbl_MAIN_SUBJECTS.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_MAIN_SUBJECTS.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.lbl_MAIN_SUBJECTS.Location = New System.Drawing.Point(325, 45)
-        Me.lbl_MAIN_SUBJECTS.Name = "lbl_MAIN_SUBJECTS"
-        Me.lbl_MAIN_SUBJECTS.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lbl_MAIN_SUBJECTS.Size = New System.Drawing.Size(159, 39)
-        Me.lbl_MAIN_SUBJECTS.TabIndex = 99
-        Me.lbl_MAIN_SUBJECTS.Text = "Subjects"
-        Me.lbl_MAIN_SUBJECTS.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'btn_ADDSUBJECTBACK
-        '
-        Me.btn_ADDSUBJECTBACK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_ADDSUBJECTBACK.FlatAppearance.BorderSize = 0
-        Me.btn_ADDSUBJECTBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
-        Me.btn_ADDSUBJECTBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
-        Me.btn_ADDSUBJECTBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_ADDSUBJECTBACK.Font = New System.Drawing.Font("Century Gothic", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ADDSUBJECTBACK.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.btn_ADDSUBJECTBACK.Image = CType(resources.GetObject("btn_ADDSUBJECTBACK.Image"), System.Drawing.Image)
-        Me.btn_ADDSUBJECTBACK.Location = New System.Drawing.Point(15, 50)
-        Me.btn_ADDSUBJECTBACK.Name = "btn_ADDSUBJECTBACK"
-        Me.btn_ADDSUBJECTBACK.Size = New System.Drawing.Size(30, 30)
-        Me.btn_ADDSUBJECTBACK.TabIndex = 102
-        Me.btn_ADDSUBJECTBACK.TabStop = False
-        Me.btn_ADDSUBJECTBACK.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btn_ADDSUBJECTBACK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_ADDSUBJECTBACK.UseVisualStyleBackColor = True
-        Me.btn_ADDSUBJECTBACK.Visible = False
-        '
-        'btn_OPENREMOVESUBJECT
-        '
-        Me.btn_OPENREMOVESUBJECT.BackgroundImage = CType(resources.GetObject("btn_OPENREMOVESUBJECT.BackgroundImage"), System.Drawing.Image)
-        Me.btn_OPENREMOVESUBJECT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_OPENREMOVESUBJECT.FlatAppearance.BorderSize = 0
-        Me.btn_OPENREMOVESUBJECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
-        Me.btn_OPENREMOVESUBJECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
-        Me.btn_OPENREMOVESUBJECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_OPENREMOVESUBJECT.Font = New System.Drawing.Font("Lucida Sans Typewriter", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_OPENREMOVESUBJECT.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.btn_OPENREMOVESUBJECT.Location = New System.Drawing.Point(55, 50)
-        Me.btn_OPENREMOVESUBJECT.Name = "btn_OPENREMOVESUBJECT"
-        Me.btn_OPENREMOVESUBJECT.Size = New System.Drawing.Size(30, 30)
-        Me.btn_OPENREMOVESUBJECT.TabIndex = 105
-        Me.btn_OPENREMOVESUBJECT.TabStop = False
-        Me.btn_OPENREMOVESUBJECT.UseVisualStyleBackColor = True
-        '
-        'btn_OPENADDSUBJECT
-        '
-        Me.btn_OPENADDSUBJECT.BackColor = System.Drawing.Color.Transparent
-        Me.btn_OPENADDSUBJECT.BackgroundImage = CType(resources.GetObject("btn_OPENADDSUBJECT.BackgroundImage"), System.Drawing.Image)
-        Me.btn_OPENADDSUBJECT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_OPENADDSUBJECT.FlatAppearance.BorderSize = 0
-        Me.btn_OPENADDSUBJECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue
-        Me.btn_OPENADDSUBJECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue
-        Me.btn_OPENADDSUBJECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_OPENADDSUBJECT.Location = New System.Drawing.Point(15, 50)
-        Me.btn_OPENADDSUBJECT.Name = "btn_OPENADDSUBJECT"
-        Me.btn_OPENADDSUBJECT.Padding = New System.Windows.Forms.Padding(10)
-        Me.btn_OPENADDSUBJECT.Size = New System.Drawing.Size(30, 30)
-        Me.btn_OPENADDSUBJECT.TabIndex = 100
-        Me.btn_OPENADDSUBJECT.TabStop = False
-        Me.btn_OPENADDSUBJECT.UseVisualStyleBackColor = False
-        '
-        'panel_ADDSUBJECT
-        '
-        Me.panel_ADDSUBJECT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.btn_ADDSUBJECT)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.time_SCHEDTO)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.time_SCHEDFROM)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.Label10)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.Label9)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.Label8)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.cmbx_DAY)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.Label7)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.Label6)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.Label1)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.txt_SUBJECTNAME)
-        Me.panel_ADDSUBJECT.Controls.Add(Me.txt_SUBJECTID)
-        Me.panel_ADDSUBJECT.Location = New System.Drawing.Point(0, 100)
-        Me.panel_ADDSUBJECT.Name = "panel_ADDSUBJECT"
-        Me.panel_ADDSUBJECT.Size = New System.Drawing.Size(496, 430)
-        Me.panel_ADDSUBJECT.TabIndex = 101
-        Me.panel_ADDSUBJECT.Visible = False
-        '
-        'btn_ADDSUBJECT
-        '
-        Me.btn_ADDSUBJECT.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_ADDSUBJECT.BackColor = System.Drawing.Color.LimeGreen
-        Me.btn_ADDSUBJECT.FlatAppearance.BorderSize = 0
-        Me.btn_ADDSUBJECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btn_ADDSUBJECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
-        Me.btn_ADDSUBJECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_ADDSUBJECT.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ADDSUBJECT.ForeColor = System.Drawing.Color.AliceBlue
-        Me.btn_ADDSUBJECT.Location = New System.Drawing.Point(370, 375)
-        Me.btn_ADDSUBJECT.Name = "btn_ADDSUBJECT"
-        Me.btn_ADDSUBJECT.Size = New System.Drawing.Size(110, 30)
-        Me.btn_ADDSUBJECT.TabIndex = 105
-        Me.btn_ADDSUBJECT.Text = "Add"
-        Me.btn_ADDSUBJECT.UseVisualStyleBackColor = False
-        '
-        'time_SCHEDTO
-        '
-        Me.time_SCHEDTO.CustomFormat = "hh:mm tt"
-        Me.time_SCHEDTO.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.time_SCHEDTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.time_SCHEDTO.Location = New System.Drawing.Point(310, 295)
-        Me.time_SCHEDTO.Name = "time_SCHEDTO"
-        Me.time_SCHEDTO.ShowUpDown = True
-        Me.time_SCHEDTO.Size = New System.Drawing.Size(170, 29)
-        Me.time_SCHEDTO.TabIndex = 104
-        Me.time_SCHEDTO.Value = New Date(2021, 4, 11, 12, 0, 0, 0)
-        '
-        'time_SCHEDFROM
-        '
-        Me.time_SCHEDFROM.CustomFormat = "hh:mm tt"
-        Me.time_SCHEDFROM.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.time_SCHEDFROM.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.time_SCHEDFROM.Location = New System.Drawing.Point(80, 295)
-        Me.time_SCHEDFROM.Name = "time_SCHEDFROM"
-        Me.time_SCHEDFROM.ShowUpDown = True
-        Me.time_SCHEDFROM.Size = New System.Drawing.Size(170, 29)
-        Me.time_SCHEDFROM.TabIndex = 103
-        Me.time_SCHEDFROM.Value = New Date(2021, 4, 11, 7, 0, 0, 0)
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label10.Location = New System.Drawing.Point(265, 295)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(32, 26)
-        Me.Label10.TabIndex = 102
-        Me.Label10.Text = "to"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label9.Location = New System.Drawing.Point(5, 295)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(71, 26)
-        Me.Label9.TabIndex = 101
-        Me.Label9.Text = "Time:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label8.Location = New System.Drawing.Point(15, 240)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(61, 26)
-        Me.Label8.TabIndex = 100
-        Me.Label8.Text = "Day:"
-        '
-        'cmbx_DAY
-        '
-        Me.cmbx_DAY.BackColor = System.Drawing.Color.White
-        Me.cmbx_DAY.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmbx_DAY.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbx_DAY.FormattingEnabled = True
-        Me.cmbx_DAY.ItemHeight = 24
-        Me.cmbx_DAY.Items.AddRange(New Object() {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"})
-        Me.cmbx_DAY.Location = New System.Drawing.Point(80, 240)
-        Me.cmbx_DAY.Name = "cmbx_DAY"
-        Me.cmbx_DAY.Size = New System.Drawing.Size(170, 32)
-        Me.cmbx_DAY.TabIndex = 2
-        Me.cmbx_DAY.Text = "MONDAY"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label7.Location = New System.Drawing.Point(12, 195)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(118, 26)
-        Me.Label7.TabIndex = 99
-        Me.Label7.Text = "Schedule:"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label6.Location = New System.Drawing.Point(12, 100)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(169, 26)
-        Me.Label6.TabIndex = 99
-        Me.Label6.Text = "Subject Name:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label1.Location = New System.Drawing.Point(12, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(162, 26)
-        Me.Label1.TabIndex = 99
-        Me.Label1.Text = "Subject Code:"
-        '
-        'txt_SUBJECTNAME
-        '
-        Me.txt_SUBJECTNAME.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_SUBJECTNAME.BackColor = System.Drawing.Color.White
-        Me.txt_SUBJECTNAME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_SUBJECTNAME.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_SUBJECTNAME.Location = New System.Drawing.Point(20, 140)
-        Me.txt_SUBJECTNAME.Name = "txt_SUBJECTNAME"
-        Me.txt_SUBJECTNAME.Size = New System.Drawing.Size(360, 32)
-        Me.txt_SUBJECTNAME.TabIndex = 1
-        '
-        'txt_SUBJECTID
-        '
-        Me.txt_SUBJECTID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_SUBJECTID.BackColor = System.Drawing.Color.White
-        Me.txt_SUBJECTID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_SUBJECTID.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_SUBJECTID.Location = New System.Drawing.Point(20, 60)
-        Me.txt_SUBJECTID.Name = "txt_SUBJECTID"
-        Me.txt_SUBJECTID.Size = New System.Drawing.Size(230, 32)
-        Me.txt_SUBJECTID.TabIndex = 0
-        '
-        'panel_REMOVESUBJECT
-        '
-        Me.panel_REMOVESUBJECT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panel_REMOVESUBJECT.Controls.Add(Me.btn_REMOVESUBJECTS)
-        Me.panel_REMOVESUBJECT.Controls.Add(Me.Label11)
-        Me.panel_REMOVESUBJECT.Controls.Add(Me.listbx_REMOVESUBJECTS)
-        Me.panel_REMOVESUBJECT.Location = New System.Drawing.Point(0, 100)
-        Me.panel_REMOVESUBJECT.Name = "panel_REMOVESUBJECT"
-        Me.panel_REMOVESUBJECT.Size = New System.Drawing.Size(496, 430)
-        Me.panel_REMOVESUBJECT.TabIndex = 103
-        Me.panel_REMOVESUBJECT.Visible = False
-        '
-        'btn_REMOVESUBJECTS
-        '
-        Me.btn_REMOVESUBJECTS.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_REMOVESUBJECTS.BackColor = System.Drawing.Color.Firebrick
-        Me.btn_REMOVESUBJECTS.FlatAppearance.BorderSize = 0
-        Me.btn_REMOVESUBJECTS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_REMOVESUBJECTS.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_REMOVESUBJECTS.ForeColor = System.Drawing.Color.AliceBlue
-        Me.btn_REMOVESUBJECTS.Location = New System.Drawing.Point(370, 375)
-        Me.btn_REMOVESUBJECTS.Name = "btn_REMOVESUBJECTS"
-        Me.btn_REMOVESUBJECTS.Size = New System.Drawing.Size(110, 30)
-        Me.btn_REMOVESUBJECTS.TabIndex = 2
-        Me.btn_REMOVESUBJECTS.Text = "Remove"
-        Me.btn_REMOVESUBJECTS.UseVisualStyleBackColor = False
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label11.Location = New System.Drawing.Point(10, 20)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(199, 26)
-        Me.Label11.TabIndex = 1
-        Me.Label11.Text = "Remove Subjects"
-        '
-        'listbx_REMOVESUBJECTS
-        '
-        Me.listbx_REMOVESUBJECTS.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.listbx_REMOVESUBJECTS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.listbx_REMOVESUBJECTS.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.listbx_REMOVESUBJECTS.FormattingEnabled = True
-        Me.listbx_REMOVESUBJECTS.ItemHeight = 20
-        Me.listbx_REMOVESUBJECTS.Location = New System.Drawing.Point(15, 70)
-        Me.listbx_REMOVESUBJECTS.Name = "listbx_REMOVESUBJECTS"
-        Me.listbx_REMOVESUBJECTS.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.listbx_REMOVESUBJECTS.Size = New System.Drawing.Size(465, 282)
-        Me.listbx_REMOVESUBJECTS.TabIndex = 0
-        '
-        'panel_flwpanelContainer
-        '
-        Me.panel_flwpanelContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panel_flwpanelContainer.Controls.Add(Me.flwpanel_SUBJECTS_DRAWER)
-        Me.panel_flwpanelContainer.Location = New System.Drawing.Point(0, 100)
-        Me.panel_flwpanelContainer.Name = "panel_flwpanelContainer"
-        Me.panel_flwpanelContainer.Size = New System.Drawing.Size(496, 430)
-        Me.panel_flwpanelContainer.TabIndex = 1
-        '
-        'flwpanel_SUBJECTS_DRAWER
-        '
-        Me.flwpanel_SUBJECTS_DRAWER.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.flwpanel_SUBJECTS_DRAWER.AutoScroll = True
-        Me.flwpanel_SUBJECTS_DRAWER.AutoScrollMinSize = New System.Drawing.Size(0, 390)
-        Me.flwpanel_SUBJECTS_DRAWER.BackColor = System.Drawing.Color.LightBlue
-        Me.flwpanel_SUBJECTS_DRAWER.Location = New System.Drawing.Point(0, 0)
-        Me.flwpanel_SUBJECTS_DRAWER.Margin = New System.Windows.Forms.Padding(10)
-        Me.flwpanel_SUBJECTS_DRAWER.Name = "flwpanel_SUBJECTS_DRAWER"
-        Me.flwpanel_SUBJECTS_DRAWER.Padding = New System.Windows.Forms.Padding(10)
-        Me.flwpanel_SUBJECTS_DRAWER.Size = New System.Drawing.Size(496, 420)
-        Me.flwpanel_SUBJECTS_DRAWER.TabIndex = 0
-        '
         'panel_CONTROLBAR
         '
         Me.panel_CONTROLBAR.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -1288,13 +1455,24 @@ Partial Class frm_MAIN
         Me.panel_MENU.PerformLayout()
         Me.panel_ACCOUNTINFO.ResumeLayout(False)
         Me.panel_ACCOUNTINFO.PerformLayout()
+        Me.panel_MAIN_NOTES.ResumeLayout(False)
+        Me.panel_MAIN_NOTES.PerformLayout()
+        Me.panel_NOTESLIST.ResumeLayout(False)
+        Me.panel_NOTEEDITOR.ResumeLayout(False)
+        Me.panel_NOTEEDITOR.PerformLayout()
+        Me.panel_NOTECONTENT.ResumeLayout(False)
         Me.panel_MAIN_SCHEDS.ResumeLayout(False)
         Me.panel_MAIN_SCHEDS.PerformLayout()
         Me.panel_SCHEDULEPANE.ResumeLayout(False)
         Me.tblpanel_SCHED.ResumeLayout(False)
         Me.tblpanel_SCHED.PerformLayout()
-        Me.panel_MAIN_NOTES.ResumeLayout(False)
-        Me.panel_MAIN_NOTES.PerformLayout()
+        Me.panel_MAIN_SUBJECTS.ResumeLayout(False)
+        Me.panel_MAIN_SUBJECTS.PerformLayout()
+        Me.panel_flwpanelContainer.ResumeLayout(False)
+        Me.panel_ADDSUBJECT.ResumeLayout(False)
+        Me.panel_ADDSUBJECT.PerformLayout()
+        Me.panel_REMOVESUBJECT.ResumeLayout(False)
+        Me.panel_REMOVESUBJECT.PerformLayout()
         Me.panel_MAIN_TASKS.ResumeLayout(False)
         Me.panel_MAIN_TASKS.PerformLayout()
         Me.panel_ADDTASK.ResumeLayout(False)
@@ -1303,13 +1481,6 @@ Partial Class frm_MAIN
         Me.panel_TASKLISTPANEL.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.panel_MAIN_SUBJECTS.ResumeLayout(False)
-        Me.panel_MAIN_SUBJECTS.PerformLayout()
-        Me.panel_ADDSUBJECT.ResumeLayout(False)
-        Me.panel_ADDSUBJECT.PerformLayout()
-        Me.panel_REMOVESUBJECT.ResumeLayout(False)
-        Me.panel_REMOVESUBJECT.PerformLayout()
-        Me.panel_flwpanelContainer.ResumeLayout(False)
         Me.panel_CONTROLBAR.ResumeLayout(False)
         Me.panel_CONTROLBAR.PerformLayout()
         Me.ResumeLayout(False)
@@ -1338,7 +1509,7 @@ Partial Class frm_MAIN
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents panel_MAIN_NOTES As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents rtxt_NOTECONTENT As System.Windows.Forms.RichTextBox
     Friend WithEvents panel_ACCOUNTINFO As System.Windows.Forms.Panel
     Friend WithEvents lbl_USER As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -1396,6 +1567,16 @@ Partial Class frm_MAIN
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents btn_SAVENOTE As System.Windows.Forms.Button
+    Friend WithEvents panel_NOTEEDITOR As System.Windows.Forms.Panel
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents txt_NOTETITLE As System.Windows.Forms.TextBox
+    Friend WithEvents panel_NOTECONTENT As System.Windows.Forms.Panel
+    Friend WithEvents panel_NOTESLIST As System.Windows.Forms.Panel
+    Friend WithEvents listbx_NOTES As System.Windows.Forms.ListBox
+    Friend WithEvents btn_OPENADDNOTE As System.Windows.Forms.Button
+    Friend WithEvents btn_NOTESBACK As System.Windows.Forms.Button
+    Friend WithEvents btn_DELETENOTE As System.Windows.Forms.Button
 
 
 
