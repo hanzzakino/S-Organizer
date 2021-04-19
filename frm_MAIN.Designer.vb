@@ -195,6 +195,7 @@ Partial Class frm_MAIN
         Me.btn_LOGOUT.TabStop = False
         Me.btn_LOGOUT.Text = "Log out"
         Me.btn_LOGOUT.UseVisualStyleBackColor = False
+        Me.btn_LOGOUT.Visible = False
         '
         'panel_ACCOUNTINFO
         '
@@ -208,6 +209,7 @@ Partial Class frm_MAIN
         Me.panel_ACCOUNTINFO.Name = "panel_ACCOUNTINFO"
         Me.panel_ACCOUNTINFO.Size = New System.Drawing.Size(200, 70)
         Me.panel_ACCOUNTINFO.TabIndex = 100
+        Me.panel_ACCOUNTINFO.Visible = False
         '
         'lbl_USER
         '
@@ -436,7 +438,7 @@ Partial Class frm_MAIN
         Me.rtxt_NOTECONTENT.Name = "rtxt_NOTECONTENT"
         Me.rtxt_NOTECONTENT.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
         Me.rtxt_NOTECONTENT.Size = New System.Drawing.Size(466, 300)
-        Me.rtxt_NOTECONTENT.TabIndex = 100
+        Me.rtxt_NOTECONTENT.TabIndex = 1
         Me.rtxt_NOTECONTENT.Text = ""
         '
         'Label25
@@ -460,7 +462,7 @@ Partial Class frm_MAIN
         Me.txt_NOTETITLE.Location = New System.Drawing.Point(73, 17)
         Me.txt_NOTETITLE.Name = "txt_NOTETITLE"
         Me.txt_NOTETITLE.Size = New System.Drawing.Size(413, 25)
-        Me.txt_NOTETITLE.TabIndex = 102
+        Me.txt_NOTETITLE.TabIndex = 0
         Me.txt_NOTETITLE.Text = "<Note Title>"
         '
         'btn_SAVENOTE
@@ -477,7 +479,7 @@ Partial Class frm_MAIN
         Me.btn_SAVENOTE.Location = New System.Drawing.Point(370, 480)
         Me.btn_SAVENOTE.Name = "btn_SAVENOTE"
         Me.btn_SAVENOTE.Size = New System.Drawing.Size(110, 30)
-        Me.btn_SAVENOTE.TabIndex = 101
+        Me.btn_SAVENOTE.TabIndex = 2
         Me.btn_SAVENOTE.Text = "Save"
         Me.btn_SAVENOTE.UseVisualStyleBackColor = False
         '
@@ -495,7 +497,7 @@ Partial Class frm_MAIN
         Me.btn_DELETENOTE.Location = New System.Drawing.Point(240, 480)
         Me.btn_DELETENOTE.Name = "btn_DELETENOTE"
         Me.btn_DELETENOTE.Size = New System.Drawing.Size(110, 30)
-        Me.btn_DELETENOTE.TabIndex = 108
+        Me.btn_DELETENOTE.TabIndex = 3
         Me.btn_DELETENOTE.Text = "Delete"
         Me.btn_DELETENOTE.UseVisualStyleBackColor = False
         '
@@ -1226,6 +1228,7 @@ Partial Class frm_MAIN
         Me.cmbx_SUBJECTNAME.Name = "cmbx_SUBJECTNAME"
         Me.cmbx_SUBJECTNAME.Size = New System.Drawing.Size(350, 33)
         Me.cmbx_SUBJECTNAME.TabIndex = 0
+        Me.cmbx_SUBJECTNAME.Text = "<Select Subject>"
         '
         'txt_TASKNAME
         '

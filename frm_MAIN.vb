@@ -347,6 +347,7 @@
     Private Sub btn_SUBJECTS_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_SUBJECTS.Click
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
+
     End Sub
     Private Sub btn_TASK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TASK.Click
         selButton(btn_TASK)
@@ -399,6 +400,8 @@
         panel_flwpanelContainer.Visible = False
         panel_ADDSUBJECT.Visible = True
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects - Add"
+
+        txt_SUBJECTID.Focus()
     End Sub
     Private Sub btn_ADDSUBJECTBACK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_ADDSUBJECTBACK.Click
         btn_OPENADDSUBJECT.Visible = True
@@ -497,6 +500,8 @@
         panel_ADDTASK.Visible = True
         panel_TASKLISTPANEL.Visible = False
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - Task - Add"
+
+        cmbx_SUBJECTNAME.Focus()
     End Sub
     Private Sub btn_BACKTASK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_BACKTASK.Click
         btn_OPENADDTASK.Visible = True
@@ -616,6 +621,8 @@
 
         panel_NOTESLIST.Visible = False
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - Notes - Add"
+
+        txt_NOTETITLE.Focus()
     End Sub
 
     Private Sub btn_NOTESBACK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_NOTESBACK.Click
@@ -695,6 +702,107 @@
 
     ''''NOTES PANEL''''
 
+
+    ''''Form Enter Key event''''
+    ''ADD SUBJECT
+    Private Sub txt_SUBJECTID_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_SUBJECTID.KeyDown
+        If e.KeyCode = 13 Then
+            If String.IsNullOrWhiteSpace(txt_SUBJECTID.Text) Then
+                MessageBox.Show("Empty Field", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf txt_SUBJECTID.Text.Contains(" ") Then
+                MessageBox.Show("Remove spaces in Subject Subject ID", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                txt_SUBJECTNAME.Focus()
+            End If
+        End If
+    End Sub
+    Private Sub txt_SUBJECTNAME_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_SUBJECTNAME.KeyDown
+        If e.KeyCode = 13 Then
+            If String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
+                MessageBox.Show("Empty Field", "Invalid Subject Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                cmbx_DAY.Focus()
+            End If
+        End If
+    End Sub
+    Private Sub cmbx_DAY_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbx_DAY.KeyDown
+        If e.KeyCode = 13 Then
+            time_SCHEDFROM.Focus()
+        End If
+    End Sub
+    Private Sub time_SCHEDFROM_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles time_SCHEDFROM.KeyDown
+        If e.KeyCode = 13 Then
+            time_SCHEDTO.Focus()
+        End If
+    End Sub
+    Private Sub time_SCHEDTO_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles time_SCHEDTO.KeyDown
+        If e.KeyCode = 13 Then
+            btn_ADDSUBJECT.PerformClick()
+        End If
+    End Sub
+    ''ADD TASK
+    Private Sub cmbx_SUBJECTNAME_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbx_SUBJECTNAME.KeyDown
+        If e.KeyCode = 13 Then
+            If cmbx_SUBJECTNAME.SelectedItem = Nothing Then
+                MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
+                MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf Not subjectExist(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
+                MessageBox.Show("Subject selected does not exist", "Invalid Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                txt_TASKNAME.Focus()
+            End If
+        End If
+    End Sub
+    Private Sub txt_TASKNAME_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_TASKNAME.KeyDown
+        If e.KeyCode = 13 Then
+            If String.IsNullOrWhiteSpace(txt_TASKNAME.Text) Then
+                MessageBox.Show("Please Enter a Task name", "Invalid Task Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                txt_TASKDESC.Focus()
+            End If
+        End If
+    End Sub
+    Private Sub txt_TASKDESC_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_TASKDESC.KeyDown
+        If e.KeyCode = 13 Then
+            cmbx_TASKTERM.Focus()
+        End If
+    End Sub
+    Private Sub cmbx_TASKTERM_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbx_TASKTERM.KeyDown
+        If e.KeyCode = 13 Then
+            date_DEADLINEDATE.Focus()
+        End If
+    End Sub
+    Private Sub date_DEADLINEDATE_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles date_DEADLINEDATE.KeyDown
+        If e.KeyCode = 13 Then
+            date_DEADLINETIME.Focus()
+        End If
+    End Sub
+    Private Sub date_DEADLINETIME_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles date_DEADLINETIME.KeyDown
+        If e.KeyCode = 13 Then
+            btn_ADDNEWTASK.PerformClick()
+        End If
+    End Sub
+    Private Sub cb_NODEADLINE_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cb_NODEADLINE.KeyDown
+        If e.KeyCode = 13 Then
+            btn_ADDNEWTASK.PerformClick()
+        End If
+    End Sub
+    ''ADD NOTE
+    Private Sub txt_NOTETITLE_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_NOTETITLE.KeyDown
+        If e.KeyCode = 13 Then
+            If String.IsNullOrWhiteSpace(txt_NOTETITLE.Text) Or txt_NOTETITLE.Text = "<Note Title>" Then
+                MessageBox.Show("Add a Title", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                rtxt_NOTECONTENT.Focus()
+            End If
+        End If
+    End Sub
+    Private Sub rtxt_NOTECONTENT_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles rtxt_NOTECONTENT.KeyDown
+        If e.KeyCode = 13 Then
+            btn_SAVENOTE.PerformClick()
+        End If
+    End Sub
 
 
 
