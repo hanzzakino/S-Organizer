@@ -1,0 +1,19 @@
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\bin\Debug\SOrganizer.exe
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\bin\Debug\SOrganizer.pdb
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\bin\Debug\SOrganizer.xml
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\obj\x86\Debug\SOrganizer.Resources.resources
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\obj\x86\Debug\SOrganizer.vbproj.GenerateResource.Cache
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\obj\x86\Debug\SOrganizer.exe
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\obj\x86\Debug\SOrganizer.xml
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\obj\x86\Debug\SOrganizer.pdb
+C:\Users\MFS\AppData\Local\Temporary Projects\SOrganizer\obj\x86\Debug\SOrganizer.frm_MAIN.resources
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\bin\Debug\SOrganizer.exe
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\bin\Debug\SOrganizer.pdb
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\bin\Debug\SOrganizer.xml
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.frm_LoadingScreen.resources
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.frm_MAIN.resources
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.Resources.resources
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.vbproj.GenerateResource.Cache
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.exe
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.xml
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\SOrganizer\SOrganizer\obj\x86\Debug\SOrganizer.pdb
