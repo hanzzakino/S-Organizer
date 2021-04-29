@@ -113,6 +113,8 @@ Partial Class frm_MAIN
         Me.lbl_CTRL_TITLE = New System.Windows.Forms.Label()
         Me.btn_CLOSE = New System.Windows.Forms.Button()
         Me.lbl_LOADING = New System.Windows.Forms.Label()
+        Me.panel_RESIZECONTROL = New System.Windows.Forms.Panel()
+        Me.panel_WINDOW = New System.Windows.Forms.Panel()
         CType(Me.splitCon_MAIN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitCon_MAIN.Panel1.SuspendLayout()
         Me.splitCon_MAIN.Panel2.SuspendLayout()
@@ -1447,6 +1449,28 @@ Partial Class frm_MAIN
         Me.lbl_LOADING.Text = "Loading..."
         Me.lbl_LOADING.Visible = False
         '
+        'panel_RESIZECONTROL
+        '
+        Me.panel_RESIZECONTROL.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_RESIZECONTROL.BackColor = System.Drawing.Color.SteelBlue
+        Me.panel_RESIZECONTROL.Location = New System.Drawing.Point(0, 0)
+        Me.panel_RESIZECONTROL.Name = "panel_RESIZECONTROL"
+        Me.panel_RESIZECONTROL.Size = New System.Drawing.Size(700, 530)
+        Me.panel_RESIZECONTROL.TabIndex = 1
+        '
+        'panel_WINDOW
+        '
+        Me.panel_WINDOW.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_WINDOW.BackColor = System.Drawing.Color.Transparent
+        Me.panel_WINDOW.Location = New System.Drawing.Point(0, 0)
+        Me.panel_WINDOW.Name = "panel_WINDOW"
+        Me.panel_WINDOW.Size = New System.Drawing.Size(700, 530)
+        Me.panel_WINDOW.TabIndex = 2
+        '
         'frm_MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1456,6 +1480,8 @@ Partial Class frm_MAIN
         Me.Controls.Add(Me.lbl_LOADING)
         Me.Controls.Add(Me.panel_CONTROLBAR)
         Me.Controls.Add(Me.splitCon_MAIN)
+        Me.Controls.Add(Me.panel_WINDOW)
+        Me.Controls.Add(Me.panel_RESIZECONTROL)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_MAIN"
@@ -1592,6 +1618,8 @@ Partial Class frm_MAIN
     Friend WithEvents btn_OPENADDNOTE As System.Windows.Forms.Button
     Friend WithEvents btn_NOTESBACK As System.Windows.Forms.Button
     Friend WithEvents btn_DELETENOTE As System.Windows.Forms.Button
+    Friend WithEvents panel_RESIZECONTROL As System.Windows.Forms.Panel
+    Friend WithEvents panel_WINDOW As System.Windows.Forms.Panel
 
 
 

@@ -30,6 +30,13 @@
 
         frm_LoadingScreen.lbl_LOADING.Text = "Initializing Menu and Panels..."
         Application.DoEvents()
+
+        lbl_LOADING.Parent = panel_WINDOW
+        panel_CONTROLBAR.Parent = panel_WINDOW
+        splitCon_MAIN.Parent = panel_WINDOW
+
+
+
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
         frm_LoadingScreen.ProgressBar_main.Value = 100
@@ -298,6 +305,20 @@
     End Sub
 
 
+    Public Sub showResizeControl(ByVal tr As Boolean)
+        If tr Then
+            panel_WINDOW.Top = 3
+            panel_WINDOW.Left = 3
+            panel_WINDOW.Height = Me.Height - 6
+            panel_WINDOW.Width = Me.Width - 6
+        ElseIf Not tr Then
+            panel_WINDOW.Top = 0
+            panel_WINDOW.Left = 0
+            panel_WINDOW.Height = Me.Height
+            panel_WINDOW.Width = Me.Width
+        End If
+    End Sub
+
 
     ''''CONTROL BAR''''
     Private Sub btn_CLOSE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_CLOSE.Click
@@ -309,10 +330,126 @@
     Private Sub btn_MAXMIN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_MAXMIN.Click
         If Me.WindowState = FormWindowState.Maximized Then
             Me.WindowState = FormWindowState.Normal
+            showResizeControl(True)
         Else
             Me.WindowState = FormWindowState.Maximized
+            showResizeControl(False)
         End If
     End Sub
+
+    ''''RESIZE''''
+    Dim initrx As Double = 0
+    Dim initry As Double = 0
+    Dim initmrx As Double = 0
+    Dim initmry As Double = 0
+    Dim mouse_Bottom As Boolean = False
+    Dim mouse_Right As Boolean = False
+    Dim mouse_Top As Boolean = False
+    Dim mouse_Left As Boolean = False
+    Dim mouse_RTopCorner As Boolean = False
+    Dim mouse_LTopCorner As Boolean = False
+    Dim mouse_RBotCorner As Boolean = False
+    Dim mouse_LBotCorner As Boolean = False
+    Dim mrdown As Boolean = False
+
+    Private Sub panel_RESIZECONTROL_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles panel_RESIZECONTROL.MouseHover
+        If (MousePosition.X - Me.Location.X) > (Me.Width - 15) And (MousePosition.Y - Me.Location.Y) < (Me.Height - 15) And (MousePosition.Y - Me.Location.Y) > (15) Then
+            Cursor = Cursors.SizeWE
+        ElseIf (MousePosition.X - Me.Location.X) < (15) And (MousePosition.Y - Me.Location.Y) < (Me.Height - 15) And (MousePosition.Y - Me.Location.Y) > (15) Then
+            Cursor = Cursors.SizeWE
+        ElseIf (MousePosition.Y - Me.Location.Y) > (Me.Height - 15) And (MousePosition.X - Me.Location.X) < (Me.Width - 15) And (MousePosition.X - Me.Location.X) > (15) Then
+            Cursor = Cursors.SizeNS
+        ElseIf (MousePosition.Y - Me.Location.Y) < (15) And (MousePosition.X - Me.Location.X) < (Me.Width - 15) And (MousePosition.X - Me.Location.X) > (15) Then
+            Cursor = Cursors.SizeNS
+        ElseIf (MousePosition.X - Me.Location.X) < 15 And (MousePosition.Y - Me.Location.Y) < 15 Then
+            Cursor = Cursors.SizeNWSE
+            'Top left
+        ElseIf (MousePosition.X - Me.Location.X) > (Me.Width - 15) And (MousePosition.Y - Me.Location.Y) > (Me.Height - 15) Then
+            Cursor = Cursors.SizeNWSE
+            'Bot right
+        ElseIf (MousePosition.X - Me.Location.X) > (Me.Width - 15) And (MousePosition.Y - Me.Location.Y) < 15 Then
+            Cursor = Cursors.SizeNESW
+            'Top right
+        ElseIf (MousePosition.X - Me.Location.X) < 15 And (MousePosition.Y - Me.Location.Y) > (Me.Height - 15) Then
+            Cursor = Cursors.SizeNESW
+            'Bot left
+        Else
+            Cursor = Cursors.SizeAll
+        End If
+
+    End Sub
+
+    Private Sub panel_RESIZECONTROL_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles panel_RESIZECONTROL.MouseLeave
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub panel_RESIZECONTROL_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_RESIZECONTROL.MouseDown
+        initrx = Me.Width
+        initry = Me.Height
+        initmrx = MousePosition.X
+        initmry = MousePosition.Y
+        If (MousePosition.X - Me.Location.X) > (Me.Width - 15) And (MousePosition.Y - Me.Location.Y) < (Me.Height - 15) And (MousePosition.Y - Me.Location.Y) > (15) Then
+            Cursor = Cursors.SizeWE
+            mouse_Right = True
+        ElseIf (MousePosition.X - Me.Location.X) < (15) And (MousePosition.Y - Me.Location.Y) < (Me.Height - 15) And (MousePosition.Y - Me.Location.Y) > (15) Then
+            Cursor = Cursors.SizeWE
+            mouse_Left = True
+        ElseIf (MousePosition.Y - Me.Location.Y) > (Me.Height - 15) And (MousePosition.X - Me.Location.X) < (Me.Width - 15) And (MousePosition.X - Me.Location.X) > (15) Then
+            Cursor = Cursors.SizeNS
+            mouse_Bottom = True
+        ElseIf (MousePosition.Y - Me.Location.Y) < (15) And (MousePosition.X - Me.Location.X) < (Me.Width - 15) And (MousePosition.X - Me.Location.X) > (15) Then
+            Cursor = Cursors.SizeNS
+            mouse_Top = True
+        ElseIf (MousePosition.X - Me.Location.X) < 15 And (MousePosition.Y - Me.Location.Y) < 15 Then
+            Cursor = Cursors.SizeNWSE
+            mouse_LTopCorner = True
+            'Top left
+        ElseIf (MousePosition.X - Me.Location.X) > (Me.Width - 15) And (MousePosition.Y - Me.Location.Y) > (Me.Height - 15) Then
+            Cursor = Cursors.SizeNWSE
+            mouse_RBotCorner = True
+            'Bot right
+        ElseIf (MousePosition.X - Me.Location.X) > (Me.Width - 15) And (MousePosition.Y - Me.Location.Y) < 15 Then
+            Cursor = Cursors.SizeNESW
+            mouse_RTopCorner = True
+            'Top right
+        ElseIf (MousePosition.X - Me.Location.X) < 15 And (MousePosition.Y - Me.Location.Y) > (Me.Height - 15) Then
+            Cursor = Cursors.SizeNESW
+            mouse_LBotCorner = True
+            'Bot left
+        Else
+            Cursor = Cursors.SizeAll
+        End If
+        mrdown = True
+    End Sub
+
+    Private Sub panel_RESIZECONTROL_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_RESIZECONTROL.MouseMove
+        If mouse_RBotCorner And Me.WindowState = FormWindowState.Normal Then
+            Me.Width = MousePosition.X - initmrx + initrx
+            Me.Height = MousePosition.Y - initmry + initry
+        ElseIf mouse_Right And Me.WindowState = FormWindowState.Normal Then
+            Me.Width = MousePosition.X - initmrx + initrx
+        ElseIf mouse_Bottom And Me.WindowState = FormWindowState.Normal Then
+            Me.Height = MousePosition.Y - initmry + initry
+        ElseIf mouse_Left And Me.WindowState = FormWindowState.Normal Then
+
+        End If
+    End Sub
+
+    Private Sub panel_RESIZECONTROL_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_RESIZECONTROL.MouseUp
+        mrdown = False
+        mouse_Bottom = False
+        mouse_Top = False
+        mouse_Left = False
+        mouse_Right = False
+        mouse_LBotCorner = False
+        mouse_LTopCorner = False
+        mouse_RBotCorner = False
+        mouse_RTopCorner = False
+        Cursor = Cursors.Default
+    End Sub
+
+
+    ''''''''''''''
 
     'PANEL DRAG'
     Dim initx As Double = 0
@@ -461,7 +598,7 @@
 
             End If
 
-            
+
         End If
         lbl_LOADING.Visible = False
     End Sub
@@ -801,7 +938,6 @@
             btn_SAVENOTE.PerformClick()
         End If
     End Sub
-
 
 
 End Class
