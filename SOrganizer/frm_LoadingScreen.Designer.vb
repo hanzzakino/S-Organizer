@@ -28,6 +28,7 @@ Partial Class frm_LoadingScreen
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lbl_VERSION = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,7 +59,7 @@ Partial Class frm_LoadingScreen
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Product Sans", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label1.Location = New System.Drawing.Point(124, 27)
+        Me.Label1.Location = New System.Drawing.Point(120, 44)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(288, 61)
         Me.Label1.TabIndex = 2
@@ -67,10 +68,10 @@ Partial Class frm_LoadingScreen
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Khmer UI", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(131, 88)
+        Me.Label2.Font = New System.Drawing.Font("Khmer UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(130, 27)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(251, 35)
+        Me.Label2.Size = New System.Drawing.Size(160, 23)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "PLYMTH Software"
         '
@@ -86,12 +87,25 @@ Partial Class frm_LoadingScreen
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
         '
+        'lbl_VERSION
+        '
+        Me.lbl_VERSION.AutoSize = True
+        Me.lbl_VERSION.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_VERSION.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_VERSION.ForeColor = System.Drawing.Color.CadetBlue
+        Me.lbl_VERSION.Location = New System.Drawing.Point(131, 100)
+        Me.lbl_VERSION.Name = "lbl_VERSION"
+        Me.lbl_VERSION.Size = New System.Drawing.Size(65, 24)
+        Me.lbl_VERSION.TabIndex = 5
+        Me.lbl_VERSION.Text = "1.0.0.0"
+        '
         'frm_LoadingScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightBlue
         Me.ClientSize = New System.Drawing.Size(500, 230)
+        Me.Controls.Add(Me.lbl_VERSION)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -113,4 +127,5 @@ Partial Class frm_LoadingScreen
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents lbl_VERSION As System.Windows.Forms.Label
 End Class

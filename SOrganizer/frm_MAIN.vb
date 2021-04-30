@@ -770,7 +770,6 @@
             date_DEADLINETIME.Enabled = True
         End If
     End Sub
-
     ''''TASK PANEL''''
 
 
@@ -863,7 +862,6 @@
 
         lbl_LOADING.Visible = False
     End Sub
-
     ''''NOTES PANEL''''
 
 
@@ -963,10 +961,10 @@
         End If
     End Sub
     Private Sub rtxt_NOTECONTENT_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles rtxt_NOTECONTENT.KeyDown
-        If e.KeyCode = 13 Then
+        If e.KeyCode = Keys.F12 Then
             btn_SAVENOTE.PerformClick()
         End If
     End Sub
-
+    ''''Form Enter Key event''''
 
 End Class

@@ -1,20 +1,35 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.IO
+
 
 
 Module mod_MYSQLDBCONTROLLER
 
-    Dim str_CON As String = "server=localhost; user id = root; password = hanz; database = s_organizer"
+    Dim def_CON As String = "server=localhost; user id = root; password = hanz; database = s_organizer"
+    Dim dbconfig_file As String = ""
     Dim con As MySqlConnection = Nothing
     Dim reader As MySqlDataReader
     Dim str_version As String = ""
 
     Public Sub init_DBCONNECTION()
         Try
-            con = New MySqlConnection(str_CON)
+            'con = New MySqlConnection(def_CON)
+
+            readCONFIGFILE()
+            con = New MySqlConnection(dbconfig_file)
+
             con.Open()
             str_version = con.ServerVersion
         Catch ex As Exception
+            con.Close()
             Console.WriteLine(ex.Message)
+            If MessageBox.Show("Database connection failed" + vbLf + ex.Message, "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
+                Application.Exit()
+                End
+            Else
+                Application.Restart()
+                End
+            End If
         Finally
             con.Close()
         End Try
@@ -30,15 +45,38 @@ Module mod_MYSQLDBCONTROLLER
             con.Open()
             str_version = con.ServerVersion
         Catch ex As Exception
-            MessageBox.Show("Check Internet Connection", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
             Console.WriteLine(ex.Message)
+            If MessageBox.Show("Database connection failed", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
+                Application.Exit()
+                End
+            Else
+                Application.Restart()
+                End
+            End If
         Finally
             con.Close()
         End Try
-        'CREATE REQUIRED TABLES IF DOESNT EXIST
+        'CREATE REQUIRED TABLES IF IT DOESNT EXIST
         create_DBTABLES()
     End Sub
 
+    Public Sub readCONFIGFILE()
+        Dim FILE_NAME As String = "dbconfig"
+        If File.Exists(FILE_NAME) Then
+            Dim fileReader As New StreamReader(FILE_NAME)
+            While fileReader.Peek() <> -1
+                dbconfig_file &= fileReader.ReadLine()
+            End While
+        Else
+            File.Create("dbconfig")
+            MessageBox.Show("Config file doesn't exist", "Configuration error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Application.Exit()
+            End
+        End If
+    End Sub
+
+    'Add DATA Tables if not exist
 
     Public Sub create_DBTABLES()
         Try

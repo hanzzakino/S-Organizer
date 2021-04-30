@@ -1,0 +1,4 @@
+server=localhost;
+user id = root;
+password = hanz;
+database = s_organizer;

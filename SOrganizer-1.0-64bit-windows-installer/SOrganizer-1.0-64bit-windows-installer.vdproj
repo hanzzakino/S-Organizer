@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:SOrganizer-1.0.1-64bit-windows-installer"
+"ProjectName" = "8:SOrganizer-64bit-windows-installer"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -34,6 +34,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B05F793D55F94FA7BB50D5AE5A6AE814"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E955760CC9424720B59F757A82DC25A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -242,6 +248,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E955760CC9424720B59F757A82DC25A9"
+            {
+            "SourcePath" = "8:..\\SOrganizer\\dbconfig"
+            "TargetName" = "8:dbconfig"
+            "Tag" = "8:"
+            "Folder" = "8:_837D185E2B5C4701B9A2C57D8719A41E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -320,19 +346,19 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:S Organizer"
-        "ProductCode" = "8:{94C92963-9971-4DFF-83D3-1B6195D649E2}"
-        "PackageCode" = "8:{24D56189-171D-4597-A346-368B5E2087A4}"
+        "ProductCode" = "8:{35EBD278-C72E-4F41-BF2F-62DD09E52BD2}"
+        "PackageCode" = "8:{A1C8033E-E4CD-464B-BAD1-0046F7559C20}"
         "UpgradeCode" = "8:{D124CC3E-16A1-4EB6-831E-2E12220808E8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:Plymth Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SOrganizer-1.0.1-64bit-windows-installer"
+        "Title" = "8:SOrganizer-1.0.2-64bit-windows-installer"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Plymth Software"
         "Keywords" = "8:"
