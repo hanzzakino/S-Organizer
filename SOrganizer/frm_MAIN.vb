@@ -35,10 +35,9 @@
         panel_CONTROLBAR.Parent = panel_WINDOW
         splitCon_MAIN.Parent = panel_WINDOW
 
-
-
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
+
         frm_LoadingScreen.ProgressBar_main.Value = 100
 
 
@@ -162,7 +161,6 @@
             If getSUBJECTTASKS(subject(0)).Count = 0 Then
                 subj_tasks_list.Items.Add("No Task")
             End If
-
 
 
             For Each task In getSUBJECTTASKS(subject(0))
