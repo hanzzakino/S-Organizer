@@ -1484,6 +1484,7 @@ Partial Class frm_MAIN
         Me.Controls.Add(Me.panel_RESIZECONTROL)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(700, 530)
         Me.Name = "frm_MAIN"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
