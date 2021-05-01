@@ -21,18 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4789E4D35BB647E0B186E03A15DE2A41"
-        "OwnerKey" = "8:_368795A806574B448AED7932231198A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_616842B39FDA462DA7559CB7053E0E2E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BE4B44B23B4200450F18DDA592EC705C"
         "OwnerKey" = "8:_368795A806574B448AED7932231198A7"
         "MsmSig" = "8:_UNDEFINED"
@@ -45,14 +33,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_368795A806574B448AED7932231198A7"
+        "MsmKey" = "8:_D85C932BF98045DB995906E71E3F71AC"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4789E4D35BB647E0B186E03A15DE2A41"
+        "OwnerKey" = "8:_368795A806574B448AED7932231198A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,57 +154,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4789E4D35BB647E0B186E03A15DE2A41"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_4789E4D35BB647E0B186E03A15DE2A41"
-                    {
-                    "Name" = "8:Microsoft.VisualBasic.PowerPacks.Vs.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.VisualBasic.PowerPacks.Vs.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_91A49599357A48549BBB5B5611A1C354"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_616842B39FDA462DA7559CB7053E0E2E"
-            {
-            "SourcePath" = "8:..\\SOrganizer\\dbconfig"
-            "TargetName" = "8:dbconfig"
-            "Tag" = "8:"
-            "Folder" = "8:_91A49599357A48549BBB5B5611A1C354"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BE4B44B23B4200450F18DDA592EC705C"
             {
             "AssemblyRegister" = "3:1"
@@ -254,6 +191,26 @@
             "TargetName" = "8:DefaultIcon.ico"
             "Tag" = "8:"
             "Folder" = "8:_0B87BA743C93475A9E0029A4920B14C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D85C932BF98045DB995906E71E3F71AC"
+            {
+            "SourcePath" = "8:..\\SOrganizer\\dbconfig.txt"
+            "TargetName" = "8:dbconfig.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_91A49599357A48549BBB5B5611A1C354"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -347,7 +304,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:S Organizer"
         "ProductCode" = "8:{7E5E7120-DDC0-431F-8923-EDD5B1F7844A}"
-        "PackageCode" = "8:{74361954-CE03-47DD-BC9B-DDA89D82DA36}"
+        "PackageCode" = "8:{F5A2EED3-3E20-49E0-BBA9-BAC8EAC375EF}"
         "UpgradeCode" = "8:{002A846D-D700-430C-8FD7-99FBC3053606}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -18,12 +18,11 @@ Module mod_MYSQLDBCONTROLLER
             readCONFIGFILE() ' Read server connection file
             con = New MySqlConnection(dbconfig_file) 'Initialize Connection to server
             create_DATABASE() 'create database in server if it doesn't exist
-            con.Dispose() ' dispose connection after creating table
+            'con.Dispose() ' dispose connection after creating table
             con = New MySqlConnection(dbconfig_file + "database = " + db_name + ";") ' open a new connection with the created* database
             con.Open()
             str_version = con.ServerVersion
         Catch ex As Exception
-            con.Close()
             Console.WriteLine(ex.Message)
             If MessageBox.Show("Database connection failed" + vbLf + "Error: " + ex.Message + vbLf + vbLf + "Please modify the " + db_file_loc + " file in the installation folder", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
                 If File.Exists(db_file_loc) Then
