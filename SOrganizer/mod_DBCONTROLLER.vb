@@ -7,23 +7,32 @@ Module mod_MYSQLDBCONTROLLER
 
     Dim def_CON As String = "server=localhost; user id = root; password = hanz; database = s_organizer"
     Dim dbconfig_file As String = ""
+    Dim db_file_loc As String = "dbconfig.txt"
     Dim con As MySqlConnection = Nothing
+    Dim db_name As String = "s_organizer"
     Dim reader As MySqlDataReader
     Dim str_version As String = ""
 
     Public Sub init_DBCONNECTION()
         Try
-            'con = New MySqlConnection(def_CON)
-
-            readCONFIGFILE()
-            con = New MySqlConnection(dbconfig_file)
-
+            readCONFIGFILE() ' Read server connection file
+            con = New MySqlConnection(dbconfig_file) 'Initialize Connection to server
+            create_DATABASE() 'create database in server if it doesn't exist
+            con.Dispose() ' dispose connection after creating table
+            con = New MySqlConnection(dbconfig_file + "database = " + db_name + ";") ' open a new connection with the created* database
             con.Open()
             str_version = con.ServerVersion
         Catch ex As Exception
             con.Close()
             Console.WriteLine(ex.Message)
-            If MessageBox.Show("Database connection failed" + vbLf + ex.Message, "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
+            If MessageBox.Show("Database connection failed" + vbLf + "Error: " + ex.Message + vbLf + vbLf + "Please modify the " + db_file_loc + " file in the installation folder", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
+                If File.Exists(db_file_loc) Then
+                    Process.Start(db_file_loc)
+                Else
+                    MessageBox.Show("Config file doesn't exist", "Configuration error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Application.Exit()
+                    End
+                End If
                 Application.Exit()
                 End
             Else
@@ -33,7 +42,6 @@ Module mod_MYSQLDBCONTROLLER
         Finally
             con.Close()
         End Try
-
         'CREATE REQUIRED TABLES IF DOESNT EXIST
         create_DBTABLES()
     End Sub
@@ -62,21 +70,25 @@ Module mod_MYSQLDBCONTROLLER
     End Sub
 
     Public Sub readCONFIGFILE()
-        Dim FILE_NAME As String = "dbconfig"
-        If File.Exists(FILE_NAME) Then
-            Dim fileReader As New StreamReader(FILE_NAME)
+        If Not File.Exists(db_file_loc) Then
+            Dim fileWriter As New StreamWriter(db_file_loc, True)
+            fileWriter.WriteLine("server = localhost;")
+            fileWriter.WriteLine("user id = root;")
+            fileWriter.WriteLine("password = ;")
+            fileWriter.Close()
+        Else
+            Dim fileReader As New StreamReader(db_file_loc)
             While fileReader.Peek() <> -1
                 dbconfig_file &= fileReader.ReadLine()
             End While
-        Else
-            File.Create("dbconfig")
-            MessageBox.Show("Config file doesn't exist", "Configuration error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Application.Exit()
-            End
+            fileReader.Close()
         End If
     End Sub
 
-    'Add DATA Tables if not exist
+
+
+
+    'Add Databse and DATA Tables if not exist
 
     Public Sub create_DBTABLES()
         Try
@@ -121,6 +133,22 @@ Module mod_MYSQLDBCONTROLLER
         End Try
     End Sub
 
+    Public Sub create_DATABASE()
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+            With cmd
+                .Connection = con
+                .CommandText = "CREATE SCHEMA IF NOT EXISTS " + db_name + ";"
+                .Prepare()
+                .ExecuteNonQuery()
+            End With
+            con.Close()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+            con.Close()
+        End Try
+    End Sub
 
     'DB RETRIEVE
 

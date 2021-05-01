@@ -6,6 +6,11 @@ By: Hanz Aquino
 
 Written in vb.NET Framework 4.0
 
+server= localhost;
+user id = root;
+password = hanz;
+database = s_organizer;
+
 
 04-07-2021		: Started the project
 				: Created the Main UI
