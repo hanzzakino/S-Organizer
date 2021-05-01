@@ -258,7 +258,6 @@
         flwpanel_SUBJECTS_DRAWER.Controls.Add(exc_panel)
 
         lbl_NTASKS.Text = listbx_TASKLIST2.Items.Count.ToString + " tasks..."
-
     End Sub
 
 
@@ -501,6 +500,18 @@
         mdown = False
     End Sub
     'PANEL DRAG'
+
+    Private Sub frm_MAIN_SizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.SizeChanged
+        updateTILESIZE()
+    End Sub
+    Public Sub updateTILESIZE()
+        Dim tile_size As New Size()
+        tile_size.Width = listbx_TASKLIST2.Width - 50
+        tile_size.Height = 50
+        listbx_TASKLIST2.TileSize = tile_size
+    End Sub
+
+
     ''''CONTROL BAR''''
 
 
@@ -512,8 +523,12 @@
 
     End Sub
     Private Sub btn_TASK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TASK.Click
+        lbl_LOADING.Visible = True
+        Application.DoEvents()
         selButton(btn_TASK)
         openPanel(panel_MAIN_TASKS)
+        updateTILESIZE()
+        lbl_LOADING.Visible = False
     End Sub
     Private Sub btn_SCHEDULES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_SCHEDULES.Click
         lbl_LOADING.Visible = True
@@ -964,5 +979,10 @@
         End If
     End Sub
     ''''Form Enter Key event''''
+
+
+
+    
+
 
 End Class
