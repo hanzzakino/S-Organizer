@@ -494,9 +494,19 @@
         If mdown And Me.WindowState = FormWindowState.Normal Then
             Me.Left = MousePosition.X - initmx + initx
             Me.Top = MousePosition.Y - initmy + inity
+        ElseIf mdown And Me.WindowState = FormWindowState.Maximized Then
+            Me.WindowState = FormWindowState.Normal
+            showResizeControl(True)
+            Me.Left = MousePosition.X - initmx + initx
+            Me.Top = MousePosition.Y - initmy + inity
         End If
     End Sub
     Private Sub panel_CONTROLBAR_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_CONTROLBAR.MouseUp
+        If MousePosition.Y < 5 And Me.WindowState = FormWindowState.Normal Then
+            Me.WindowState = FormWindowState.Maximized
+            showResizeControl(False)
+        End If
+        Console.WriteLine(MousePosition.Y)
         mdown = False
     End Sub
     'PANEL DRAG'

@@ -24,7 +24,7 @@ Module mod_MYSQLDBCONTROLLER
             str_version = con.ServerVersion
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            If MessageBox.Show("Database connection failed" + vbLf + "Error: " + ex.Message + vbLf + vbLf + "Please modify the " + db_file_loc + " file in the installation folder", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
+            If MessageBox.Show("Database connection failed" + vbLf + "Error: " + ex.Message + vbLf + vbLf + "Please modify the " + db_file_loc + " file in the installation folder" + vbLf + "and restart the Program", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
                 If File.Exists(db_file_loc) Then
                     Process.Start(db_file_loc)
                 Else
@@ -78,6 +78,7 @@ Module mod_MYSQLDBCONTROLLER
         Else
             Dim fileReader As New StreamReader(db_file_loc)
             While fileReader.Peek() <> -1
+
                 dbconfig_file &= fileReader.ReadLine()
             End While
             fileReader.Close()
