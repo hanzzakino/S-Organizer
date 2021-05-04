@@ -42,3 +42,7 @@ database = s_organizer;
 				: NOTE tool added
 				: added an initdb method that has server,uid,pwd,db parameter
 				: Tested the system for online database
+
+
+
+Documentation is now on Github.com
