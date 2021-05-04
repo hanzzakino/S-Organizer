@@ -3,6 +3,15 @@
     Dim SUBJECT_LIST As New List(Of List(Of String))
     Dim TASK_LIST_SUBJECTID As New List(Of String)
 
+    Dim colr_lightest As Color = Color.Snow
+    Dim colr_lighter As Color = Color.Aquamarine
+    Dim colr_light As Color = Color.Azure
+    Dim colr_medium As Color = Color.LightBlue
+    Dim colr_mediumlight As Color = Color.PowderBlue
+    Dim colr_dark As Color = Color.SteelBlue
+    Dim colr_darker As Color = Color.DarkSlateGray
+    Dim colr_darkest As Color = Color.MidnightBlue
+
     'Form initialaztion and loading screen
     Private Sub frm_MAIN_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'gdExa1EnSC
@@ -37,6 +46,8 @@
 
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
+
+        'changeTHEME("dark")
 
         frm_LoadingScreen.ProgressBar_main.Value = 100
 
@@ -82,7 +93,7 @@
             empty_sub.Width = 400
             empty_sub.Height = 400
             empty_sub.TextAlign = ContentAlignment.MiddleCenter
-            empty_sub.ForeColor = Color.DarkSlateGray
+            empty_sub.ForeColor = colr_darker
             empty_sub.Font = New Font("Arial", 14)
             flwpanel_SUBJECTS_DRAWER.Controls.Add(empty_sub)
         End If
@@ -99,7 +110,7 @@
             Dim subj_panel As New Panel()
             subj_panel.Height = 200
             subj_panel.Width = 450
-            subj_panel.BackColor = Color.Azure
+            subj_panel.BackColor = colr_light
 
             Dim brder_panel As New Panel
             brder_panel.Parent = subj_panel
@@ -107,7 +118,7 @@
             brder_panel.Width = 450
             brder_panel.Top = 0
             brder_panel.Left = 0
-            brder_panel.BackColor = Color.SlateGray
+            brder_panel.BackColor = colr_darker
 
 
             Dim subj_label As New Label()
@@ -117,7 +128,7 @@
             subj_label.Top = 13
             subj_label.Left = 5
             subj_label.Anchor = AnchorStyles.Top + AnchorStyles.Left
-            subj_label.ForeColor = Color.MidnightBlue
+            subj_label.ForeColor = colr_darkest
             subj_label.MaximumSize = subj_panel.Size
 
             Dim subj_tasks_list As New ListBox
@@ -128,7 +139,7 @@
             subj_tasks_list.Width = 250
             subj_tasks_list.BorderStyle = BorderStyle.None
             subj_tasks_list.SelectionMode = SelectionMode.None
-            subj_tasks_list.ForeColor = Color.MidnightBlue
+            subj_tasks_list.ForeColor = colr_darkest
             subj_tasks_list.SelectionMode = SelectionMode.None
             subj_tasks_list.TabStop = False
 
@@ -140,8 +151,8 @@
             subj_sched_list.Width = 150
             subj_sched_list.BorderStyle = BorderStyle.None
             subj_sched_list.SelectionMode = SelectionMode.None
-            subj_sched_list.ForeColor = Color.MidnightBlue
-            subj_sched_list.BackColor = Color.Azure
+            subj_sched_list.ForeColor = colr_darkest
+            subj_sched_list.BackColor = colr_light
             subj_sched_list.Font = New Font("Verdana", 10, FontStyle.Bold)
             subj_sched_list.SelectionMode = SelectionMode.None
             subj_sched_list.TabStop = False
@@ -224,7 +235,7 @@
 
             For Each sch In getScheduleString(subject(0))
                 Dim sch_day As New Label
-                sch_day.BackColor = Color.Aquamarine
+                sch_day.BackColor = colr_lighter
                 sch_day.TextAlign = ContentAlignment.MiddleCenter
                 sch_day.Dock = DockStyle.Fill
                 sch_day.Font = New Font("Arial", 10)
@@ -560,16 +571,16 @@
         o_panel.Visible = True
     End Sub
     Public Sub selButton(ByRef o_btn As Button)
-        btn_NOTES.BackColor = Color.SteelBlue
-        btn_NOTES.ForeColor = Color.Azure
-        btn_SUBJECTS.BackColor = Color.SteelBlue
-        btn_SUBJECTS.ForeColor = Color.Azure
-        btn_SCHEDULES.BackColor = Color.SteelBlue
-        btn_SCHEDULES.ForeColor = Color.Azure
-        btn_TASK.BackColor = Color.SteelBlue
-        btn_TASK.ForeColor = Color.Azure
-        o_btn.BackColor = Color.LightBlue
-        o_btn.ForeColor = Color.SteelBlue
+        btn_NOTES.BackColor = colr_dark
+        btn_NOTES.ForeColor = colr_light
+        btn_SUBJECTS.BackColor = colr_dark
+        btn_SUBJECTS.ForeColor = colr_light
+        btn_SCHEDULES.BackColor = colr_dark
+        btn_SCHEDULES.ForeColor = colr_light
+        btn_TASK.BackColor = colr_dark
+        btn_TASK.ForeColor = colr_light
+        o_btn.BackColor = colr_medium
+        o_btn.ForeColor = colr_dark
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - " + o_btn.Text
     End Sub
     ''''MENU PANEL''''
@@ -990,7 +1001,339 @@
     ''''Form Enter Key event''''
 
 
+    Public Sub changeTHEME(ByVal theme_name As String)
 
+        If theme_name = "dark" Then
+            colr_lightest = Color.FromArgb(250, 250, 250) 'Color.Snow
+            colr_lighter = Color.FromArgb(240, 240, 240) 'Color.Aquamarine
+            colr_mediumlight = Color.FromArgb(220, 220, 220) 'Color.PowderBlue
+            colr_light = Color.FromArgb(200, 200, 200) 'Color.Azure
+            colr_medium = Color.FromArgb(180, 180, 180) 'Color.LightBlue
+            colr_dark = Color.FromArgb(80, 80, 80) 'Color.SteelBlue
+            colr_darkest = Color.FromArgb(25, 25, 25) 'Color.MidnightBlue
+
+            Me.splitCon_MAIN.Panel1.BackColor = colr_medium
+
+            Me.panel_MENU.BackColor = colr_dark
+
+            'Me.btn_LOGOUT.BackColor = System.Drawing.Color.Transparent
+            'Me.btn_LOGOUT.ForeColor = System.Drawing.Color.White
+
+            Me.panel_ACCOUNTINFO.BackColor = colr_dark
+
+            'Me.lbl_USER.BackColor = colr_dark
+            'Me.lbl_USER.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label2.ForeColor = colr_light
+
+            Me.btn_NOTES.ForeColor = colr_light
+            Me.btn_NOTES.BackColor = colr_dark
+
+            Me.btn_SCHEDULES.ForeColor = colr_light
+            Me.btn_SCHEDULES.BackColor = colr_dark
+
+            Me.btn_TASK.ForeColor = colr_light
+            Me.btn_TASK.BackColor = colr_dark
+
+            Me.btn_SUBJECTS.ForeColor = colr_light
+            Me.btn_SUBJECTS.BackColor = colr_dark
+
+            Me.panel_MAIN_TASKS.BackColor = colr_medium
+
+            Me.tblpanel_SCHED.BackColor = colr_lighter
+
+            'Me.btn_OPENADDTASK.BackColor = System.Drawing.Color.Transparent
+
+            Me.btn_BACKTASK.ForeColor = colr_darkest
+
+            Me.Label3.ForeColor = colr_darkest
+
+            'Me.btn_DELETETASK.BackColor = System.Drawing.Color.LightCoral
+            'Me.btn_DELETETASK.ForeColor = System.Drawing.Color.White
+
+            Me.lbl_NTASKS.ForeColor = colr_darkest
+
+            'Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer))
+
+            Me.listbx_TASKLIST2.ForeColor = colr_darkest
+
+            'Me.btn_ARCHIVETASK.BackColor = System.Drawing.Color.CadetBlue
+            'Me.btn_ARCHIVETASK.ForeColor = System.Drawing.Color.White
+
+            Me.cb_NODEADLINE.ForeColor = colr_darkest
+
+            'Me.btn_ADDNEWTASK.BackColor = System.Drawing.Color.LimeGreen
+            'Me.btn_ADDNEWTASK.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label16.BackColor = System.Drawing.Color.Transparent
+            Me.Label16.ForeColor = colr_darkest
+
+            Me.cmbx_TASKTERM.ForeColor = colr_darkest
+
+            Me.Label15.BackColor = System.Drawing.Color.Transparent
+            Me.Label15.ForeColor = colr_darkest
+
+            Me.Label14.BackColor = System.Drawing.Color.Transparent
+            Me.Label14.ForeColor = colr_darkest
+
+            Me.Label13.BackColor = System.Drawing.Color.Transparent
+            Me.Label13.ForeColor = colr_darkest
+
+            Me.cmbx_SUBJECTNAME.ForeColor = colr_darkest
+
+            Me.Label12.BackColor = System.Drawing.Color.Transparent
+            Me.Label12.ForeColor = colr_darkest
+
+            Me.panel_MAIN_NOTES.BackColor = colr_medium
+
+            'Me.btn_OPENADDNOTE.BackColor = System.Drawing.Color.Transparent
+
+            Me.btn_NOTESBACK.ForeColor = colr_darkest
+
+            Me.listbx_NOTES.BackColor = colr_light
+
+            'Me.panel_NOTEEDITOR.BackColor = System.Drawing.Color.Transparent
+
+            'Me.panel_NOTECONTENT.BackColor = System.Drawing.Color.White
+
+            Me.Label25.ForeColor = colr_darkest
+
+            Me.txt_NOTETITLE.BackColor = colr_medium
+
+            'Me.btn_SAVENOTE.BackColor = System.Drawing.Color.LimeGreen
+            'Me.btn_SAVENOTE.ForeColor = System.Drawing.Color.Azure
+
+            'Me.btn_DELETENOTE.BackColor = System.Drawing.Color.LightCoral
+            'Me.btn_DELETENOTE.ForeColor = System.Drawing.Color.Azure
+
+            Me.Label5.ForeColor = colr_darkest
+
+            Me.panel_MAIN_SCHEDS.BackColor = colr_medium
+
+            Me.panel_SCHEDULEPANE.BackColor = System.Drawing.Color.LightCyan
+
+            Me.Label18.BackColor = System.Drawing.Color.LightCyan
+
+            Me.Label4.ForeColor = colr_darkest
+
+            Me.panel_MAIN_SUBJECTS.BackColor = colr_medium
+
+            Me.lbl_MAIN_SUBJECTS.ForeColor = colr_darkest
+
+            'Me.btn_ADDSUBJECTBACK.ForeColor = colr_darkest
+
+            'Me.btn_OPENREMOVESUBJECT.ForeColor = colr_darkest
+
+            'Me.btn_OPENADDSUBJECT.BackColor = System.Drawing.Color.Transparent
+
+            Me.flwpanel_SUBJECTS_DRAWER.BackColor = colr_medium
+
+            Me.btn_ADDSUBJECT.BackColor = System.Drawing.Color.LimeGreen
+            Me.btn_ADDSUBJECT.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label10.ForeColor = colr_darkest
+            Me.Label9.ForeColor = colr_darkest
+            Me.Label8.ForeColor = colr_darkest
+            Me.cmbx_DAY.BackColor = System.Drawing.Color.White
+            Me.Label7.ForeColor = colr_darkest
+            Me.Label6.ForeColor = colr_darkest
+            Me.Label1.ForeColor = colr_darkest
+
+            'Me.txt_SUBJECTNAME.BackColor = System.Drawing.Color.White
+            'Me.txt_SUBJECTID.BackColor = System.Drawing.Color.White
+
+            'Me.btn_REMOVESUBJECTS.BackColor = System.Drawing.Color.Firebrick
+            'Me.btn_REMOVESUBJECTS.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label11.BackColor = System.Drawing.Color.Transparent
+            Me.Label11.ForeColor = colr_darkest
+
+            'Me.btn_MAXMIN.BackColor = System.Drawing.Color.Transparent
+            'Me.btn_MAXMIN.ForeColor = System.Drawing.Color.DarkSlateBlue
+
+            'Me.btn_MINIMIZE.BackColor = System.Drawing.Color.Transparent
+            'Me.btn_MINIMIZE.ForeColor = System.Drawing.Color.DarkSlateBlue
+
+            Me.lbl_CTRL_TITLE.ForeColor = colr_darkest
+
+            'Me.btn_CLOSE.BackColor = System.Drawing.Color.Transparent
+
+            Me.lbl_LOADING.BackColor = colr_medium
+            Me.lbl_LOADING.ForeColor = System.Drawing.Color.DarkSlateGray
+
+            Me.panel_RESIZECONTROL.BackColor = colr_dark
+
+            'Me.panel_WINDOW.BackColor = System.Drawing.Color.Transparent
+
+            Me.BackColor = colr_medium
+
+            Me.panel_CONTROLBAR.BackColor = colr_mediumlight
+
+        Else
+            colr_lightest = Color.Snow
+            colr_lighter = Color.Aquamarine
+            colr_light = Color.Azure
+            colr_medium = Color.LightBlue
+            colr_mediumlight = Color.PowderBlue
+            colr_dark = Color.SteelBlue
+            colr_darkest = Color.MidnightBlue
+
+            Me.splitCon_MAIN.Panel1.BackColor = System.Drawing.Color.LightBlue
+
+            Me.panel_MENU.BackColor = System.Drawing.Color.SteelBlue
+
+            Me.btn_LOGOUT.BackColor = System.Drawing.Color.Transparent
+            Me.btn_LOGOUT.ForeColor = System.Drawing.Color.White
+
+            Me.panel_ACCOUNTINFO.BackColor = System.Drawing.Color.SteelBlue
+
+            Me.lbl_USER.BackColor = System.Drawing.Color.SteelBlue
+            Me.lbl_USER.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label2.ForeColor = System.Drawing.Color.Azure
+
+            Me.btn_NOTES.ForeColor = System.Drawing.Color.Azure
+
+            Me.btn_SCHEDULES.ForeColor = System.Drawing.Color.Azure
+
+            Me.btn_TASK.ForeColor = System.Drawing.Color.Azure
+
+            Me.btn_SUBJECTS.ForeColor = System.Drawing.Color.Azure
+
+            Me.panel_MAIN_TASKS.BackColor = System.Drawing.Color.LightBlue
+
+            Me.btn_OPENADDTASK.BackColor = System.Drawing.Color.Transparent
+
+            Me.btn_BACKTASK.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.Label3.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_DELETETASK.BackColor = System.Drawing.Color.LightCoral
+            Me.btn_DELETETASK.ForeColor = System.Drawing.Color.White
+
+            Me.lbl_NTASKS.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer))
+
+            Me.listbx_TASKLIST2.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_ARCHIVETASK.BackColor = System.Drawing.Color.CadetBlue
+            Me.btn_ARCHIVETASK.ForeColor = System.Drawing.Color.White
+
+            Me.cb_NODEADLINE.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_ADDNEWTASK.BackColor = System.Drawing.Color.LimeGreen
+            Me.btn_ADDNEWTASK.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label16.BackColor = System.Drawing.Color.Transparent
+            Me.Label16.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.cmbx_TASKTERM.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.Label15.BackColor = System.Drawing.Color.Transparent
+            Me.Label15.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.Label14.BackColor = System.Drawing.Color.Transparent
+            Me.Label14.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.Label13.BackColor = System.Drawing.Color.Transparent
+            Me.Label13.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.cmbx_SUBJECTNAME.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.Label12.BackColor = System.Drawing.Color.Transparent
+            Me.Label12.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.panel_MAIN_NOTES.BackColor = System.Drawing.Color.LightBlue
+
+            Me.btn_OPENADDNOTE.BackColor = System.Drawing.Color.Transparent
+
+            Me.btn_NOTESBACK.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.listbx_NOTES.BackColor = System.Drawing.Color.Azure
+
+            Me.panel_NOTEEDITOR.BackColor = System.Drawing.Color.Transparent
+
+            Me.panel_NOTECONTENT.BackColor = System.Drawing.Color.White
+
+            Me.Label25.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.txt_NOTETITLE.BackColor = System.Drawing.Color.LightBlue
+
+            Me.btn_SAVENOTE.BackColor = System.Drawing.Color.LimeGreen
+            Me.btn_SAVENOTE.ForeColor = System.Drawing.Color.Azure
+
+            Me.btn_DELETENOTE.BackColor = System.Drawing.Color.LightCoral
+            Me.btn_DELETENOTE.ForeColor = System.Drawing.Color.Azure
+
+            Me.Label5.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.panel_MAIN_SCHEDS.BackColor = System.Drawing.Color.LightBlue
+
+            Me.panel_SCHEDULEPANE.BackColor = System.Drawing.Color.LightCyan
+
+            Me.Label18.BackColor = System.Drawing.Color.LightCyan
+
+            Me.Label4.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.panel_MAIN_SUBJECTS.BackColor = System.Drawing.Color.LightBlue
+
+            Me.lbl_MAIN_SUBJECTS.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_ADDSUBJECTBACK.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_OPENREMOVESUBJECT.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_OPENADDSUBJECT.BackColor = System.Drawing.Color.Transparent
+
+            Me.flwpanel_SUBJECTS_DRAWER.BackColor = System.Drawing.Color.LightBlue
+
+            Me.btn_ADDSUBJECT.BackColor = System.Drawing.Color.LimeGreen
+            Me.btn_ADDSUBJECT.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label10.ForeColor = System.Drawing.Color.MidnightBlue
+            Me.Label9.ForeColor = System.Drawing.Color.MidnightBlue
+            Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
+            Me.cmbx_DAY.BackColor = System.Drawing.Color.White
+            Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
+            Me.Label6.ForeColor = System.Drawing.Color.MidnightBlue
+            Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.txt_SUBJECTNAME.BackColor = System.Drawing.Color.White
+
+            Me.txt_SUBJECTID.BackColor = System.Drawing.Color.White
+
+            Me.btn_REMOVESUBJECTS.BackColor = System.Drawing.Color.Firebrick
+            Me.btn_REMOVESUBJECTS.ForeColor = System.Drawing.Color.AliceBlue
+
+            Me.Label11.BackColor = System.Drawing.Color.Transparent
+            Me.Label11.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_MAXMIN.BackColor = System.Drawing.Color.Transparent
+            Me.btn_MAXMIN.ForeColor = System.Drawing.Color.DarkSlateBlue
+
+            Me.btn_MINIMIZE.BackColor = System.Drawing.Color.Transparent
+            Me.btn_MINIMIZE.ForeColor = System.Drawing.Color.DarkSlateBlue
+
+            Me.lbl_CTRL_TITLE.ForeColor = System.Drawing.Color.MidnightBlue
+
+            Me.btn_CLOSE.BackColor = System.Drawing.Color.Transparent
+            Me.btn_CLOSE.ForeColor = System.Drawing.Color.DarkSlateBlue
+
+            Me.lbl_LOADING.BackColor = System.Drawing.Color.LightBlue
+            Me.lbl_LOADING.ForeColor = System.Drawing.Color.DarkSlateGray
+
+            Me.panel_RESIZECONTROL.BackColor = System.Drawing.Color.SteelBlue
+
+            Me.panel_WINDOW.BackColor = System.Drawing.Color.Transparent
+
+            Me.BackColor = System.Drawing.Color.LightBlue
+
+        End If
+
+        init_SUBJECTLIST(False)
+
+    End Sub
     
 
 
