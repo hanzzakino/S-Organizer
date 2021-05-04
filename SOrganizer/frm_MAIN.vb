@@ -506,7 +506,6 @@
             Me.WindowState = FormWindowState.Maximized
             showResizeControl(False)
         End If
-        Console.WriteLine(MousePosition.Y)
         mdown = False
     End Sub
     'PANEL DRAG'
@@ -993,6 +992,8 @@
 
 
     
+
+
 
 
 End Class

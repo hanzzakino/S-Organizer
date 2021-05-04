@@ -71,16 +71,21 @@ Module mod_MYSQLDBCONTROLLER
     Public Sub readCONFIGFILE()
         If Not File.Exists(db_file_loc) Then
             Dim fileWriter As New StreamWriter(db_file_loc, True)
+            fileWriter.WriteLine("# Specify the server details here:")
             fileWriter.WriteLine("server = localhost;")
             fileWriter.WriteLine("user id = root;")
             fileWriter.WriteLine("password = ;")
             fileWriter.Close()
         Else
             Dim fileReader As New StreamReader(db_file_loc)
-            While fileReader.Peek() <> -1
-
-                dbconfig_file &= fileReader.ReadLine()
+            While Not fileReader.Peek() = -1
+                Dim temp_line As String = fileReader.ReadLine()
+                If Not temp_line.First = "#" Then
+                    dbconfig_file &= temp_line
+                End If
+                Console.WriteLine(dbconfig_file)
             End While
+            Console.WriteLine(dbconfig_file)
             fileReader.Close()
         End If
     End Sub

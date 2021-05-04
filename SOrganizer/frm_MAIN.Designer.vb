@@ -239,7 +239,7 @@ Partial Class frm_MAIN
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Verdana", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.PaleTurquoise
+        Me.Label2.ForeColor = System.Drawing.Color.Azure
         Me.Label2.Location = New System.Drawing.Point(15, 15)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(114, 38)
