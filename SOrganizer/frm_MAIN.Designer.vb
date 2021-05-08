@@ -279,7 +279,7 @@ Partial Class frm_MAIN
         Me.btn_SCHEDULES.Size = New System.Drawing.Size(160, 40)
         Me.btn_SCHEDULES.TabIndex = 2
         Me.btn_SCHEDULES.TabStop = False
-        Me.btn_SCHEDULES.Text = "S&chedules"
+        Me.btn_SCHEDULES.Text = "S&chedule"
         Me.btn_SCHEDULES.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_SCHEDULES.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_SCHEDULES.UseVisualStyleBackColor = True

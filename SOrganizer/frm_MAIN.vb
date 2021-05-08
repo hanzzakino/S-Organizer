@@ -58,6 +58,8 @@
 
         Me.WindowState = FormWindowState.Maximized
 
+
+
         '''' TEST '''''
 
         '''''''''''''''
@@ -238,7 +240,7 @@
                 sch_day.BackColor = colr_lighter
                 sch_day.TextAlign = ContentAlignment.MiddleCenter
                 sch_day.Dock = DockStyle.Fill
-                sch_day.Font = New Font("Arial", 10)
+                sch_day.Font = New Font("Arial", 9)
                 sch_day.Text = sch(1) + "-" + sch(2)
                 If sch(0) = "MONDAY" Then
                     tblpanel_SCHED.Controls.Add(sch_day, 1, tblpanel_SCHED.RowCount - 2)
@@ -267,7 +269,6 @@
         exc_panel.Height = 200
         exc_panel.Width = 450
         flwpanel_SUBJECTS_DRAWER.Controls.Add(exc_panel)
-
         lbl_NTASKS.Text = listbx_TASKLIST2.Items.Count.ToString + " tasks..."
     End Sub
 
@@ -522,6 +523,7 @@
     'PANEL DRAG'
 
     Private Sub frm_MAIN_SizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.SizeChanged
+
         updateTILESIZE()
     End Sub
     Public Sub updateTILESIZE()
@@ -530,6 +532,27 @@
         tile_size.Height = 50
         listbx_TASKLIST2.TileSize = tile_size
     End Sub
+
+    Private Sub tblpanel_SCHED_SizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tblpanel_SCHED.SizeChanged
+        updateSCHEDFONTSIZE()
+    End Sub
+    Public Sub updateSCHEDFONTSIZE()
+        Dim fnt_size_proportion As Double = (250 / 109359)
+        Dim tbl_size As Double = ((tblpanel_SCHED.Width * 0.116) * ((tblpanel_SCHED.Height - 50) / (SUBJECT_LIST.Count + 1)))
+        Dim fnt_size As Double = (fnt_size_proportion * tbl_size)
+        If fnt_size > 14 Then
+            fnt_size = 14
+        ElseIf fnt_size < 4 Then
+            fnt_size = 4
+        End If
+        For label_item As Integer = 0 To (tblpanel_SCHED.Controls.Count - 1)
+            If label_item < 7 Or Not label_item Mod 2 = 0 Then
+                Continue For
+            End If
+            tblpanel_SCHED.Controls.Item(label_item).Font = New Font("Arial", fnt_size)
+        Next
+    End Sub
+
 
 
     ''''CONTROL BAR''''
@@ -553,6 +576,7 @@
     Private Sub btn_SCHEDULES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_SCHEDULES.Click
         lbl_LOADING.Visible = True
         Application.DoEvents()
+        updateSCHEDFONTSIZE()
         selButton(btn_SCHEDULES)
         openPanel(panel_MAIN_SCHEDS)
         lbl_LOADING.Visible = False
@@ -1012,6 +1036,7 @@
             colr_dark = Color.FromArgb(80, 80, 80) 'Color.SteelBlue
             colr_darkest = Color.FromArgb(25, 25, 25) 'Color.MidnightBlue
 
+
             Me.splitCon_MAIN.Panel1.BackColor = colr_medium
 
             Me.panel_MENU.BackColor = colr_dark
@@ -1334,9 +1359,7 @@
         init_SUBJECTLIST(False)
 
     End Sub
+
+   
     
-
-
-
-
 End Class
