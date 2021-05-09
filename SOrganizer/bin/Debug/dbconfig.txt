@@ -1,7 +1,9 @@
 # S Organizer 1.0.2.0
 # MySQL server
+# Database scheme 's_organizer' will be created if a database  is not specified
 # Specify the server details here:
 
 server = localhost;
 user id = root;
 password = hanz;
+database = ;

@@ -17,12 +17,17 @@ Module mod_MYSQLDBCONTROLLER
         Try
             readCONFIGFILE() ' Read server connection file
             con = New MySqlConnection(dbconfig_file) 'Initialize Connection to server
-            create_DATABASE() 'create database in server if it doesn't exist
-            'con.Dispose() ' dispose connection after creating table
-            con = New MySqlConnection(dbconfig_file + "database = " + db_name + ";") ' open a new connection with the created* database
+            Console.WriteLine(con.ConnectionString)
+            If String.IsNullOrWhiteSpace(con.Database) Then
+                create_DATABASE() 'create database in server if it doesn't exist
+                'con.Dispose() ' dispose connection after creating table
+                con = New MySqlConnection(dbconfig_file + "database = " + db_name + ";") ' open a new connection with the created* database
+            End If
+
             con.Open()
             str_version = con.ServerVersion
             Console.WriteLine(str_version)
+            Console.WriteLine(con.ConnectionString)
         Catch ex As Exception
             Console.WriteLine(ex.Message)
             If MessageBox.Show("Database connection failed" + vbLf + "Error: " + ex.Message + vbLf + vbLf + "Please modify the " + db_file_loc + " file in the installation folder" + vbLf + "and restart the Program", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
@@ -74,11 +79,13 @@ Module mod_MYSQLDBCONTROLLER
             Dim fileWriter As New StreamWriter(db_file_loc, True)
             fileWriter.WriteLine("# S Organizer " + frm_LoadingScreen.lbl_VERSION.Text)
             fileWriter.WriteLine("# MySQL server")
+            fileWriter.WriteLine("# Database scheme 's_organizer' will be created if a database  is not specified")
             fileWriter.WriteLine("# Specify the server details here:")
             fileWriter.WriteLine("")
             fileWriter.WriteLine("server = localhost;")
             fileWriter.WriteLine("user id = root;")
             fileWriter.WriteLine("password = ;")
+            fileWriter.WriteLine("database = ;")
             fileWriter.Close()
         Else
             Dim fileReader As New StreamReader(db_file_loc)
@@ -92,7 +99,6 @@ Module mod_MYSQLDBCONTROLLER
                 End If
                 Console.WriteLine(dbconfig_file)
             End While
-            Console.WriteLine(dbconfig_file)
             fileReader.Close()
         End If
     End Sub
