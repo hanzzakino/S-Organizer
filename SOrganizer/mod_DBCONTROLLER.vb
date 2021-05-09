@@ -22,6 +22,7 @@ Module mod_MYSQLDBCONTROLLER
             con = New MySqlConnection(dbconfig_file + "database = " + db_name + ";") ' open a new connection with the created* database
             con.Open()
             str_version = con.ServerVersion
+            Console.WriteLine(str_version)
         Catch ex As Exception
             Console.WriteLine(ex.Message)
             If MessageBox.Show("Database connection failed" + vbLf + "Error: " + ex.Message + vbLf + vbLf + "Please modify the " + db_file_loc + " file in the installation folder" + vbLf + "and restart the Program", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error) = DialogResult.OK Then
@@ -71,7 +72,10 @@ Module mod_MYSQLDBCONTROLLER
     Public Sub readCONFIGFILE()
         If Not File.Exists(db_file_loc) Then
             Dim fileWriter As New StreamWriter(db_file_loc, True)
+            fileWriter.WriteLine("# S Organizer " + frm_LoadingScreen.lbl_VERSION.Text)
+            fileWriter.WriteLine("# MySQL server")
             fileWriter.WriteLine("# Specify the server details here:")
+            fileWriter.WriteLine("")
             fileWriter.WriteLine("server = localhost;")
             fileWriter.WriteLine("user id = root;")
             fileWriter.WriteLine("password = ;")
@@ -80,6 +84,9 @@ Module mod_MYSQLDBCONTROLLER
             Dim fileReader As New StreamReader(db_file_loc)
             While Not fileReader.Peek() = -1
                 Dim temp_line As String = fileReader.ReadLine()
+                If String.IsNullOrWhiteSpace(temp_line) Then
+                    Continue While
+                End If
                 If Not temp_line.First = "#" Then
                     dbconfig_file &= temp_line
                 End If
@@ -89,8 +96,6 @@ Module mod_MYSQLDBCONTROLLER
             fileReader.Close()
         End If
     End Sub
-
-
 
 
     'Add Databse and DATA Tables if not exist

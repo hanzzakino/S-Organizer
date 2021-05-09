@@ -1,4 +1,7 @@
+# S Organizer 1.0.2.0
+# MySQL server
 # Specify the server details here:
+
 server = localhost;
 user id = root;
 password = hanz;
