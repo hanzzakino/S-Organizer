@@ -77,6 +77,8 @@
         listbx_TASKLIST2.Items.Clear()
         cmbx_SUBJECTNAME.Items.Clear()
 
+        Dim pending_task_count As Integer = 0
+
         'RESET TABLE
         tblpanel_SCHED.Controls.Clear()
         resetSCHEDULETABLE()
@@ -177,7 +179,7 @@
 
 
             For Each task In getSUBJECTTASKS(subject(0))
-                subj_tasks_list.Items.Add(task(0) + " - " + task(1))
+                subj_tasks_list.Items.Add(task(0) + " - " + task(1)) 'Added task
                 Try
                     If Long.Parse(task(3)) < Now.Ticks Then
                         Dim lvi As New ListViewItem
@@ -198,8 +200,11 @@
                     lvi.Group = lvg
                     listbx_TASKLIST2.Items.Add(lvi)
                 End Try
-                TASK_LIST_SUBJECTID.Add(task(6))
+                TASK_LIST_SUBJECTID.Add(task(6)) 'Added task ID
+
+                pending_task_count += 1
             Next
+
             ''''''FOR TASK LIST PANEL''''''
 
             ''ADDING THE SUBJECT PANEL TO THE LIST OF PANELS
@@ -265,11 +270,29 @@
             flwpanel_SUBJECTS_DRAWER.Controls.Add(pane)
         Next
 
+        '''' Test Archive ''''
+        Dim lvg_arch As New ListViewGroup
+        lvg_arch.Header = "Done"
+        listbx_TASKLIST2.Groups.Add(lvg_arch)
+
+        For Each subject_a In SUBJECT_LIST
+            For Each arch_task In getSUBJECTTASKSARCHIVE(subject_a(0))
+                Dim lvi_A As New ListViewItem
+                lvi_A.Text = arch_task(5) + " - " + arch_task(0) + " - " + arch_task(1) + " - " + arch_task(4)
+                lvi_A.Font = New Font("Verdana", 10, FontStyle.Strikeout)
+                lvi_A.Group = lvg_arch
+                listbx_TASKLIST2.Items.Add(lvi_A)
+                TASK_LIST_SUBJECTID.Add(arch_task(6)) 'Added task ID
+            Next
+        Next
+        '''' Test Archive ''''
+
+
         Dim exc_panel As New Panel()
         exc_panel.Height = 200
         exc_panel.Width = 450
         flwpanel_SUBJECTS_DRAWER.Controls.Add(exc_panel)
-        lbl_NTASKS.Text = listbx_TASKLIST2.Items.Count.ToString + " tasks..."
+        lbl_NTASKS.Text = pending_task_count.ToString + " tasks..."
     End Sub
 
 
