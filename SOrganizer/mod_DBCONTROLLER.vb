@@ -264,6 +264,37 @@ Module mod_MYSQLDBCONTROLLER
 
     End Function
 
+    Public Function getSubjectName(ByVal SUBJECT_ID As String) As String
+
+        Dim output As String = ""
+
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+
+            With cmd
+                .Connection = con
+                .CommandText = "SELECT SUBJECT_NAME FROM subjects WHERE SUBJECT_ID = '" + SUBJECT_ID + "';"
+                .Prepare()
+                reader = .ExecuteReader
+            End With
+
+            While reader.Read
+                output = reader(0).ToString
+            End While
+
+            reader.Close()
+            con.Close()
+        Catch ex As Exception
+            reader.Close()
+            con.Close()
+            Console.WriteLine(ex.Message)
+        End Try
+
+        Return output
+
+    End Function
+
     Public Function getScheduleString(ByVal SUBJECT_ID As String) As List(Of List(Of String))
         Dim output As New List(Of List(Of String))
 
@@ -407,6 +438,41 @@ Module mod_MYSQLDBCONTROLLER
         Return output
     End Function
 
+    Public Function getTASK(ByVal TASK_ID As String) As List(Of String)
+        Dim col As New List(Of String)
+
+
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+            With cmd
+                .Connection = con
+                .CommandText = "SELECT * FROM subject_tasks WHERE TASK_ID = " + TASK_ID + ";"
+                .Prepare()
+                reader = .ExecuteReader
+            End With
+
+            While reader.Read
+                col.Add(reader(0).ToString) ' ID
+                col.Add(reader(1).ToString) ' SUBJECT ID
+                col.Add(reader(2).ToString) ' NAME
+                col.Add(reader(3).ToString) ' DESCRIPTION
+                col.Add(reader(4).ToString) ' DEADLINE DATE
+                col.Add(reader(5).ToString) ' DEADLINE TICKS
+                col.Add(reader(6).ToString) ' TERM
+            End While
+
+            reader.Close()
+            con.Close()
+        Catch ex As Exception
+            reader.Close()
+            con.Close()
+            Console.WriteLine(ex.Message)
+        End Try
+
+
+        Return col
+    End Function
 
     'DB INSERT
 
@@ -491,7 +557,7 @@ Module mod_MYSQLDBCONTROLLER
         End Try
     End Sub
 
-    
+
 
     'DB DELETE
 

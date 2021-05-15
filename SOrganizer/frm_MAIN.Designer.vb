@@ -328,8 +328,8 @@ Partial Class frm_MAIN
         Me.panel_MAIN_TASKS.Controls.Add(Me.btn_OPENADDTASK)
         Me.panel_MAIN_TASKS.Controls.Add(Me.btn_BACKTASK)
         Me.panel_MAIN_TASKS.Controls.Add(Me.Label3)
-        Me.panel_MAIN_TASKS.Controls.Add(Me.panel_TASKLISTPANEL)
         Me.panel_MAIN_TASKS.Controls.Add(Me.panel_ADDTASK)
+        Me.panel_MAIN_TASKS.Controls.Add(Me.panel_TASKLISTPANEL)
         Me.panel_MAIN_TASKS.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panel_MAIN_TASKS.Location = New System.Drawing.Point(0, 0)
         Me.panel_MAIN_TASKS.Name = "panel_MAIN_TASKS"

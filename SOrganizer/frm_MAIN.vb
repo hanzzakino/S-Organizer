@@ -741,6 +741,10 @@
 
 
     ''''TASK PANEL''''
+    Dim addingTASK As Boolean = True
+    Dim selectedTASK As New List(Of String)
+    Dim savedTask As Boolean = False
+
     'Subject Panel Buttons
     Private Sub btn_OPENADDTASK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_OPENADDTASK.Click
         btn_OPENADDTASK.Visible = False
@@ -753,56 +757,132 @@
         cmbx_SUBJECTNAME.Focus()
     End Sub
     Private Sub btn_BACKTASK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_BACKTASK.Click
-        btn_OPENADDTASK.Visible = True
-        btn_BACKTASK.Visible = False
+        If String.IsNullOrWhiteSpace(txt_TASKNAME.Text) Then
+            savedTask = True
+        End If
 
-        panel_ADDTASK.Visible = False
-        panel_TASKLISTPANEL.Visible = True
-        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Task"
+
+        If Not savedTask Then
+            If MessageBox.Show("Discard changes in Task Details?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                addingTASK = True
+                savedTask = False
+                btn_ADDNEWTASK.Text = "Add"
+                cmbx_SUBJECTNAME.Text = "<Select Subject>"
+                txt_TASKNAME.Clear()
+                txt_TASKDESC.Clear()
+                cmbx_TASKTERM.ResetText()
+
+                btn_OPENADDTASK.Visible = True
+                btn_BACKTASK.Visible = False
+
+                panel_ADDTASK.Visible = False
+                panel_TASKLISTPANEL.Visible = True
+                Me.lbl_CTRL_TITLE.Text = "Student Organizer - Task"
+            End If
+        Else
+            addingTASK = True
+            btn_ADDNEWTASK.Text = "Add"
+            cmbx_SUBJECTNAME.Text = "<Select Subject>"
+            txt_TASKNAME.Clear()
+            txt_TASKDESC.Clear()
+            cmbx_TASKTERM.ResetText()
+
+            btn_OPENADDTASK.Visible = True
+            btn_BACKTASK.Visible = False
+
+            panel_ADDTASK.Visible = False
+            panel_TASKLISTPANEL.Visible = True
+            Me.lbl_CTRL_TITLE.Text = "Student Organizer - Task"
+        End If
+
+
+        
+
+
+
     End Sub
 
     'Add Task Button
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ADDNEWTASK.Click
-
         lbl_LOADING.Visible = True
         Application.DoEvents()
-        Dim date_DEADLINE As New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
-        If cmbx_SUBJECTNAME.SelectedItem = Nothing Then
-            MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf String.IsNullOrWhiteSpace(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
-            MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf Not subjectExist(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
-            MessageBox.Show("Subject selected does not exist", "Invalid Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf String.IsNullOrWhiteSpace(txt_TASKNAME.Text) Then
-            MessageBox.Show("Please Enter a Task name", "Invalid Task Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf cb_NODEADLINE.Checked = False And date_DEADLINE.Ticks < Now.Ticks Then
-            MessageBox.Show("Invalid Deadline", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            If cb_NODEADLINE.Checked Then
-                If cmbx_TASKTERM.SelectedItem = Nothing Then
-                    addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, "", "", "", "0")
-                Else
-                    addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, "", "", cmbx_TASKTERM.SelectedItem.ToString, "0")
-                End If
+
+        If addingTASK Then
+            ''Add task''
+            Dim date_DEADLINE As New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
+            If cmbx_SUBJECTNAME.SelectedItem = Nothing Then
+                MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
+                MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf Not subjectExist(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
+                MessageBox.Show("Subject selected does not exist", "Invalid Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(txt_TASKNAME.Text) Then
+                MessageBox.Show("Please Enter a Task name", "Invalid Task Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf cb_NODEADLINE.Checked = False And date_DEADLINE.Ticks < Now.Ticks Then
+                MessageBox.Show("Invalid Deadline", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                If cmbx_TASKTERM.SelectedItem = Nothing Then
-                    addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, date_DEADLINE.ToString, date_DEADLINE.Ticks, "", "0")
+                If cb_NODEADLINE.Checked Then
+                    If cmbx_TASKTERM.SelectedItem = Nothing Then
+                        addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, "", "", "", "0")
+                    Else
+                        addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, "", "", cmbx_TASKTERM.SelectedItem.ToString, "0")
+                    End If
                 Else
-                    addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, date_DEADLINE.ToString, date_DEADLINE.Ticks, cmbx_TASKTERM.SelectedItem.ToString, "0")
+                    If cmbx_TASKTERM.SelectedItem = Nothing Then
+                        addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, date_DEADLINE.ToString, date_DEADLINE.Ticks, "", "0")
+                    Else
+                        addTASK(getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, date_DEADLINE.ToString, date_DEADLINE.Ticks, cmbx_TASKTERM.SelectedItem.ToString, "0")
+                    End If
                 End If
+
+
+                init_SUBJECTLIST(False)
+                MessageBox.Show("New Task Added - " + txt_TASKNAME.Text + " Deadline: " + date_DEADLINE.ToString, "Task Added", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                cmbx_SUBJECTNAME.Text = "<Select Subject>"
+                txt_TASKNAME.Clear()
+                txt_TASKDESC.Clear()
+                cmbx_TASKTERM.ResetText()
             End If
+            ''Add task''
+        Else
+            ''Update task''
+            Dim date_DEADLINE As New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
+            If cmbx_SUBJECTNAME.SelectedItem = Nothing Then
+                MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
+                MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf Not subjectExist(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
+                MessageBox.Show("Subject selected does not exist", "Invalid Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(txt_TASKNAME.Text) Then
+                MessageBox.Show("Please Enter a Task name", "Invalid Task Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf cb_NODEADLINE.Checked = False And date_DEADLINE.Ticks < Now.Ticks Then
+                MessageBox.Show("Invalid Deadline", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                If cb_NODEADLINE.Checked Then
+                    If cmbx_TASKTERM.SelectedItem = Nothing Then
+                        updateTASK(selectedTASK(0), getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, "", "", "", "0")
+                    Else
+                        updateTASK(selectedTASK(0), getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, "", "", cmbx_TASKTERM.SelectedItem.ToString, "0")
+                    End If
+                Else
+                    If cmbx_TASKTERM.SelectedItem = Nothing Then
+                        updateTASK(selectedTASK(0), getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, date_DEADLINE.ToString, date_DEADLINE.Ticks, "", "0")
+                    Else
+                        updateTASK(selectedTASK(0), getSubjectID(cmbx_SUBJECTNAME.SelectedItem.ToString), txt_TASKNAME.Text, txt_TASKDESC.Text, date_DEADLINE.ToString, date_DEADLINE.Ticks, cmbx_TASKTERM.SelectedItem.ToString, "0")
+                    End If
+                End If
 
+                init_SUBJECTLIST(False)
+                MessageBox.Show("Task Updated - " + txt_TASKNAME.Text + " Deadline: " + date_DEADLINE.ToString, "Task Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                savedTask = True
 
-            init_SUBJECTLIST(False)
-            MessageBox.Show("New Task Added - " + txt_TASKNAME.Text + " Deadline: " + date_DEADLINE.ToString, "Task Added", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            txt_TASKNAME.Clear()
-            txt_TASKDESC.Clear()
-            cmbx_SUBJECTNAME.ResetText()
-            cmbx_TASKTERM.ResetText()
-
+            End If
+            
+            ''Update task''
         End If
 
-        lbl_LOADING.Visible = False
+
+            lbl_LOADING.Visible = False
     End Sub
 
     'Archive Task button
@@ -855,6 +935,37 @@
             date_DEADLINETIME.Enabled = True
         End If
     End Sub
+
+    Private Sub listbx_TASKLIST2_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles listbx_TASKLIST2.DoubleClick
+        selectedTASK = getTASK(TASK_LIST_SUBJECTID(listbx_TASKLIST2.SelectedIndices.Item(0)).ToString)
+        addingTASK = False
+        btn_ADDNEWTASK.Text = "Save"
+        cmbx_SUBJECTNAME.Text = getSubjectName(selectedTASK(1))
+        txt_TASKNAME.Text = selectedTASK(2)
+        txt_TASKDESC.Text = selectedTASK(3)
+        cmbx_TASKTERM.Text = selectedTASK(6)
+
+        If Not String.IsNullOrWhiteSpace(selectedTASK(5)) Then
+            date_DEADLINEDATE.Value = New Date(Long.Parse(selectedTASK(5)))
+            date_DEADLINETIME.Value = New Date(Long.Parse(selectedTASK(5)))
+        Else
+            cb_NODEADLINE.CheckState = CheckState.Checked
+        End If
+
+        btn_OPENADDTASK.Visible = False
+        btn_BACKTASK.Visible = True
+
+        panel_ADDTASK.Visible = True
+        panel_TASKLISTPANEL.Visible = False
+        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Task - Edit"
+
+        cmbx_SUBJECTNAME.Focus()
+    End Sub
+
+    Private Sub txt_TASKNAME_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_TASKNAME.TextChanged
+        savedTask = False
+    End Sub
+
     ''''TASK PANEL''''
 
 
@@ -1033,6 +1144,11 @@
     Private Sub cb_NODEADLINE_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cb_NODEADLINE.KeyDown
         If e.KeyCode = 13 Then
             btn_ADDNEWTASK.PerformClick()
+        End If
+    End Sub
+    Private Sub listbx_TASKLIST2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles listbx_TASKLIST2.KeyDown
+        If e.KeyCode = Keys.Delete Then
+            btn_DELETETASK.PerformClick()
         End If
     End Sub
     ''ADD NOTE
@@ -1388,6 +1504,13 @@
 
     End Sub
 
-   
+
+
+    
+    
+
+
+    
+    
     
 End Class
