@@ -491,23 +491,7 @@ Module mod_MYSQLDBCONTROLLER
         End Try
     End Sub
 
-    Public Sub updateNote(ByVal NOTE_TITLE As String, ByVal NOTE_CONTENT As String)
-        Try
-            con.Open()
-            Dim cmd As New MySqlCommand()
-
-            With cmd
-                .Connection = con
-                .CommandText = "UPDATE subject_notes SET NOTE_CONTENT='" + NOTE_CONTENT + "' WHERE NOTE_TITLE='" + NOTE_TITLE + "';"
-                .Prepare()
-                .ExecuteNonQuery()
-            End With
-            con.Close()
-        Catch ex As Exception
-            con.Close()
-            Console.WriteLine(ex.Message)
-        End Try
-    End Sub
+    
 
     'DB DELETE
 
@@ -635,6 +619,50 @@ Module mod_MYSQLDBCONTROLLER
             con.Close()
         End Try
     End Sub
+
+    Public Sub updateNote(ByVal NOTE_TITLE As String, ByVal NOTE_CONTENT As String)
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+
+            With cmd
+                .Connection = con
+                .CommandText = "UPDATE subject_notes SET NOTE_CONTENT='" + NOTE_CONTENT + "' WHERE NOTE_TITLE='" + NOTE_TITLE + "';"
+                .Prepare()
+                .ExecuteNonQuery()
+            End With
+            con.Close()
+        Catch ex As Exception
+            con.Close()
+            Console.WriteLine(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub updateTASK(ByVal TASK_ID As String, ByVal SUBJECT_ID As String, ByVal TASK_NAME As String, ByVal TASK_DESCRIPTION As String, ByVal TASK_DEADLINE_DATE As String, ByVal TASK_DEADLINE_TICKS As String, ByVal TASK_TERM As String, ByVal STATUS As String)
+        Dim cmdtxt As String
+        If String.IsNullOrWhiteSpace(TASK_DEADLINE_DATE) Then
+            cmdtxt = "UPDATE subject_tasks SET `SUBJECT_ID`= '" + SUBJECT_ID + "', `TASK_NAME`= '" + TASK_NAME + "', `TASK_DESCRIPTION`= '" + TASK_DESCRIPTION + "', `TASK_TERM`= '" + TASK_TERM + "', `STATUS`= '" + STATUS + "' WHERE TASK_ID = " + TASK_ID + ";"
+        Else
+            cmdtxt = "UPDATE subject_tasks SET `SUBJECT_ID`= '" + SUBJECT_ID + "', `TASK_NAME`= '" + TASK_NAME + "', `TASK_DESCRIPTION`= '" + TASK_DESCRIPTION + "', `TASK_TERM`= '" + TASK_TERM + "', `TASK_DEADLINE_DATE`= '" + TASK_DEADLINE_DATE + "', `TASK_DEADLINE_TICKS`= '" + TASK_DEADLINE_TICKS + "', `TASK_TERM`= '" + TASK_TERM + "', `STATUS`= '" + STATUS + "' WHERE TASK_ID = " + TASK_ID + ";"
+        End If
+
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+            With cmd
+                .Connection = con
+                .CommandText = cmdtxt
+                .Prepare()
+                .ExecuteNonQuery()
+            End With
+            con.Close()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+            con.Close()
+        End Try
+    End Sub
+
+
 
 
     'CONVERTIONS

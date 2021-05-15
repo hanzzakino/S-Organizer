@@ -26,6 +26,13 @@
         init_DBCONNECTION()
         frm_LoadingScreen.ProgressBar_main.Value = 40
 
+
+        '''' TEST '''''
+
+
+        '''''''''''''''
+
+
         frm_LoadingScreen.lbl_LOADING.Text = "Initializing Subjects..."
         Application.DoEvents()
         init_SUBJECTLIST(True)
@@ -60,9 +67,7 @@
 
 
 
-        '''' TEST '''''
-
-        '''''''''''''''
+        
 
     End Sub
 
