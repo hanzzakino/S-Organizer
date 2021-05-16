@@ -807,9 +807,11 @@
         lbl_LOADING.Visible = True
         Application.DoEvents()
 
+        Dim date_DEADLINE As New Date()
+
         If addingTASK Then
             ''Add task''
-            Dim date_DEADLINE As New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
+            date_DEADLINE = New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
             If cmbx_SUBJECTNAME.SelectedItem = Nothing Then
                 MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf String.IsNullOrWhiteSpace(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
@@ -846,7 +848,7 @@
             ''Add task''
         Else
             ''Update task''
-            Dim date_DEADLINE As New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
+            date_DEADLINE = New Date(date_DEADLINEDATE.Value.Year, date_DEADLINEDATE.Value.Month, date_DEADLINEDATE.Value.Day, date_DEADLINETIME.Value.Hour, date_DEADLINETIME.Value.Minute, 0)
             If cmbx_SUBJECTNAME.SelectedItem = Nothing Then
                 MessageBox.Show("Select Subject", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf String.IsNullOrWhiteSpace(cmbx_SUBJECTNAME.SelectedItem.ToString) Then
