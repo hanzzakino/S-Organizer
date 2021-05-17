@@ -686,6 +686,25 @@ Module mod_MYSQLDBCONTROLLER
         End Try
     End Sub
 
+    Public Sub unarchiveTASK(ByVal TASK_ID As Integer)
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+
+            With cmd
+                .Connection = con
+                .CommandText = "UPDATE subject_tasks SET STATUS=0 WHERE TASK_ID=" + TASK_ID.ToString + ";"
+                ' STATUS 1 IS ARCHIVED
+                .Prepare()
+                .ExecuteNonQuery()
+            End With
+            con.Close()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+            con.Close()
+        End Try
+    End Sub
+
     Public Sub updateNote(ByVal NOTE_TITLE As String, ByVal NOTE_CONTENT As String)
         Try
             con.Open()
@@ -723,12 +742,36 @@ Module mod_MYSQLDBCONTROLLER
             End With
             con.Close()
         Catch ex As Exception
-            Console.WriteLine(ex.Message)
             con.Close()
+            Console.WriteLine(ex.Message)
         End Try
     End Sub
 
+    Public Sub updateSubject(ByVal SUBJECT_ID As String, ByVal SUBJECT_NAME As String, ByVal DAY As String, ByVal TFROM As Double, ByVal TTO As Double)
+        Try
+            con.Open()
+            Dim cmd As New MySqlCommand()
+            With cmd
+                .Connection = con
+                .CommandText = "UPDATE subjects SET  `SUBJECT_NAME` = '" + SUBJECT_NAME + "' WHERE `SUBJECT_ID` = '" + SUBJECT_ID + "' ;"
+                .Prepare()
+                .ExecuteNonQuery()
+            End With
 
+            Dim cmd2 As New MySqlCommand()
+            With cmd2
+                .Connection = con
+                .CommandText = "UPDATE subject_schedules SET DAY = '" + DAY + "' , TFROM = '" + TFROM.ToString + "' , TTO = '" + TTO.ToString + "' WHERE `SUBJECT_ID` = '" + SUBJECT_ID + "'"
+                .Prepare()
+                .ExecuteNonQuery()
+            End With
+
+            con.Close()
+        Catch ex As Exception
+            con.Close()
+            Console.WriteLine(ex.Message)
+        End Try
+    End Sub
 
 
     'CONVERTIONS

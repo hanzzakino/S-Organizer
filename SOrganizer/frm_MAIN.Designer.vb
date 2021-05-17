@@ -38,13 +38,6 @@ Partial Class frm_MAIN
         Me.btn_OPENADDTASK = New System.Windows.Forms.Button()
         Me.btn_BACKTASK = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.panel_TASKLISTPANEL = New System.Windows.Forms.Panel()
-        Me.btn_DELETETASK = New System.Windows.Forms.Button()
-        Me.lbl_NTASKS = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.listbx_TASKLIST2 = New System.Windows.Forms.ListView()
-        Me.btn_ARCHIVETASK = New System.Windows.Forms.Button()
         Me.panel_ADDTASK = New System.Windows.Forms.Panel()
         Me.cb_NODEADLINE = New System.Windows.Forms.CheckBox()
         Me.btn_ADDNEWTASK = New System.Windows.Forms.Button()
@@ -59,6 +52,13 @@ Partial Class frm_MAIN
         Me.cmbx_SUBJECTNAME = New System.Windows.Forms.ComboBox()
         Me.txt_TASKNAME = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.panel_TASKLISTPANEL = New System.Windows.Forms.Panel()
+        Me.btn_DELETETASK = New System.Windows.Forms.Button()
+        Me.lbl_NTASKS = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.listbx_TASKLIST2 = New System.Windows.Forms.ListView()
+        Me.btn_ARCHIVETASK = New System.Windows.Forms.Button()
         Me.panel_MAIN_NOTES = New System.Windows.Forms.Panel()
         Me.btn_OPENADDNOTE = New System.Windows.Forms.Button()
         Me.btn_NOTESBACK = New System.Windows.Forms.Button()
@@ -122,9 +122,9 @@ Partial Class frm_MAIN
         Me.panel_MENU.SuspendLayout()
         Me.panel_ACCOUNTINFO.SuspendLayout()
         Me.panel_MAIN_TASKS.SuspendLayout()
+        Me.panel_ADDTASK.SuspendLayout()
         Me.panel_TASKLISTPANEL.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.panel_ADDTASK.SuspendLayout()
         Me.panel_MAIN_NOTES.SuspendLayout()
         Me.panel_NOTESLIST.SuspendLayout()
         Me.panel_NOTEEDITOR.SuspendLayout()
@@ -154,10 +154,10 @@ Partial Class frm_MAIN
         '
         'splitCon_MAIN.Panel2
         '
+        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SUBJECTS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_TASKS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_NOTES)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SCHEDS)
-        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SUBJECTS)
         Me.splitCon_MAIN.Size = New System.Drawing.Size(700, 530)
         Me.splitCon_MAIN.SplitterDistance = 200
         Me.splitCon_MAIN.TabIndex = 0
@@ -388,102 +388,6 @@ Partial Class frm_MAIN
         Me.Label3.Text = "Tasks"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'panel_TASKLISTPANEL
-        '
-        Me.panel_TASKLISTPANEL.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panel_TASKLISTPANEL.Controls.Add(Me.btn_DELETETASK)
-        Me.panel_TASKLISTPANEL.Controls.Add(Me.lbl_NTASKS)
-        Me.panel_TASKLISTPANEL.Controls.Add(Me.Panel2)
-        Me.panel_TASKLISTPANEL.Controls.Add(Me.listbx_TASKLIST2)
-        Me.panel_TASKLISTPANEL.Controls.Add(Me.btn_ARCHIVETASK)
-        Me.panel_TASKLISTPANEL.Location = New System.Drawing.Point(0, 100)
-        Me.panel_TASKLISTPANEL.Name = "panel_TASKLISTPANEL"
-        Me.panel_TASKLISTPANEL.Size = New System.Drawing.Size(496, 430)
-        Me.panel_TASKLISTPANEL.TabIndex = 100
-        '
-        'btn_DELETETASK
-        '
-        Me.btn_DELETETASK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_DELETETASK.BackColor = System.Drawing.Color.LightCoral
-        Me.btn_DELETETASK.FlatAppearance.BorderSize = 0
-        Me.btn_DELETETASK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red
-        Me.btn_DELETETASK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btn_DELETETASK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_DELETETASK.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_DELETETASK.ForeColor = System.Drawing.Color.White
-        Me.btn_DELETETASK.Location = New System.Drawing.Point(240, 375)
-        Me.btn_DELETETASK.Name = "btn_DELETETASK"
-        Me.btn_DELETETASK.Size = New System.Drawing.Size(110, 30)
-        Me.btn_DELETETASK.TabIndex = 5
-        Me.btn_DELETETASK.Text = "Delete"
-        Me.btn_DELETETASK.UseVisualStyleBackColor = False
-        '
-        'lbl_NTASKS
-        '
-        Me.lbl_NTASKS.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lbl_NTASKS.AutoSize = True
-        Me.lbl_NTASKS.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_NTASKS.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.lbl_NTASKS.Location = New System.Drawing.Point(20, 325)
-        Me.lbl_NTASKS.Name = "lbl_NTASKS"
-        Me.lbl_NTASKS.Size = New System.Drawing.Size(65, 17)
-        Me.lbl_NTASKS.TabIndex = 4
-        Me.lbl_NTASKS.Text = "0 tasks..."
-        '
-        'Panel2
-        '
-        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.Label17)
-        Me.Panel2.Location = New System.Drawing.Point(15, 360)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(166, 25)
-        Me.Panel2.TabIndex = 3
-        '
-        'Label17
-        '
-        Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(4, 2)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(159, 20)
-        Me.Label17.TabIndex = 0
-        Me.Label17.Text = "*Missed the Deadline"
-        '
-        'listbx_TASKLIST2
-        '
-        Me.listbx_TASKLIST2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.listbx_TASKLIST2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.listbx_TASKLIST2.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.listbx_TASKLIST2.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.listbx_TASKLIST2.Location = New System.Drawing.Point(15, 10)
-        Me.listbx_TASKLIST2.Name = "listbx_TASKLIST2"
-        Me.listbx_TASKLIST2.Size = New System.Drawing.Size(465, 311)
-        Me.listbx_TASKLIST2.TabIndex = 0
-        Me.listbx_TASKLIST2.TileSize = New System.Drawing.Size(400, 50)
-        Me.listbx_TASKLIST2.UseCompatibleStateImageBehavior = False
-        Me.listbx_TASKLIST2.View = System.Windows.Forms.View.Tile
-        '
-        'btn_ARCHIVETASK
-        '
-        Me.btn_ARCHIVETASK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_ARCHIVETASK.BackColor = System.Drawing.Color.CadetBlue
-        Me.btn_ARCHIVETASK.FlatAppearance.BorderSize = 0
-        Me.btn_ARCHIVETASK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_ARCHIVETASK.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ARCHIVETASK.ForeColor = System.Drawing.Color.White
-        Me.btn_ARCHIVETASK.Location = New System.Drawing.Point(370, 375)
-        Me.btn_ARCHIVETASK.Name = "btn_ARCHIVETASK"
-        Me.btn_ARCHIVETASK.Size = New System.Drawing.Size(110, 30)
-        Me.btn_ARCHIVETASK.TabIndex = 1
-        Me.btn_ARCHIVETASK.Text = "Archive"
-        Me.btn_ARCHIVETASK.UseVisualStyleBackColor = False
-        '
         'panel_ADDTASK
         '
         Me.panel_ADDTASK.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -668,6 +572,102 @@ Partial Class frm_MAIN
         Me.Label12.Size = New System.Drawing.Size(99, 26)
         Me.Label12.TabIndex = 0
         Me.Label12.Text = "Subject:"
+        '
+        'panel_TASKLISTPANEL
+        '
+        Me.panel_TASKLISTPANEL.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_TASKLISTPANEL.Controls.Add(Me.btn_DELETETASK)
+        Me.panel_TASKLISTPANEL.Controls.Add(Me.lbl_NTASKS)
+        Me.panel_TASKLISTPANEL.Controls.Add(Me.Panel2)
+        Me.panel_TASKLISTPANEL.Controls.Add(Me.listbx_TASKLIST2)
+        Me.panel_TASKLISTPANEL.Controls.Add(Me.btn_ARCHIVETASK)
+        Me.panel_TASKLISTPANEL.Location = New System.Drawing.Point(0, 100)
+        Me.panel_TASKLISTPANEL.Name = "panel_TASKLISTPANEL"
+        Me.panel_TASKLISTPANEL.Size = New System.Drawing.Size(496, 430)
+        Me.panel_TASKLISTPANEL.TabIndex = 100
+        '
+        'btn_DELETETASK
+        '
+        Me.btn_DELETETASK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_DELETETASK.BackColor = System.Drawing.Color.LightCoral
+        Me.btn_DELETETASK.FlatAppearance.BorderSize = 0
+        Me.btn_DELETETASK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red
+        Me.btn_DELETETASK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_DELETETASK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_DELETETASK.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_DELETETASK.ForeColor = System.Drawing.Color.White
+        Me.btn_DELETETASK.Location = New System.Drawing.Point(240, 375)
+        Me.btn_DELETETASK.Name = "btn_DELETETASK"
+        Me.btn_DELETETASK.Size = New System.Drawing.Size(110, 30)
+        Me.btn_DELETETASK.TabIndex = 5
+        Me.btn_DELETETASK.Text = "Delete"
+        Me.btn_DELETETASK.UseVisualStyleBackColor = False
+        '
+        'lbl_NTASKS
+        '
+        Me.lbl_NTASKS.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lbl_NTASKS.AutoSize = True
+        Me.lbl_NTASKS.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_NTASKS.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.lbl_NTASKS.Location = New System.Drawing.Point(20, 325)
+        Me.lbl_NTASKS.Name = "lbl_NTASKS"
+        Me.lbl_NTASKS.Size = New System.Drawing.Size(65, 17)
+        Me.lbl_NTASKS.TabIndex = 4
+        Me.lbl_NTASKS.Text = "0 tasks..."
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.Label17)
+        Me.Panel2.Location = New System.Drawing.Point(15, 360)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(166, 25)
+        Me.Panel2.TabIndex = 3
+        '
+        'Label17
+        '
+        Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(4, 2)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(159, 20)
+        Me.Label17.TabIndex = 0
+        Me.Label17.Text = "*Missed the Deadline"
+        '
+        'listbx_TASKLIST2
+        '
+        Me.listbx_TASKLIST2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.listbx_TASKLIST2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.listbx_TASKLIST2.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.listbx_TASKLIST2.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.listbx_TASKLIST2.Location = New System.Drawing.Point(15, 10)
+        Me.listbx_TASKLIST2.Name = "listbx_TASKLIST2"
+        Me.listbx_TASKLIST2.Size = New System.Drawing.Size(465, 311)
+        Me.listbx_TASKLIST2.TabIndex = 0
+        Me.listbx_TASKLIST2.TileSize = New System.Drawing.Size(400, 50)
+        Me.listbx_TASKLIST2.UseCompatibleStateImageBehavior = False
+        Me.listbx_TASKLIST2.View = System.Windows.Forms.View.Tile
+        '
+        'btn_ARCHIVETASK
+        '
+        Me.btn_ARCHIVETASK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_ARCHIVETASK.BackColor = System.Drawing.Color.CadetBlue
+        Me.btn_ARCHIVETASK.FlatAppearance.BorderSize = 0
+        Me.btn_ARCHIVETASK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_ARCHIVETASK.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ARCHIVETASK.ForeColor = System.Drawing.Color.White
+        Me.btn_ARCHIVETASK.Location = New System.Drawing.Point(370, 375)
+        Me.btn_ARCHIVETASK.Name = "btn_ARCHIVETASK"
+        Me.btn_ARCHIVETASK.Size = New System.Drawing.Size(110, 30)
+        Me.btn_ARCHIVETASK.TabIndex = 1
+        Me.btn_ARCHIVETASK.Text = "Archive"
+        Me.btn_ARCHIVETASK.UseVisualStyleBackColor = False
         '
         'panel_MAIN_NOTES
         '
@@ -1499,12 +1499,12 @@ Partial Class frm_MAIN
         Me.panel_ACCOUNTINFO.PerformLayout()
         Me.panel_MAIN_TASKS.ResumeLayout(False)
         Me.panel_MAIN_TASKS.PerformLayout()
+        Me.panel_ADDTASK.ResumeLayout(False)
+        Me.panel_ADDTASK.PerformLayout()
         Me.panel_TASKLISTPANEL.ResumeLayout(False)
         Me.panel_TASKLISTPANEL.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.panel_ADDTASK.ResumeLayout(False)
-        Me.panel_ADDTASK.PerformLayout()
         Me.panel_MAIN_NOTES.ResumeLayout(False)
         Me.panel_MAIN_NOTES.PerformLayout()
         Me.panel_NOTESLIST.ResumeLayout(False)

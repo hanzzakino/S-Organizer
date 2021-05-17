@@ -29,6 +29,7 @@
 
         '''' TEST '''''
 
+        'updateSubject("TEST1", "UPDATED TEST", "MONDAY", "8", "9")
 
         '''''''''''''''
 
@@ -744,6 +745,7 @@
     Dim addingTASK As Boolean = True
     Dim selectedTASK As New List(Of String)
     Dim savedTask As Boolean = False
+    Dim isArchived As Boolean = False
 
     'Subject Panel Buttons
     Private Sub btn_OPENADDTASK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_OPENADDTASK.Click
@@ -894,18 +896,31 @@
         Application.DoEvents()
 
         If listbx_TASKLIST2.SelectedItems.Count > 0 Then
-            If MessageBox.Show("Arhive Selected Task(s)?", "Remove Taks", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                For Each task_id In listbx_TASKLIST2.SelectedIndices
-                    archiveTASK(CInt(TASK_LIST_SUBJECTID(task_id)))
-                Next
-                init_SUBJECTLIST(False)
-                MessageBox.Show("Tasks arhived", "Task", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        Else
-            MessageBox.Show("Select Task to Archive", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        lbl_LOADING.Visible = False
 
+            If Not isArchived Then
+                If MessageBox.Show("Arhive Selected Task(s)?", "Archive Taks", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    For Each task_id In listbx_TASKLIST2.SelectedIndices
+                        archiveTASK(CInt(TASK_LIST_SUBJECTID(task_id)))
+                    Next
+                    init_SUBJECTLIST(False)
+                    MessageBox.Show("Tasks arhived", "Task", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Else
+                If MessageBox.Show("Unarhive Selected Task(s)?", "Unarhive Taks", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    For Each task_id In listbx_TASKLIST2.SelectedIndices
+                        unarchiveTASK(CInt(TASK_LIST_SUBJECTID(task_id)))
+                    Next
+                    init_SUBJECTLIST(False)
+                    MessageBox.Show("Tasks unarhived", "Task", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End If
+
+        Else
+            MessageBox.Show("Select Task to Archive/Unarchive", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+
+        lbl_LOADING.Visible = False
     End Sub
 
     'Remove Task Button
@@ -966,6 +981,21 @@
 
     Private Sub txt_TASKNAME_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_TASKNAME.TextChanged
         savedTask = False
+    End Sub
+
+    Private Sub listbx_TASKLIST2_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles listbx_TASKLIST2.SelectedIndexChanged
+        Try
+            If listbx_TASKLIST2.SelectedItems.Item(0).Group.ToString() = "Done" Then
+                btn_ARCHIVETASK.Text = "Unarchive"
+                isArchived = True
+            Else
+                btn_ARCHIVETASK.Text = "Archive"
+                isArchived = False
+            End If
+        Catch ex As Exception
+            btn_ARCHIVETASK.Text = "Archive"
+            isArchived = False
+        End Try
     End Sub
 
     ''''TASK PANEL''''
@@ -1515,4 +1545,6 @@
     
     
     
+    
+
 End Class
