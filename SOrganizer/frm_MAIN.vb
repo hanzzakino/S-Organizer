@@ -3,6 +3,7 @@
     Dim SUBJECT_LIST As New List(Of List(Of String))
     Dim TASK_LIST_SUBJECTID As New List(Of String)
 
+    'Defaut Colors
     Dim colr_lightest As Color = Color.Snow
     Dim colr_lighter As Color = Color.Aquamarine
     Dim colr_light As Color = Color.Azure
@@ -29,7 +30,7 @@
 
         '''' TEST '''''
 
-        'updateSubject("TEST1", "UPDATED TEST", "MONDAY", "8", "9")
+        'changeTHEME("dark")
 
         '''''''''''''''
 
@@ -37,8 +38,7 @@
         frm_LoadingScreen.lbl_LOADING.Text = "Initializing Subjects..."
         Application.DoEvents()
         init_SUBJECTLIST(True)
-        'Progress bar value is incremented inside the init_SUBJECTLIST()
-        'frm_LoadingScreen.ProgressBar_main.Value = 70
+        
 
         frm_LoadingScreen.lbl_LOADING.Text = "Initializing Notes..."
         Application.DoEvents()
@@ -55,7 +55,7 @@
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
 
-        'changeTHEME("dark")
+
 
         frm_LoadingScreen.ProgressBar_main.Value = 100
 
@@ -602,8 +602,6 @@
         Next
     End Sub
 
-
-
     ''''CONTROL BAR''''
 
 
@@ -750,9 +748,9 @@
             ElseIf String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
                 MessageBox.Show("Empty Field", "Invalid Subject Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf time_SCHEDFROM.Value.Hour = time_SCHEDTO.Value.Hour And time_SCHEDFROM.Value.Minute >= time_SCHEDTO.Value.Minute Then
-                MessageBox.Show("Invalid Time PeriodA", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Invalid Time Period", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf time_SCHEDFROM.Value.Hour > time_SCHEDTO.Value.Hour Then
-                MessageBox.Show("Invalid Time PeriodB", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Invalid Time Period", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 Dim o_str As String = addSUBJECT(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text)
 
@@ -786,9 +784,9 @@
             ElseIf String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
                 MessageBox.Show("Empty Field", "Invalid Subject Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf time_SCHEDFROM.Value.Hour = time_SCHEDTO.Value.Hour And time_SCHEDFROM.Value.Minute >= time_SCHEDTO.Value.Minute Then
-                MessageBox.Show("Invalid Time PeriodA", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Invalid Time Period", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf time_SCHEDFROM.Value.Hour > time_SCHEDTO.Value.Hour Then
-                MessageBox.Show("Invalid Time PeriodB", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Invalid Time Period", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 updateSubject(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
                 init_SUBJECTLIST(False)
@@ -846,7 +844,7 @@
         panel_REMOVESUBJECT.Visible = False
         panel_flwpanelContainer.Visible = False
         panel_ADDSUBJECT.Visible = True
-        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects - Add"
+        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects - Edit"
 
     End Sub
 
