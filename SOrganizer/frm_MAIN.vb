@@ -130,6 +130,25 @@
             brder_panel.Left = 0
             brder_panel.BackColor = colr_darker
 
+            '' Test''
+            subj_panel.Name = subject(0)
+            Dim btn_EDITSUB As New Button()
+            btn_EDITSUB.Parent = subj_panel
+            btn_EDITSUB.Text = "Edit"
+            btn_EDITSUB.Top = 170
+            btn_EDITSUB.Left = 380
+            btn_EDITSUB.Height = 20
+            btn_EDITSUB.Width = 50
+            btn_EDITSUB.FlatStyle = FlatStyle.Flat
+            btn_EDITSUB.BackColor = colr_light
+            btn_EDITSUB.ForeColor = colr_darkest
+            btn_EDITSUB.Font = New Font("Verdana", 6, FontStyle.Bold)
+            btn_EDITSUB.TabStop = False
+
+            AddHandler btn_EDITSUB.Click, AddressOf editSub_Click
+
+            '' Test''
+
 
             Dim subj_label As New Label()
             subj_label.Parent = subj_panel
@@ -166,6 +185,7 @@
             subj_sched_list.Font = New Font("Verdana", 10, FontStyle.Bold)
             subj_sched_list.SelectionMode = SelectionMode.None
             subj_sched_list.TabStop = False
+
 
             For Each sched In getScheduleString(subject(0))
                 subj_sched_list.Items.Add(sched(0))
@@ -640,6 +660,9 @@
 
 
     ''''SUBJECTS PANEL''''
+    Dim addingSUBJ As Boolean = True
+    Dim savedSUBJ As Boolean = False
+
     'Subject Panel Buttons
     Private Sub btn_OPENADDSUBJECT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_OPENADDSUBJECT.Click
         btn_OPENADDSUBJECT.Visible = False
@@ -654,17 +677,53 @@
         txt_SUBJECTID.Focus()
     End Sub
     Private Sub btn_ADDSUBJECTBACK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_ADDSUBJECTBACK.Click
-        btn_OPENADDSUBJECT.Visible = True
-        btn_ADDSUBJECTBACK.Visible = False
-        btn_OPENREMOVESUBJECT.Visible = True
+        If String.IsNullOrWhiteSpace(txt_SUBJECTID.Text) And String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
+            savedSUBJ = True
+        End If
 
-        panel_flwpanelContainer.Visible = True
-        panel_ADDSUBJECT.Visible = False
-        panel_REMOVESUBJECT.Visible = False
-        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects"
+        If Not savedSUBJ Then
+            If MessageBox.Show("Discard changes in Subject Details?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                addingSUBJ = True
+                savedSUBJ = False
 
-        txt_SUBJECTID.Clear()
-        txt_SUBJECTNAME.Clear()
+                btn_ADDSUBJECT.Text = "Add"
+                txt_SUBJECTID.Enabled = True
+
+
+                btn_OPENADDSUBJECT.Visible = True
+                btn_ADDSUBJECTBACK.Visible = False
+                btn_OPENREMOVESUBJECT.Visible = True
+
+                panel_flwpanelContainer.Visible = True
+                panel_ADDSUBJECT.Visible = False
+                panel_REMOVESUBJECT.Visible = False
+                Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects"
+
+                txt_SUBJECTID.Clear()
+                txt_SUBJECTNAME.Clear()
+            End If
+        Else
+            addingSUBJ = True
+            savedSUBJ = False
+
+            btn_ADDSUBJECT.Text = "Add"
+            txt_SUBJECTID.Enabled = True
+
+
+            btn_OPENADDSUBJECT.Visible = True
+            btn_ADDSUBJECTBACK.Visible = False
+            btn_OPENREMOVESUBJECT.Visible = True
+
+            panel_flwpanelContainer.Visible = True
+            panel_ADDSUBJECT.Visible = False
+            panel_REMOVESUBJECT.Visible = False
+            Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects"
+
+            txt_SUBJECTID.Clear()
+            txt_SUBJECTNAME.Clear()
+        End If
+
+        
     End Sub
     Private Sub btn_OPENREMOVESUBJECT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_OPENREMOVESUBJECT.Click
         btn_OPENREMOVESUBJECT.Visible = False
@@ -681,40 +740,64 @@
     Private Sub btn_ADDSUBJECT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ADDSUBJECT.Click
         lbl_LOADING.Visible = True
         Application.DoEvents()
-        If String.IsNullOrWhiteSpace(txt_SUBJECTID.Text) Then
-            MessageBox.Show("Empty Field", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txt_SUBJECTID.Text.Contains(" ") Then
-            MessageBox.Show("Remove spaces in Subject Subject ID", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
-            MessageBox.Show("Empty Field", "Invalid Subject Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf time_SCHEDFROM.Value.Hour = time_SCHEDTO.Value.Hour And time_SCHEDFROM.Value.Minute >= time_SCHEDTO.Value.Minute Then
-            MessageBox.Show("Invalid Time PeriodA", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf time_SCHEDFROM.Value.Hour > time_SCHEDTO.Value.Hour Then
-            MessageBox.Show("Invalid Time PeriodB", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            Dim o_str As String = addSUBJECT(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text)
 
-            If o_str.Equals("Subject Code already Exist") Then
+        If addingSUBJ Then
+            ''ADD''
+            If String.IsNullOrWhiteSpace(txt_SUBJECTID.Text) Then
+                MessageBox.Show("Empty Field", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf txt_SUBJECTID.Text.Contains(" ") Then
+                MessageBox.Show("Remove spaces in Subject Subject ID", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
+                MessageBox.Show("Empty Field", "Invalid Subject Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf time_SCHEDFROM.Value.Hour = time_SCHEDTO.Value.Hour And time_SCHEDFROM.Value.Minute >= time_SCHEDTO.Value.Minute Then
+                MessageBox.Show("Invalid Time PeriodA", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf time_SCHEDFROM.Value.Hour > time_SCHEDTO.Value.Hour Then
+                MessageBox.Show("Invalid Time PeriodB", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                Dim o_str As String = addSUBJECT(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text)
 
-                If MessageBox.Show("Subject Code already Exist, Add the new schedule to the existing subject instead?", "Subject Exist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                If o_str.Equals("Subject Code already Exist") Then
+
+                    If MessageBox.Show("Subject Code already Exist, Add the new schedule to the existing subject instead?", "Subject Exist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                        addSubjSched(txt_SUBJECTID.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
+                        init_SUBJECTLIST(False)
+                        txt_SUBJECTID.Clear()
+                        txt_SUBJECTNAME.Clear()
+                        savedSUBJ = True
+                        MessageBox.Show("Schedule Added", "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+
+                Else
                     addSubjSched(txt_SUBJECTID.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
                     init_SUBJECTLIST(False)
                     txt_SUBJECTID.Clear()
                     txt_SUBJECTNAME.Clear()
-                    MessageBox.Show("Schedule Added", "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    savedSUBJ = True
+                    MessageBox.Show(o_str, "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
-
-            Else
-                addSubjSched(txt_SUBJECTID.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
-                init_SUBJECTLIST(False)
-                txt_SUBJECTID.Clear()
-                txt_SUBJECTNAME.Clear()
-                MessageBox.Show(o_str, "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
             End If
-
-
+            ''ADD''
+        Else
+            ''UPDATE''
+            If String.IsNullOrWhiteSpace(txt_SUBJECTID.Text) Then
+                MessageBox.Show("Empty Field", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf txt_SUBJECTID.Text.Contains(" ") Then
+                MessageBox.Show("Remove spaces in Subject Subject ID", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf String.IsNullOrWhiteSpace(txt_SUBJECTNAME.Text) Then
+                MessageBox.Show("Empty Field", "Invalid Subject Name", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf time_SCHEDFROM.Value.Hour = time_SCHEDTO.Value.Hour And time_SCHEDFROM.Value.Minute >= time_SCHEDTO.Value.Minute Then
+                MessageBox.Show("Invalid Time PeriodA", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf time_SCHEDFROM.Value.Hour > time_SCHEDTO.Value.Hour Then
+                MessageBox.Show("Invalid Time PeriodB", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                updateSubject(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
+                init_SUBJECTLIST(False)
+                savedSUBJ = True
+                MessageBox.Show("Schedule Updated", "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+            ''UPADTE''
         End If
+
         lbl_LOADING.Visible = False
     End Sub
 
@@ -737,6 +820,43 @@
 
         lbl_LOADING.Visible = False
     End Sub
+
+    'Edit Subject click
+    Protected Sub editSub_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim thisButton As Button = sender
+        Console.WriteLine(thisButton.Parent.Name + "clicked")
+
+        addingSUBJ = False
+
+        Dim selected_SUBJECT As List(Of List(Of String)) = getScheduleString(thisButton.Parent.Name)
+
+        btn_ADDSUBJECT.Text = "Save"
+        txt_SUBJECTID.Enabled = False
+        txt_SUBJECTID.Text = thisButton.Parent.Name
+        txt_SUBJECTNAME.Text = getSubjectName(thisButton.Parent.Name)
+        cmbx_DAY.Text = selected_SUBJECT(0).Item(0)
+        time_SCHEDFROM.Value = Date.Parse(selected_SUBJECT(0).Item(1))
+        time_SCHEDTO.Value = Date.Parse(selected_SUBJECT(0).Item(2))
+
+
+        btn_OPENADDSUBJECT.Visible = False
+        btn_OPENREMOVESUBJECT.Visible = False
+        btn_ADDSUBJECTBACK.Visible = True
+
+        panel_REMOVESUBJECT.Visible = False
+        panel_flwpanelContainer.Visible = False
+        panel_ADDSUBJECT.Visible = True
+        Me.lbl_CTRL_TITLE.Text = "Student Organizer - Subjects - Add"
+
+    End Sub
+
+    Private Sub txt_SUBJECTNAME_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_SUBJECTNAME.TextChanged
+        savedSUBJ = False
+    End Sub
+    Private Sub txt_SUBJECTID_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_SUBJECTID.TextChanged
+        savedSUBJ = False
+    End Sub
+
     ''''SUBJECTS PANEL''''
 
 
@@ -783,6 +903,7 @@
             End If
         Else
             addingTASK = True
+            savedTask = False
             btn_ADDNEWTASK.Text = "Add"
             cmbx_SUBJECTNAME.Text = "<Select Subject>"
             txt_TASKNAME.Clear()
@@ -804,7 +925,7 @@
 
     End Sub
 
-    'Add Task Button
+    'Add/update Task Button
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ADDNEWTASK.Click
         lbl_LOADING.Visible = True
         Application.DoEvents()
@@ -1128,6 +1249,11 @@
     Private Sub time_SCHEDTO_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles time_SCHEDTO.KeyDown
         If e.KeyCode = 13 Then
             btn_ADDSUBJECT.PerformClick()
+        End If
+    End Sub
+    Private Sub listbx_REMOVESUBJECTS_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles listbx_REMOVESUBJECTS.KeyDown
+        If e.KeyCode = Keys.Delete Then
+            btn_REMOVESUBJECTS.PerformClick()
         End If
     End Sub
     ''ADD TASK
@@ -1539,12 +1665,6 @@
 
 
     
-    
 
-
-    
-    
-    
-    
 
 End Class
