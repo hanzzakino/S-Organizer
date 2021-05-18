@@ -136,7 +136,7 @@
             btn_EDITSUB.Parent = subj_panel
             btn_EDITSUB.Text = "Edit"
             btn_EDITSUB.Top = 170
-            btn_EDITSUB.Left = 380
+            btn_EDITSUB.Left = 390
             btn_EDITSUB.Height = 20
             btn_EDITSUB.Width = 50
             btn_EDITSUB.FlatStyle = FlatStyle.Flat
