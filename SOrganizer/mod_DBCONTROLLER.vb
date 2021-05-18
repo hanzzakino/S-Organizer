@@ -726,11 +726,13 @@ Module mod_MYSQLDBCONTROLLER
     Public Sub updateTASK(ByVal TASK_ID As String, ByVal SUBJECT_ID As String, ByVal TASK_NAME As String, ByVal TASK_DESCRIPTION As String, ByVal TASK_DEADLINE_DATE As String, ByVal TASK_DEADLINE_TICKS As String, ByVal TASK_TERM As String, ByVal STATUS As String)
         Dim cmdtxt As String
         If String.IsNullOrWhiteSpace(TASK_DEADLINE_DATE) Then
-            cmdtxt = "UPDATE subject_tasks SET `SUBJECT_ID`= '" + SUBJECT_ID + "', `TASK_NAME`= '" + TASK_NAME + "', `TASK_DESCRIPTION`= '" + TASK_DESCRIPTION + "', `TASK_TERM`= '" + TASK_TERM + "', `STATUS`= '" + STATUS + "' WHERE TASK_ID = " + TASK_ID + ";"
-        Else
-            cmdtxt = "UPDATE subject_tasks SET `SUBJECT_ID`= '" + SUBJECT_ID + "', `TASK_NAME`= '" + TASK_NAME + "', `TASK_DESCRIPTION`= '" + TASK_DESCRIPTION + "', `TASK_TERM`= '" + TASK_TERM + "', `TASK_DEADLINE_DATE`= '" + TASK_DEADLINE_DATE + "', `TASK_DEADLINE_TICKS`= '" + TASK_DEADLINE_TICKS + "', `TASK_TERM`= '" + TASK_TERM + "', `STATUS`= '" + STATUS + "' WHERE TASK_ID = " + TASK_ID + ";"
-        End If
+            cmdtxt = "UPDATE subject_tasks SET `SUBJECT_ID`= '" + SUBJECT_ID + "', `TASK_NAME`= '" + TASK_NAME + "', `TASK_DESCRIPTION`= '" + TASK_DESCRIPTION + "', `TASK_TERM`= '" + TASK_TERM + "',  `STATUS`= '" + STATUS + "',`TASK_DEADLINE_DATE`='', `TASK_DEADLINE_TICKS`=NULL WHERE TASK_ID = " + TASK_ID + ";"
 
+        Else
+            cmdtxt = "UPDATE subject_tasks SET `SUBJECT_ID`= '" + SUBJECT_ID + "', `TASK_NAME`= '" + TASK_NAME + "', `TASK_DESCRIPTION`= '" + TASK_DESCRIPTION + "', `TASK_DEADLINE_DATE`= '" + TASK_DEADLINE_DATE + "', `TASK_DEADLINE_TICKS`= '" + TASK_DEADLINE_TICKS + "', `TASK_TERM`= '" + TASK_TERM + "', `STATUS`= '" + STATUS + "' WHERE TASK_ID = " + TASK_ID + ";"
+
+        End If
+        
         Try
             con.Open()
             Dim cmd As New MySqlCommand()

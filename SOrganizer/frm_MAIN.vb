@@ -891,6 +891,7 @@
                 txt_TASKNAME.Clear()
                 txt_TASKDESC.Clear()
                 cmbx_TASKTERM.ResetText()
+                cb_NODEADLINE.CheckState = CheckState.Unchecked
 
                 btn_OPENADDTASK.Visible = True
                 btn_BACKTASK.Visible = False
@@ -907,6 +908,7 @@
             txt_TASKNAME.Clear()
             txt_TASKDESC.Clear()
             cmbx_TASKTERM.ResetText()
+            cb_NODEADLINE.CheckState = CheckState.Unchecked
 
             btn_OPENADDTASK.Visible = True
             btn_BACKTASK.Visible = False
