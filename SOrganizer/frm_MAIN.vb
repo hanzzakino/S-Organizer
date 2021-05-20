@@ -48,9 +48,33 @@
         frm_LoadingScreen.lbl_LOADING.Text = "Initializing Menu and Panels..."
         Application.DoEvents()
 
+        ''Additional initialization''
         lbl_LOADING.Parent = panel_WINDOW
         panel_CONTROLBAR.Parent = panel_WINDOW
         splitCon_MAIN.Parent = panel_WINDOW
+
+        Dim tooltip As New ToolTip()
+        tooltip.SetToolTip(btn_OPENADDSUBJECT, "Add New Subject")
+        Dim tooltip2 As New ToolTip()
+        tooltip2.SetToolTip(btn_OPENADDTASK, "Add New Task")
+        Dim tooltip3 As New ToolTip()
+        tooltip3.SetToolTip(btn_OPENREMOVESUBJECT, "Remove Subject")
+        Dim tooltip4 As New ToolTip()
+        tooltip4.SetToolTip(btn_BACKTASK, "Back")
+        Dim tooltip5 As New ToolTip()
+        tooltip5.SetToolTip(btn_ADDSUBJECTBACK, "Back")
+        Dim tooltip6 As New ToolTip()
+        tooltip6.SetToolTip(txt_SUBJECTNAME, "Subject Full Name")
+        Dim tooltip7 As New ToolTip()
+        tooltip7.SetToolTip(txt_SUBJECTID, "Subject Code (Alpha-numericals only)")
+        Dim tooltip8 As New ToolTip()
+        tooltip8.SetToolTip(txt_TASKNAME, "Task Name")
+        Dim tooltip9 As New ToolTip()
+        tooltip9.SetToolTip(txt_TASKDESC, "Task Description")
+        Dim tooltip10 As New ToolTip()
+        tooltip10.SetToolTip(txt_NOTETITLE, "Title of the Note")
+
+        ''Additional initialization''
 
         selButton(btn_SUBJECTS)
         openPanel(panel_MAIN_SUBJECTS)
@@ -556,10 +580,13 @@
             Me.Left = MousePosition.X - initmx + initx
             Me.Top = MousePosition.Y - initmy + inity
         ElseIf mdown And Me.WindowState = FormWindowState.Maximized Then
+            Dim per_widthB As Double = (initmx - 200) / (Me.Width - 200) 'Percetage location before size change
             Me.WindowState = FormWindowState.Normal
+            Dim adder As Integer = CInt(initmx - ((per_widthB * (Me.Width - 200)) + 200)) 'compute offset using percentage
+            initmx -= adder ' reposition the form to align with the mouse position
             showResizeControl(True)
-            Me.Left = MousePosition.X - initmx + initx
-            Me.Top = MousePosition.Y - initmy + inity
+            Me.Left = (MousePosition.X - initmx + initx)
+            Me.Top = (MousePosition.Y - initmy + inity)
         End If
     End Sub
     Private Sub panel_CONTROLBAR_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_CONTROLBAR.MouseUp
@@ -569,6 +596,20 @@
         End If
         mdown = False
     End Sub
+
+    'other drag algorithm
+    Dim mouseOffset As Point
+    Private Sub panel_MENU_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_MENU.MouseDown
+        mouseOffset = New Point(-e.X, -e.Y)
+    End Sub
+    Private Sub panel_MENU_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_MENU.MouseMove
+        If e.Button = MouseButtons.Left Then
+            Dim mousePos = Control.MousePosition
+            mousePos.Offset(mouseOffset.X, mouseOffset.Y)
+            Location = mousePos
+        End If
+    End Sub
+
     'PANEL DRAG'
 
     Private Sub frm_MAIN_SizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.SizeChanged
@@ -1326,7 +1367,6 @@
     End Sub
     ''''Form Enter Key event''''
 
-
     Public Sub changeTHEME(ByVal theme_name As String)
 
         If theme_name = "dark" Then
@@ -1661,10 +1701,6 @@
         init_SUBJECTLIST(False)
 
     End Sub
-
-
-
-    
 
 
 End Class
