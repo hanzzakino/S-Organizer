@@ -154,7 +154,6 @@
             brder_panel.Left = 0
             brder_panel.BackColor = colr_darker
 
-            '' Test''
             subj_panel.Name = subject(0)
             Dim btn_EDITSUB As New Button()
             btn_EDITSUB.Parent = subj_panel
@@ -166,18 +165,17 @@
             btn_EDITSUB.FlatStyle = FlatStyle.Flat
             btn_EDITSUB.BackColor = colr_light
             btn_EDITSUB.ForeColor = colr_darkest
-            btn_EDITSUB.Font = New Font("Verdana", 6, FontStyle.Bold)
+            btn_EDITSUB.Font = New Font("Roboto", 7, FontStyle.Bold)
             btn_EDITSUB.TabStop = False
 
+            ' Add an event hadler to each edit button
             AddHandler btn_EDITSUB.Click, AddressOf editSub_Click
-
-            '' Test''
 
 
             Dim subj_label As New Label()
             subj_label.Parent = subj_panel
             subj_label.AutoSize = True
-            subj_label.Font = New Font("Verdana", 11, FontStyle.Bold)
+            subj_label.Font = New Font("Roboto", 12, FontStyle.Bold)
             subj_label.Top = 13
             subj_label.Left = 5
             subj_label.Anchor = AnchorStyles.Top + AnchorStyles.Left
@@ -206,7 +204,7 @@
             subj_sched_list.SelectionMode = SelectionMode.None
             subj_sched_list.ForeColor = colr_darkest
             subj_sched_list.BackColor = colr_light
-            subj_sched_list.Font = New Font("Verdana", 10, FontStyle.Bold)
+            subj_sched_list.Font = New Font("Roboto", 10, FontStyle.Bold)
             subj_sched_list.SelectionMode = SelectionMode.None
             subj_sched_list.TabStop = False
 
@@ -280,7 +278,7 @@
             subj_schd_lbl.Text = subject(0)
             subj_schd_lbl.TextAlign = ContentAlignment.MiddleCenter
             subj_schd_lbl.Dock = DockStyle.Fill
-            subj_schd_lbl.Font = New Font("Verdana", 12, FontStyle.Bold)
+            subj_schd_lbl.Font = New Font("Roboto", 12, FontStyle.Bold)
 
             Dim sched_row As RowStyle = tblpanel_SCHED.RowStyles(tblpanel_SCHED.RowCount - 2)
             sched_row.SizeType = SizeType.Percent
@@ -295,7 +293,7 @@
                 sch_day.BackColor = colr_lighter
                 sch_day.TextAlign = ContentAlignment.MiddleCenter
                 sch_day.Dock = DockStyle.Fill
-                sch_day.Font = New Font("Arial", 9)
+                sch_day.Font = New Font("Roboto", 9)
                 sch_day.Text = sch(1) + "-" + sch(2)
                 If sch(0) = "MONDAY" Then
                     tblpanel_SCHED.Controls.Add(sch_day, 1, tblpanel_SCHED.RowCount - 2)
@@ -329,7 +327,7 @@
             For Each arch_task In getSUBJECTTASKSARCHIVE(subject_a(0))
                 Dim lvi_A As New ListViewItem
                 lvi_A.Text = arch_task(5) + " - " + arch_task(0) + " - " + arch_task(1) + " - " + arch_task(4)
-                lvi_A.Font = New Font("Verdana", 10, FontStyle.Strikeout)
+                lvi_A.Font = New Font("Roboto", 10, FontStyle.Strikeout)
                 lvi_A.Group = lvg_arch
                 listbx_TASKLIST2.Items.Add(lvi_A)
                 TASK_LIST_SUBJECTID.Add(arch_task(6)) 'Added task ID
@@ -673,6 +671,11 @@
         selButton(btn_NOTES)
         openPanel(panel_MAIN_NOTES)
     End Sub
+    Private Sub btn_SETTINGS_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_SETTINGS.Click
+        selButton(btn_SETTINGS)
+        openPanel(panel_MAIN_SETTINGS)
+    End Sub
+
 
     'Panel Nav metohds
     Public Sub openPanel(ByRef o_panel As Panel)
@@ -680,6 +683,7 @@
         panel_MAIN_SCHEDS.Visible = False
         panel_MAIN_SUBJECTS.Visible = False
         panel_MAIN_TASKS.Visible = False
+        panel_MAIN_SETTINGS.Visible = False
         o_panel.Visible = True
     End Sub
     Public Sub selButton(ByRef o_btn As Button)
@@ -691,6 +695,8 @@
         btn_SCHEDULES.ForeColor = colr_light
         btn_TASK.BackColor = colr_dark
         btn_TASK.ForeColor = colr_light
+        btn_SETTINGS.BackColor = colr_dark
+        btn_SETTINGS.ForeColor = colr_light
         o_btn.BackColor = colr_medium
         o_btn.ForeColor = colr_dark
         Me.lbl_CTRL_TITLE.Text = "Student Organizer - " + o_btn.Text
@@ -1386,7 +1392,7 @@
             'Me.btn_LOGOUT.BackColor = System.Drawing.Color.Transparent
             'Me.btn_LOGOUT.ForeColor = System.Drawing.Color.White
 
-            Me.panel_ACCOUNTINFO.BackColor = colr_dark
+
 
             'Me.lbl_USER.BackColor = colr_dark
             'Me.lbl_USER.ForeColor = System.Drawing.Color.AliceBlue
@@ -1549,13 +1555,8 @@
 
             Me.panel_MENU.BackColor = System.Drawing.Color.SteelBlue
 
-            Me.btn_LOGOUT.BackColor = System.Drawing.Color.Transparent
-            Me.btn_LOGOUT.ForeColor = System.Drawing.Color.White
-
-            Me.panel_ACCOUNTINFO.BackColor = System.Drawing.Color.SteelBlue
-
-            Me.lbl_USER.BackColor = System.Drawing.Color.SteelBlue
-            Me.lbl_USER.ForeColor = System.Drawing.Color.AliceBlue
+            Me.btn_SETTINGS.BackColor = System.Drawing.Color.Transparent
+            Me.btn_SETTINGS.ForeColor = System.Drawing.Color.White
 
             Me.Label2.ForeColor = System.Drawing.Color.Azure
 
@@ -1703,4 +1704,5 @@
     End Sub
 
 
+    
 End Class
