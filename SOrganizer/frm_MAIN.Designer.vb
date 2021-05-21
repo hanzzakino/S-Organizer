@@ -115,6 +115,7 @@ Partial Class frm_MAIN
         Me.lbl_LOADING = New System.Windows.Forms.Label()
         Me.panel_RESIZECONTROL = New System.Windows.Forms.Panel()
         Me.panel_WINDOW = New System.Windows.Forms.Panel()
+        Me.cb_DARKMODE = New System.Windows.Forms.CheckBox()
         CType(Me.splitCon_MAIN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitCon_MAIN.Panel1.SuspendLayout()
         Me.splitCon_MAIN.Panel2.SuspendLayout()
@@ -154,10 +155,10 @@ Partial Class frm_MAIN
         '
         'splitCon_MAIN.Panel2
         '
+        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SETTINGS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_NOTES)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SUBJECTS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_TASKS)
-        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SETTINGS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SCHEDS)
         Me.splitCon_MAIN.Size = New System.Drawing.Size(700, 530)
         Me.splitCon_MAIN.SplitterDistance = 200
@@ -1171,6 +1172,7 @@ Partial Class frm_MAIN
         'panel_MAIN_SETTINGS
         '
         Me.panel_MAIN_SETTINGS.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_MAIN_SETTINGS.Controls.Add(Me.cb_DARKMODE)
         Me.panel_MAIN_SETTINGS.Controls.Add(Me.Label27)
         Me.panel_MAIN_SETTINGS.Controls.Add(Me.Label26)
         Me.panel_MAIN_SETTINGS.Location = New System.Drawing.Point(0, 0)
@@ -1474,6 +1476,16 @@ Partial Class frm_MAIN
         Me.panel_WINDOW.Size = New System.Drawing.Size(700, 530)
         Me.panel_WINDOW.TabIndex = 2
         '
+        'cb_DARKMODE
+        '
+        Me.cb_DARKMODE.AutoSize = True
+        Me.cb_DARKMODE.Location = New System.Drawing.Point(44, 107)
+        Me.cb_DARKMODE.Name = "cb_DARKMODE"
+        Me.cb_DARKMODE.Size = New System.Drawing.Size(78, 17)
+        Me.cb_DARKMODE.TabIndex = 101
+        Me.cb_DARKMODE.Text = "Dark mode"
+        Me.cb_DARKMODE.UseVisualStyleBackColor = True
+        '
         'frm_MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1624,6 +1636,7 @@ Partial Class frm_MAIN
     Friend WithEvents panel_MAIN_SETTINGS As System.Windows.Forms.Panel
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents Label27 As System.Windows.Forms.Label
+    Friend WithEvents cb_DARKMODE As System.Windows.Forms.CheckBox
 
 
 

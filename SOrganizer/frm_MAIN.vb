@@ -1705,4 +1705,14 @@
 
 
     
+    Private Sub cb_DARKMODE_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cb_DARKMODE.CheckedChanged
+        If cb_DARKMODE.Checked Then
+            changeTHEME("dark")
+        Else
+            changeTHEME("default")
+        End If
+
+    End Sub
+
+
 End Class
