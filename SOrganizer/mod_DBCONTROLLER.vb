@@ -10,6 +10,7 @@ Module mod_MYSQLDBCONTROLLER
     Dim db_file_loc As String = "dbconfig.txt"
     Dim con As MySqlConnection = Nothing
     Dim db_name As String = "s_organizer"
+    'test database : s_organizer_TEST
     Dim reader As MySqlDataReader
     Dim str_version As String = ""
 

@@ -128,7 +128,7 @@
             empty_sub.Height = 400
             empty_sub.TextAlign = ContentAlignment.MiddleCenter
             empty_sub.ForeColor = colr_darker
-            empty_sub.Font = New Font("Arial", 14)
+            empty_sub.Font = New Font("Roboto", 16)
             flwpanel_SUBJECTS_DRAWER.Controls.Add(empty_sub)
         End If
 
@@ -141,11 +141,14 @@
 
             ''''''FOR SUBJECT LIST PANEL''''''
             'subject is a list of strings where subject(0) is the subject_id and subject(1) is te subject_name
+            'SUBJECT PANEL
             Dim subj_panel As New Panel()
             subj_panel.Height = 200
             subj_panel.Width = 450
             subj_panel.BackColor = colr_light
+            subj_panel.Name = subject(0)
 
+            'TOP BORDER COLOR
             Dim brder_panel As New Panel
             brder_panel.Parent = subj_panel
             brder_panel.Height = 5
@@ -154,7 +157,7 @@
             brder_panel.Left = 0
             brder_panel.BackColor = colr_darker
 
-            subj_panel.Name = subject(0)
+            'EDIT SUBJECT BUTTON
             Dim btn_EDITSUB As New Button()
             btn_EDITSUB.Parent = subj_panel
             btn_EDITSUB.Text = "Edit"
@@ -167,11 +170,10 @@
             btn_EDITSUB.ForeColor = colr_darkest
             btn_EDITSUB.Font = New Font("Roboto", 7, FontStyle.Bold)
             btn_EDITSUB.TabStop = False
-
             ' Add an event hadler to each edit button
             AddHandler btn_EDITSUB.Click, AddressOf editSub_Click
 
-
+            'SUBJECT LABEL
             Dim subj_label As New Label()
             subj_label.Parent = subj_panel
             subj_label.AutoSize = True
@@ -182,6 +184,7 @@
             subj_label.ForeColor = colr_darkest
             subj_label.MaximumSize = subj_panel.Size
 
+            'TASK LIST PREVIEW
             Dim subj_tasks_list As New ListBox
             subj_tasks_list.Parent = subj_panel
             subj_tasks_list.Top = 45
@@ -194,6 +197,7 @@
             subj_tasks_list.SelectionMode = SelectionMode.None
             subj_tasks_list.TabStop = False
 
+            'SCHEDULE INFO
             Dim subj_sched_list As New ListBox
             subj_sched_list.Parent = subj_panel
             subj_sched_list.Top = 45
@@ -208,26 +212,30 @@
             subj_sched_list.SelectionMode = SelectionMode.None
             subj_sched_list.TabStop = False
 
-
+            'ADD SCHEDULE STRINGS
             For Each sched In getScheduleString(subject(0))
                 subj_sched_list.Items.Add(sched(0))
                 subj_sched_list.Items.Add(sched(1) + "-" + sched(2))
             Next
-
             ''''''FOR SUBJECT LIST PANEL''''''
 
+
             ''''''FOR TASK LIST PANEL''''''
+            'LIST VIEW GROUP
             Dim lvg As New ListViewGroup
             lvg.Header = subject(0) + " - " + subject(1)
             listbx_TASKLIST2.Groups.Add(lvg)
 
+            'EMPTY TASK
             If getSUBJECTTASKS(subject(0)).Count = 0 Then
                 subj_tasks_list.Items.Add("No Task")
             End If
 
-
+            'TASK COLLECTION
             For Each task In getSUBJECTTASKS(subject(0))
-                subj_tasks_list.Items.Add(task(0) + " - " + task(1)) 'Added task
+                subj_tasks_list.Items.Add(task(0) + " - " + task(1)) 'Added 
+
+                'TASK DATE ALGO
                 Try
                     If Long.Parse(task(3)) < Now.Ticks Then
                         Dim lvi As New ListViewItem
@@ -250,6 +258,7 @@
                 End Try
                 TASK_LIST_SUBJECTID.Add(task(6)) 'Added task ID
 
+                'INCREMENT PENDING TASK COUNT
                 pending_task_count += 1
             Next
 
@@ -257,6 +266,7 @@
 
             ''ADDING THE SUBJECT PANEL TO THE LIST OF PANELS
             subj_label.Text = subject(0) + " - " + subject(1)
+            ''ADD THE CURRENT SUBJECT PANEL TO THE LIST OF SUBJECT PANELS
             SUBJECT_ITEMS.Add(subj_panel)
 
             ''SUBJECT NAME COMBOBOX IN 'ADD TASK'
@@ -272,22 +282,27 @@
 
 
             ''''''FOR SCHED TABLE PANEL''''''
+            'ADD NEW ROW
             tblpanel_SCHED.RowCount += 1
 
+            'SCHEDULE INFO LABEL
             Dim subj_schd_lbl As New Label
             subj_schd_lbl.Text = subject(0)
             subj_schd_lbl.TextAlign = ContentAlignment.MiddleCenter
             subj_schd_lbl.Dock = DockStyle.Fill
             subj_schd_lbl.Font = New Font("Roboto", 12, FontStyle.Bold)
 
+            'NEW ROW STYLE
             Dim sched_row As RowStyle = tblpanel_SCHED.RowStyles(tblpanel_SCHED.RowCount - 2)
             sched_row.SizeType = SizeType.Percent
             sched_row.Height = 80 / (SUBJECT_LIST.Count)
 
+            'ADD THE NEW ROW STYLE TO THE TABLE ROW STYLES
             tblpanel_SCHED.RowStyles.Add(New RowStyle(sched_row.SizeType, sched_row.Height))
+            'ADD THE LABEL THE THE NEW ROW
             tblpanel_SCHED.Controls.Add(subj_schd_lbl, 0, tblpanel_SCHED.RowCount - 2)
 
-
+            'MODIFY THE SCHEDULE LABEL FOR MULTIPLE SCHEDULES
             For Each sch In getScheduleString(subject(0))
                 Dim sch_day As New Label
                 sch_day.BackColor = colr_lighter
@@ -335,11 +350,13 @@
         Next
         '''' Test Archive ''''
 
-
+        'EXTRA EMPTY SUBJECT PANEL PANEL FOR SPACING
         Dim exc_panel As New Panel()
         exc_panel.Height = 200
         exc_panel.Width = 450
         flwpanel_SUBJECTS_DRAWER.Controls.Add(exc_panel)
+
+
         lbl_NTASKS.Text = pending_task_count.ToString + " tasks..."
     End Sub
 
@@ -384,7 +401,7 @@
 
     End Sub
 
-
+    'RESIZE CONTROL
     Public Sub showResizeControl(ByVal tr As Boolean)
         If tr Then
             panel_WINDOW.Top = 3
