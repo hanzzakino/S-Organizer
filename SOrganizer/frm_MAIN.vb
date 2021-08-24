@@ -855,7 +855,7 @@
                 updateSubject(txt_SUBJECTID.Text, txt_SUBJECTNAME.Text, cmbx_DAY.SelectedItem.ToString, toDECIMALHOUR(time_SCHEDFROM.Value), toDECIMALHOUR(time_SCHEDTO.Value))
                 init_SUBJECTLIST(False)
                 savedSUBJ = True
-                MessageBox.Show("Schedule Updated", "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Subject Updated", "Subject", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             ''UPADTE''
         End If
@@ -886,7 +886,6 @@
     'Edit Subject click
     Protected Sub editSub_Click(ByVal sender As Object, ByVal e As EventArgs)
         Dim thisButton As Button = sender
-        Console.WriteLine(thisButton.Parent.Name + "clicked")
 
         addingSUBJ = False
 

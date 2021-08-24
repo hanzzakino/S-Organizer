@@ -31,6 +31,10 @@ Partial Class frm_MAIN
         Me.btn_SCHEDULES = New System.Windows.Forms.Button()
         Me.btn_TASK = New System.Windows.Forms.Button()
         Me.btn_SUBJECTS = New System.Windows.Forms.Button()
+        Me.panel_MAIN_SETTINGS = New System.Windows.Forms.Panel()
+        Me.cb_DARKMODE = New System.Windows.Forms.CheckBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.panel_MAIN_NOTES = New System.Windows.Forms.Panel()
         Me.btn_OPENADDNOTE = New System.Windows.Forms.Button()
         Me.btn_NOTESBACK = New System.Windows.Forms.Button()
@@ -93,9 +97,6 @@ Partial Class frm_MAIN
         Me.Label17 = New System.Windows.Forms.Label()
         Me.listbx_TASKLIST2 = New System.Windows.Forms.ListView()
         Me.btn_ARCHIVETASK = New System.Windows.Forms.Button()
-        Me.panel_MAIN_SETTINGS = New System.Windows.Forms.Panel()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
         Me.panel_MAIN_SCHEDS = New System.Windows.Forms.Panel()
         Me.panel_SCHEDULEPANE = New System.Windows.Forms.Panel()
         Me.tblpanel_SCHED = New System.Windows.Forms.TableLayoutPanel()
@@ -115,12 +116,12 @@ Partial Class frm_MAIN
         Me.lbl_LOADING = New System.Windows.Forms.Label()
         Me.panel_RESIZECONTROL = New System.Windows.Forms.Panel()
         Me.panel_WINDOW = New System.Windows.Forms.Panel()
-        Me.cb_DARKMODE = New System.Windows.Forms.CheckBox()
         CType(Me.splitCon_MAIN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitCon_MAIN.Panel1.SuspendLayout()
         Me.splitCon_MAIN.Panel2.SuspendLayout()
         Me.splitCon_MAIN.SuspendLayout()
         Me.panel_MENU.SuspendLayout()
+        Me.panel_MAIN_SETTINGS.SuspendLayout()
         Me.panel_MAIN_NOTES.SuspendLayout()
         Me.panel_NOTESLIST.SuspendLayout()
         Me.panel_NOTEEDITOR.SuspendLayout()
@@ -133,7 +134,6 @@ Partial Class frm_MAIN
         Me.panel_ADDTASK.SuspendLayout()
         Me.panel_TASKLISTPANEL.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.panel_MAIN_SETTINGS.SuspendLayout()
         Me.panel_MAIN_SCHEDS.SuspendLayout()
         Me.panel_SCHEDULEPANE.SuspendLayout()
         Me.tblpanel_SCHED.SuspendLayout()
@@ -202,13 +202,13 @@ Partial Class frm_MAIN
         '
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Roboto Black", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Roboto Black", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Azure
-        Me.Label2.Location = New System.Drawing.Point(15, 15)
+        Me.Label2.Location = New System.Drawing.Point(15, 10)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(98, 38)
+        Me.Label2.Size = New System.Drawing.Size(152, 33)
         Me.Label2.TabIndex = 99
-        Me.Label2.Text = "Menu"
+        Me.Label2.Text = "SOrganizer"
         '
         'btn_NOTES
         '
@@ -285,6 +285,52 @@ Partial Class frm_MAIN
         Me.btn_SUBJECTS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_SUBJECTS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_SUBJECTS.UseVisualStyleBackColor = True
+        '
+        'panel_MAIN_SETTINGS
+        '
+        Me.panel_MAIN_SETTINGS.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panel_MAIN_SETTINGS.Controls.Add(Me.cb_DARKMODE)
+        Me.panel_MAIN_SETTINGS.Controls.Add(Me.Label27)
+        Me.panel_MAIN_SETTINGS.Controls.Add(Me.Label26)
+        Me.panel_MAIN_SETTINGS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.panel_MAIN_SETTINGS.Location = New System.Drawing.Point(0, 0)
+        Me.panel_MAIN_SETTINGS.Name = "panel_MAIN_SETTINGS"
+        Me.panel_MAIN_SETTINGS.Size = New System.Drawing.Size(496, 530)
+        Me.panel_MAIN_SETTINGS.TabIndex = 102
+        '
+        'cb_DARKMODE
+        '
+        Me.cb_DARKMODE.AutoSize = True
+        Me.cb_DARKMODE.Location = New System.Drawing.Point(44, 107)
+        Me.cb_DARKMODE.Name = "cb_DARKMODE"
+        Me.cb_DARKMODE.Size = New System.Drawing.Size(78, 17)
+        Me.cb_DARKMODE.TabIndex = 101
+        Me.cb_DARKMODE.Text = "Dark mode"
+        Me.cb_DARKMODE.UseVisualStyleBackColor = True
+        '
+        'Label27
+        '
+        Me.Label27.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Roboto", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label27.Location = New System.Drawing.Point(333, 45)
+        Me.Label27.Name = "Label27"
+        Me.Label27.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label27.Size = New System.Drawing.Size(150, 42)
+        Me.Label27.TabIndex = 100
+        Me.Label27.Text = "Settings"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Roboto", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(92, 186)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(54, 15)
+        Me.Label26.TabIndex = 0
+        Me.Label26.Text = "Settings"
         '
         'panel_MAIN_NOTES
         '
@@ -1169,41 +1215,6 @@ Partial Class frm_MAIN
         Me.btn_ARCHIVETASK.Text = "Archive"
         Me.btn_ARCHIVETASK.UseVisualStyleBackColor = False
         '
-        'panel_MAIN_SETTINGS
-        '
-        Me.panel_MAIN_SETTINGS.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panel_MAIN_SETTINGS.Controls.Add(Me.cb_DARKMODE)
-        Me.panel_MAIN_SETTINGS.Controls.Add(Me.Label27)
-        Me.panel_MAIN_SETTINGS.Controls.Add(Me.Label26)
-        Me.panel_MAIN_SETTINGS.Location = New System.Drawing.Point(0, 0)
-        Me.panel_MAIN_SETTINGS.Name = "panel_MAIN_SETTINGS"
-        Me.panel_MAIN_SETTINGS.Size = New System.Drawing.Size(496, 530)
-        Me.panel_MAIN_SETTINGS.TabIndex = 102
-        '
-        'Label27
-        '
-        Me.Label27.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label27.AutoSize = True
-        Me.Label27.Font = New System.Drawing.Font("Roboto", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label27.Location = New System.Drawing.Point(333, 45)
-        Me.Label27.Name = "Label27"
-        Me.Label27.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label27.Size = New System.Drawing.Size(150, 42)
-        Me.Label27.TabIndex = 100
-        Me.Label27.Text = "Settings"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Font = New System.Drawing.Font("Roboto", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(92, 186)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(54, 15)
-        Me.Label26.TabIndex = 0
-        Me.Label26.Text = "Settings"
-        '
         'panel_MAIN_SCHEDS
         '
         Me.panel_MAIN_SCHEDS.BackColor = System.Drawing.Color.LightBlue
@@ -1476,16 +1487,6 @@ Partial Class frm_MAIN
         Me.panel_WINDOW.Size = New System.Drawing.Size(700, 530)
         Me.panel_WINDOW.TabIndex = 2
         '
-        'cb_DARKMODE
-        '
-        Me.cb_DARKMODE.AutoSize = True
-        Me.cb_DARKMODE.Location = New System.Drawing.Point(44, 107)
-        Me.cb_DARKMODE.Name = "cb_DARKMODE"
-        Me.cb_DARKMODE.Size = New System.Drawing.Size(78, 17)
-        Me.cb_DARKMODE.TabIndex = 101
-        Me.cb_DARKMODE.Text = "Dark mode"
-        Me.cb_DARKMODE.UseVisualStyleBackColor = True
-        '
         'frm_MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1510,6 +1511,8 @@ Partial Class frm_MAIN
         Me.splitCon_MAIN.ResumeLayout(False)
         Me.panel_MENU.ResumeLayout(False)
         Me.panel_MENU.PerformLayout()
+        Me.panel_MAIN_SETTINGS.ResumeLayout(False)
+        Me.panel_MAIN_SETTINGS.PerformLayout()
         Me.panel_MAIN_NOTES.ResumeLayout(False)
         Me.panel_MAIN_NOTES.PerformLayout()
         Me.panel_NOTESLIST.ResumeLayout(False)
@@ -1531,8 +1534,6 @@ Partial Class frm_MAIN
         Me.panel_TASKLISTPANEL.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.panel_MAIN_SETTINGS.ResumeLayout(False)
-        Me.panel_MAIN_SETTINGS.PerformLayout()
         Me.panel_MAIN_SCHEDS.ResumeLayout(False)
         Me.panel_MAIN_SCHEDS.PerformLayout()
         Me.panel_SCHEDULEPANE.ResumeLayout(False)

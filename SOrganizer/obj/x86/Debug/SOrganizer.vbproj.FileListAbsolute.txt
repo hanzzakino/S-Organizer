@@ -8,3 +8,4 @@ C:\Users\MFS\Documents\Visual Studio 2010\Projects\Project-git\S-Organizer\SOrga
 C:\Users\MFS\Documents\Visual Studio 2010\Projects\Project-git\S-Organizer\SOrganizer\obj\x86\Debug\SOrganizer.exe
 C:\Users\MFS\Documents\Visual Studio 2010\Projects\Project-git\S-Organizer\SOrganizer\obj\x86\Debug\SOrganizer.xml
 C:\Users\MFS\Documents\Visual Studio 2010\Projects\Project-git\S-Organizer\SOrganizer\obj\x86\Debug\SOrganizer.pdb
+C:\Users\MFS\Documents\Visual Studio 2010\Projects\Project-git\S-Organizer\SOrganizer\obj\x86\Debug\SOrganizer.vbprojResolveAssemblyReference.cache
