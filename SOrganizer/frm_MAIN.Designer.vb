@@ -116,6 +116,8 @@ Partial Class frm_MAIN
         Me.lbl_LOADING = New System.Windows.Forms.Label()
         Me.panel_RESIZECONTROL = New System.Windows.Forms.Panel()
         Me.panel_WINDOW = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label28 = New System.Windows.Forms.Label()
         CType(Me.splitCon_MAIN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitCon_MAIN.Panel1.SuspendLayout()
         Me.splitCon_MAIN.Panel2.SuspendLayout()
@@ -138,6 +140,7 @@ Partial Class frm_MAIN
         Me.panel_SCHEDULEPANE.SuspendLayout()
         Me.tblpanel_SCHED.SuspendLayout()
         Me.panel_CONTROLBAR.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'splitCon_MAIN
@@ -155,10 +158,10 @@ Partial Class frm_MAIN
         '
         'splitCon_MAIN.Panel2
         '
+        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_TASKS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SETTINGS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_NOTES)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SUBJECTS)
-        Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_TASKS)
         Me.splitCon_MAIN.Panel2.Controls.Add(Me.panel_MAIN_SCHEDS)
         Me.splitCon_MAIN.Size = New System.Drawing.Size(700, 530)
         Me.splitCon_MAIN.SplitterDistance = 200
@@ -869,8 +872,8 @@ Partial Class frm_MAIN
         Me.panel_MAIN_TASKS.Controls.Add(Me.btn_OPENADDTASK)
         Me.panel_MAIN_TASKS.Controls.Add(Me.btn_BACKTASK)
         Me.panel_MAIN_TASKS.Controls.Add(Me.Label3)
-        Me.panel_MAIN_TASKS.Controls.Add(Me.panel_ADDTASK)
         Me.panel_MAIN_TASKS.Controls.Add(Me.panel_TASKLISTPANEL)
+        Me.panel_MAIN_TASKS.Controls.Add(Me.panel_ADDTASK)
         Me.panel_MAIN_TASKS.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panel_MAIN_TASKS.Location = New System.Drawing.Point(0, 0)
         Me.panel_MAIN_TASKS.Name = "panel_MAIN_TASKS"
@@ -1126,6 +1129,7 @@ Partial Class frm_MAIN
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panel_TASKLISTPANEL.Controls.Add(Me.btn_DELETETASK)
         Me.panel_TASKLISTPANEL.Controls.Add(Me.lbl_NTASKS)
+        Me.panel_TASKLISTPANEL.Controls.Add(Me.Panel1)
         Me.panel_TASKLISTPANEL.Controls.Add(Me.Panel2)
         Me.panel_TASKLISTPANEL.Controls.Add(Me.listbx_TASKLIST2)
         Me.panel_TASKLISTPANEL.Controls.Add(Me.btn_ARCHIVETASK)
@@ -1168,21 +1172,21 @@ Partial Class frm_MAIN
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.Panel2.Controls.Add(Me.Label17)
-        Me.Panel2.Location = New System.Drawing.Point(15, 360)
+        Me.Panel2.Location = New System.Drawing.Point(15, 345)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(166, 25)
+        Me.Panel2.Size = New System.Drawing.Size(136, 20)
         Me.Panel2.TabIndex = 3
         '
         'Label17
         '
         Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Roboto", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(4, 2)
+        Me.Label17.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(4, 4)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(159, 19)
+        Me.Label17.Size = New System.Drawing.Size(109, 13)
         Me.Label17.TabIndex = 0
-        Me.Label17.Text = "*Missed the Deadline"
+        Me.Label17.Text = "Missed the Deadline"
         '
         'listbx_TASKLIST2
         '
@@ -1487,6 +1491,27 @@ Partial Class frm_MAIN
         Me.panel_WINDOW.Size = New System.Drawing.Size(700, 530)
         Me.panel_WINDOW.TabIndex = 2
         '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(165, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Label28)
+        Me.Panel1.Location = New System.Drawing.Point(154, 345)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(136, 20)
+        Me.Panel1.TabIndex = 6
+        '
+        'Label28
+        '
+        Me.Label28.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(4, 4)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(119, 13)
+        Me.Label28.TabIndex = 0
+        Me.Label28.Text = "3 days before deadline"
+        '
         'frm_MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1541,6 +1566,8 @@ Partial Class frm_MAIN
         Me.tblpanel_SCHED.PerformLayout()
         Me.panel_CONTROLBAR.ResumeLayout(False)
         Me.panel_CONTROLBAR.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1638,6 +1665,8 @@ Partial Class frm_MAIN
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents Label27 As System.Windows.Forms.Label
     Friend WithEvents cb_DARKMODE As System.Windows.Forms.CheckBox
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label28 As System.Windows.Forms.Label
 
 
 

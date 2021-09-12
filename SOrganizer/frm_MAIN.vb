@@ -228,7 +228,10 @@
 
             'EMPTY TASK
             If getSUBJECTTASKS(subject(0)).Count = 0 Then
+                subj_tasks_list.ForeColor = Color.OrangeRed
                 subj_tasks_list.Items.Add("No Task")
+            Else
+                subj_tasks_list.ForeColor = colr_darkest
             End If
 
             'TASK COLLECTION
@@ -237,7 +240,14 @@
 
                 'TASK DATE ALGO
                 Try
-                    If Long.Parse(task(3)) < Now.Ticks Then
+                    If Long.Parse(task(3)) - Now.Ticks < (TimeSpan.TicksPerDay * 3) And Long.Parse(task(3)) - Now.Ticks > 0 Then
+                        Dim lvi As New ListViewItem
+                        lvi.Text = Date.Parse(task(2)).ToString("MMMM dd, yyyy") + " - " + task(5) + " - " + task(0) + " - " + task(1) + " - " + task(4)
+                        lvi.BackColor = Color.FromArgb(255, 255, 165)
+                        lvi.ForeColor = colr_darkest
+                        lvi.Group = lvg
+                        listbx_TASKLIST2.Items.Add(lvi)
+                    ElseIf Long.Parse(task(3)) < Now.Ticks Then
                         Dim lvi As New ListViewItem
                         lvi.Text = Date.Parse(task(2)).ToString("MMMM dd, yyyy") + " - " + task(5) + " - " + task(0) + " - " + task(1) + " - " + task(4)
                         lvi.BackColor = Color.FromArgb(255, 205, 205)
@@ -288,6 +298,13 @@
             'SCHEDULE INFO LABEL
             Dim subj_schd_lbl As New Label
             subj_schd_lbl.Text = subject(0)
+
+            Dim subj_schd_lbl_menu As New ContextMenu()
+            Dim subj_schd_lbl_menuitem As New MenuItem(subject(1))
+            'subj_schd_lbl_menuitem.Enabled = False
+            subj_schd_lbl_menu.MenuItems.Add(subj_schd_lbl_menuitem)
+
+            subj_schd_lbl.ContextMenu = subj_schd_lbl_menu
             subj_schd_lbl.TextAlign = ContentAlignment.MiddleCenter
             subj_schd_lbl.Dock = DockStyle.Fill
             subj_schd_lbl.Font = New Font("Roboto", 12, FontStyle.Bold)
